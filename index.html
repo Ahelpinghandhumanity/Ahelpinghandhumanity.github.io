@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,23 +17,40 @@ content="Emergency Responders - A Helping Hand for Humanity. Supporting people a
 <link rel="icon"
 href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚨%3C/text%3E%3C/svg%3E">
 
-<!-- SOCIAL SHARING -->
+<!-- ================= SOCIAL SHARING ================= -->
+
 <meta property="og:title"
 content="Emergency Responders | A Helping Hand for Humanity">
 
 <meta property="og:description"
 content="Standing together to support people affected by emergencies, disasters and difficult situations.">
 
-<meta property="og:type" content="website">
+<meta property="og:type"
+content="website">
 
-<meta property="og:image" content="TEAM.jpeg">
+<meta property="og:url"
+content="https://ahelpinghandhumanity.github.io/">
 
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image"
+content="https://ahelpinghandhumanity.github.io/TEAM.jpeg">
+
+<meta property="og:image:alt"
+content="Emergency Responders - A Helping Hand for Humanity">
+
+<meta name="twitter:card"
+content="summary_large_image">
+
 <meta name="twitter:title"
 content="Emergency Responders | A Helping Hand for Humanity">
+
 <meta name="twitter:description"
 content="A Helping Hand for Humanity">
-<meta name="twitter:image" content="TEAM.jpeg">
+
+<meta name="twitter:image"
+content="https://ahelpinghandhumanity.github.io/TEAM.jpeg">
+
+<meta name="twitter:image:alt"
+content="Emergency Responders - A Helping Hand for Humanity">
 
 
 <style>
@@ -395,6 +413,80 @@ section h2{
 }
 
 
+/* ================= SOCIAL SHARE ================= */
+
+.share-section{
+    background:#ffffff;
+}
+
+.share-box{
+    max-width:760px;
+    margin:25px auto 0;
+    background:#f8f8f8;
+    padding:30px 20px;
+    border-radius:14px;
+    box-shadow:0 3px 15px rgba(0,0,0,.10);
+}
+
+.share-box p{
+    margin-bottom:20px;
+    color:#555;
+}
+
+.share-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+}
+
+.share-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    min-width:125px;
+    padding:12px 16px;
+    border-radius:8px;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+    border:none;
+    font-size:15px;
+    transition:.2s;
+}
+
+.share-btn:hover{
+    transform:translateY(-2px);
+    opacity:.9;
+}
+
+.facebook{
+    background:#1877f2;
+}
+
+.whatsapp{
+    background:#25d366;
+}
+
+.xshare{
+    background:#111;
+}
+
+.telegram{
+    background:#229ed9;
+}
+
+.linkedin{
+    background:#0a66c2;
+}
+
+.copy{
+    background:#555;
+}
+
+
 /* ================= CONTACT ================= */
 
 .contact{
@@ -559,6 +651,23 @@ footer p{
     .contact-box{
         padding:20px 15px;
     }
+
+    .share-box{
+        padding:25px 15px;
+    }
+
+    .share-buttons{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .share-btn{
+        min-width:0;
+        width:100%;
+        font-size:14px;
+        padding:11px 8px;
+    }
 }
 
 
@@ -591,6 +700,10 @@ footer p{
         width:120px;
         height:120px;
     }
+
+    .share-btn{
+        font-size:12px;
+    }
 }
 
 </style>
@@ -615,6 +728,7 @@ footer p{
         <a href="#about">About</a>
         <a href="#help">Our Work</a>
         <a href="#donate">Donate</a>
+        <a href="#share">Share</a>
         <a href="#contact">Contact</a>
 
     </nav>
@@ -638,7 +752,6 @@ footer p{
         <img src="flood5.jpg" class="slide-bg" alt="">
         <img src="flood6.jpg" class="slide-bg" alt="">
         <img src="flood7.jpg" class="slide-bg" alt="">
-
 
         <!-- MAIN IMAGES -->
 
@@ -881,6 +994,101 @@ footer p{
 </section>
 
 
+<!-- ================= SHARE ================= -->
+
+<section class="share-section" id="share">
+
+    <h2>
+        📣 Share Our Mission
+    </h2>
+
+    <div class="share-box">
+
+        <p>
+            Help us reach more people by sharing
+            Emergency Responders with your friends,
+            family and community.
+        </p>
+
+
+        <div class="share-buttons">
+
+            <!-- FACEBOOK -->
+
+            <a
+                class="share-btn facebook"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fahelpinghandhumanity.github.io%2F"
+                target="_blank"
+                rel="noopener"
+            >
+                📘 Facebook
+            </a>
+
+
+            <!-- WHATSAPP -->
+
+            <a
+                class="share-btn whatsapp"
+                href="https://wa.me/?text=Emergency%20Responders%20-%20A%20Helping%20Hand%20for%20Humanity%20https%3A%2F%2Fahelpinghandhumanity.github.io%2F"
+                target="_blank"
+                rel="noopener"
+            >
+                💬 WhatsApp
+            </a>
+
+
+            <!-- X / TWITTER -->
+
+            <a
+                class="share-btn xshare"
+                href="https://twitter.com/intent/tweet?text=Emergency%20Responders%20-%20A%20Helping%20Hand%20for%20Humanity&url=https%3A%2F%2Fahelpinghandhumanity.github.io%2F"
+                target="_blank"
+                rel="noopener"
+            >
+                𝕏 Share
+            </a>
+
+
+            <!-- TELEGRAM -->
+
+            <a
+                class="share-btn telegram"
+                href="https://t.me/share/url?url=https%3A%2F%2Fahelpinghandhumanity.github.io%2F&text=Emergency%20Responders%20-%20A%20Helping%20Hand%20for%20Humanity"
+                target="_blank"
+                rel="noopener"
+            >
+                ✈️ Telegram
+            </a>
+
+
+            <!-- LINKEDIN -->
+
+            <a
+                class="share-btn linkedin"
+                href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fahelpinghandhumanity.github.io%2F"
+                target="_blank"
+                rel="noopener"
+            >
+                💼 LinkedIn
+            </a>
+
+
+            <!-- COPY LINK -->
+
+            <button
+                class="share-btn copy"
+                onclick="copyWebsiteLink()"
+            >
+                🔗 Copy Link
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 <!-- ================= CONTACT ================= -->
 
 <section class="contact" id="contact">
@@ -899,6 +1107,7 @@ footer p{
 
         <p>
             📧 Email:
+
             <a href="mailto:emergencyresponders2026@gmail.com">
                 emergencyresponders2026@gmail.com
             </a>
@@ -907,6 +1116,7 @@ footer p{
 
         <p>
             💬 WhatsApp:
+
             <a
                 href="https://wa.me/918016584529"
                 target="_blank"
@@ -1004,13 +1214,9 @@ async function loadApprovedDonations(){
     const donations = data || [];
 
 
-    /* DONOR COUNT */
-
     donorCount.textContent =
         donations.length;
 
-
-    /* TOTAL */
 
     const total =
         donations.reduce(
@@ -1028,8 +1234,6 @@ async function loadApprovedDonations(){
         "₹" +
         total.toLocaleString("en-IN");
 
-
-    /* DONOR LIST */
 
     if(donations.length === 0){
 
@@ -1102,15 +1306,39 @@ async function loadApprovedDonations(){
 loadApprovedDonations();
 
 
-/*
-   Refresh every 10 seconds.
-   Approved donations automatically appear.
-*/
+/* Refresh every 10 seconds */
 
 setInterval(
     loadApprovedDonations,
     10000
 );
+
+
+/* ================= COPY WEBSITE LINK ================= */
+
+function copyWebsiteLink(){
+
+    const website =
+        "https://ahelpinghandhumanity.github.io/";
+
+    navigator.clipboard.writeText(website)
+    .then(function(){
+
+        alert(
+            "Website link copied successfully! ❤️"
+        );
+
+    })
+    .catch(function(){
+
+        alert(
+            "Please copy the website link manually: " +
+            website
+        );
+
+    });
+
+}
 
 
 /* ================= SLIDESHOW ================= */
