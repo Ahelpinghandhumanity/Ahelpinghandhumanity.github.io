@@ -15,81 +15,81 @@
 
 body{
     font-family:Arial,sans-serif;
-    background:#f5f7fa;
+    background:#f4f6f8;
     color:#222;
 }
 
 header{
     background:#b30000;
     color:white;
-    padding:18px 6%;
     text-align:center;
+    padding:28px 15px;
 }
 
 header h1{
-    font-size:26px;
+    font-size:30px;
+    margin-bottom:8px;
 }
 
 .container{
-    width:92%;
+    width:94%;
     max-width:700px;
-    margin:35px auto;
+    margin:30px auto;
 }
 
-.box{
+.card{
     background:white;
-    padding:30px 25px;
-    margin-bottom:25px;
+    padding:25px;
     border-radius:14px;
-    box-shadow:0 4px 18px rgba(0,0,0,.12);
+    box-shadow:0 3px 15px rgba(0,0,0,.10);
+    margin-bottom:20px;
 }
 
 h2{
     color:#b30000;
-    margin-bottom:18px;
-    text-align:center;
+    margin-bottom:15px;
 }
 
-.details{
-    background:#fff5f5;
-    padding:20px;
-    border-radius:10px;
-    line-height:2;
-    margin-bottom:20px;
+.info{
+    background:#fff7e6;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+    line-height:1.6;
 }
 
 .upi{
+    background:#f8f8f8;
+    border:1px solid #ddd;
+    padding:18px;
+    border-radius:10px;
     text-align:center;
+    margin:20px 0;
 }
 
 .upi-id{
     font-size:20px;
     font-weight:bold;
     color:#b30000;
-    word-break:break-all;
+    margin:10px 0;
+    word-break:break-word;
 }
 
 .pay-btn{
     display:inline-block;
-    margin-top:18px;
-    padding:14px 25px;
-    background:#e60000;
+    background:#168534;
     color:white;
     text-decoration:none;
+    padding:13px 22px;
     border-radius:8px;
     font-weight:bold;
-    font-size:17px;
-}
-
-.pay-btn:hover{
-    background:#8f0000;
+    margin-top:8px;
 }
 
 label{
     display:block;
-    margin-top:15px;
-    margin-bottom:6px;
     font-weight:bold;
+    margin:15px 0 7px;
 }
 
 input{
@@ -100,70 +100,59 @@ input{
     font-size:16px;
 }
 
-.check{
+.checkbox{
     display:flex;
     align-items:center;
-    gap:8px;
-    margin-top:15px;
+    gap:10px;
+    margin:16px 0;
 }
 
-.check input{
+.checkbox input{
     width:auto;
 }
 
-.submit{
+.submit-btn{
     width:100%;
-    margin-top:22px;
     padding:14px;
-    border:0;
-    border-radius:8px;
     background:#b30000;
     color:white;
+    border:0;
+    border-radius:8px;
     font-size:17px;
     font-weight:bold;
     cursor:pointer;
 }
 
-.submit:disabled{
-    opacity:.6;
+.message{
+    display:none;
+    padding:14px;
+    margin-top:15px;
+    border-radius:8px;
+    line-height:1.5;
 }
 
-.message{
-    margin-top:18px;
-    padding:12px;
-    border-radius:7px;
-    display:none;
+.success{
+    background:#e7f7e7;
+    color:#176b17;
+}
+
+.error{
+    background:#ffe8e8;
+    color:#9b0000;
 }
 
 .back{
-    text-align:center;
-    margin:25px 0;
-}
-
-.back a{
+    display:inline-block;
+    margin-top:15px;
     color:#b30000;
-    font-weight:bold;
     text-decoration:none;
-}
-
-.small{
-    font-size:13px;
-    color:#666;
-    margin-top:10px;
-}
-
-footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:25px 15px;
-    margin-top:40px;
+    font-weight:bold;
 }
 
 @media(max-width:600px){
 
     header h1{
-        font-size:22px;
+        font-size:25px;
     }
 
     .container{
@@ -171,16 +160,12 @@ footer{
         margin:20px auto;
     }
 
-    .box{
-        padding:22px 17px;
+    .card{
+        padding:18px;
     }
 
     .upi-id{
         font-size:17px;
-    }
-
-    .pay-btn{
-        width:100%;
     }
 }
 </style>
@@ -189,221 +174,180 @@ footer{
 <body>
 
 <header>
-    <h1>❤️ Emergency Responders</h1>
-    <p>A Helping Hand for Humanity</p>
+    <h1>Emergency Responders</h1>
+    <p>Support Humanity</p>
 </header>
-
 
 <div class="container">
 
+<div class="card">
 
-    <!-- DONATION DETAILS -->
+    <h2>Make a Donation</h2>
 
-    <div class="box">
+    <p>
+        Your contribution can help people affected by
+        disasters and emergencies.
+    </p>
 
-        <h2>❤️ Support Our Mission</h2>
-
-        <p style="text-align:center;margin-bottom:20px;">
-            Your support can help people affected by
-            emergencies and difficult situations.
-        </p>
-
-
-        <div class="details">
-
-            <strong>Bank Name:</strong>
-            State Bank of India<br>
-
-            <strong>Account Number:</strong>
-            35276390472<br>
-
-            <strong>IFSC:</strong>
-            SBIN0008926
-
-        </div>
-
-
-        <div class="upi">
-
-            <h3>📱 UPI Payment</h3>
-
-            <p style="margin-top:10px;">
-                UPI ID
-            </p>
-
-            <div class="upi-id">
-                emergencyresponders@ptyes
-            </div>
-
-
-            <!-- UPI PAYMENT BUTTON -->
-
-            <a
-                class="pay-btn"
-                href="upi://pay?pa=emergencyresponders@ptyes&pn=Emergency%20Responders&cu=INR"
-            >
-                💳 Pay with UPI
-            </a>
-
-            <p class="small">
-                When you press the button from your mobile, it can open your available UPI/payment app.
-            </p>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- DONOR FORM -->
-
-    <div class="box">
-
-        <h2>🧾 I Have Donated</h2>
-
-        <p style="text-align:center;">
-           After making the payment, fill out the form below. Your information will be kept for verification.
-        </p>
-
-
-        <form id="donorForm">
-
-
-            <label for="name">
-                Donor Name
-            </label>
-
-            <input
-                type="text"
-                id="name"
-                placeholder="Your Name"
-                required
-            >
-
-
-            <label for="amount">
-                Donation Amount (₹)
-            </label>
-
-            <input
-                type="number"
-                id="amount"
-                placeholder="example: 500"
-                min="1"
-                step="0.01"
-                required
-            >
-
-
-            <label for="transaction">
-                Transaction / Reference ID
-            </label>
-
-            <input
-                type="text"
-                id="transaction"
-                placeholder="Payment reference / transaction ID"
-                required
-            >
-
-
-            <label class="check">
-
-                <input
-                    type="checkbox"
-                    id="anonymous"
-                >
-
-                <span>
-                   Show Anonymous instead of my name
-                </span>
-
-            </label>
-
-
-            <button
-                type="submit"
-                class="submit"
-                id="submitBtn"
-            >
-                Submit Donation Details
-            </button>
-
-
-            <div
-                class="message"
-                id="message"
-            ></div>
-
-        </form>
-
-    </div>
-
-
-    <div class="back">
-
-        <a href="index.html">
-            ← Back to Home
-        </a>
-
+    <div class="info">
+        <strong>Important:</strong><br>
+        After completing your payment, submit the form below.
+        Your donation will remain pending until it is verified
+        by our admin.
     </div>
 
 </div>
 
 
-<footer>
+<div class="card">
+
+    <h2>UPI Donation</h2>
+
+    <div class="upi">
+
+        <p>UPI ID</p>
+
+        <div class="upi-id">
+            emergencyresponders@ptyes
+        </div>
+
+        <a
+            class="pay-btn"
+            href="upi://pay?pa=emergencyresponders@ptyes&pn=Emergency%20Responders&cu=INR"
+        >
+            Pay with UPI
+        </a>
+
+    </div>
 
     <p>
-        © 2026 Emergency Responders
+        If the payment button does not open your UPI app,
+        copy the UPI ID and pay using your preferred UPI app.
     </p>
 
-    <p>
-        A Helping Hand for Humanity ❤️
-    </p>
-
-</footer>
+</div>
 
 
+<div class="card">
 
-<!-- SUPABASE -->
+    <h2>Donation Confirmation</h2>
+
+    <form id="donationForm">
+
+        <label for="donorName">
+            Your Name
+        </label>
+
+        <input
+            type="text"
+            id="donorName"
+            placeholder="Enter your name"
+            required
+        >
+
+
+        <label for="amount">
+            Donation Amount (INR)
+        </label>
+
+        <input
+            type="number"
+            id="amount"
+            placeholder="Enter amount"
+            min="1"
+            required
+        >
+
+
+        <label for="transactionId">
+            UPI Transaction ID
+        </label>
+
+        <input
+            type="text"
+            id="transactionId"
+            placeholder="Enter your UPI transaction ID"
+            required
+        >
+
+
+        <div class="checkbox">
+
+            <input
+                type="checkbox"
+                id="anonymous"
+            >
+
+            <label
+                for="anonymous"
+                style="margin:0;"
+            >
+                Display my donation anonymously
+            </label>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="submit-btn"
+            id="submitBtn"
+        >
+            Submit Donation
+        </button>
+
+    </form>
+
+
+    <div
+        id="message"
+        class="message"
+    ></div>
+
+</div>
+
+
+<div class="card">
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← Back to Home
+    </a>
+
+</div>
+
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 const SUPABASE_URL =
-    "https://gjfbqzwcatpvejuofdvc.supabase.co";
+"https://gjfbqzwcatpvejuofdvc.supabase.co";
 
-
-/*
- IMPORTANT:
- এখানে তোমার Supabase-এর
- PUBLISHABLE KEY বসাতে হবে।
-
- sb_publishable_ দিয়ে শুরু হওয়া key।
-
- Secret key কখনো এখানে বসাবে না।
-*/
 
 const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
+"sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
 
 
 const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-    );
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
 
 
 const form =
-    document.getElementById("donorForm");
+document.getElementById("donationForm");
 
 const message =
-    document.getElementById("message");
+document.getElementById("message");
 
 const submitBtn =
-    document.getElementById("submitBtn");
+document.getElementById("submitBtn");
 
 
 form.addEventListener(
@@ -412,27 +356,29 @@ form.addEventListener(
 
         event.preventDefault();
 
-
-        const name =
-            document.getElementById("name").value.trim();
+        const donorName =
+            document.getElementById("donorName")
+            .value.trim();
 
         const amount =
             Number(
                 document.getElementById("amount").value
             );
 
-        const transaction =
-            document.getElementById("transaction").value.trim();
+        const transactionId =
+            document.getElementById("transactionId")
+            .value.trim();
 
         const anonymous =
-            document.getElementById("anonymous").checked;
+            document.getElementById("anonymous")
+            .checked;
 
 
-        if(!name || !amount || !transaction){
+        if(!donorName || !amount || !transactionId){
 
             showMessage(
-                "Fill in all the information.",
-                false
+                "Please fill in all required fields.",
+                true
             );
 
             return;
@@ -450,15 +396,15 @@ form.addEventListener(
             .from("donations")
             .insert({
 
-                donor_name:name,
+                donor_name: donorName,
 
-                amount:amount,
+                amount: amount,
 
-                transaction_id:transaction,
+                transaction_id: transactionId,
 
-                anonymous:anonymous,
+                anonymous: anonymous,
 
-                status:"pending"
+                status: "pending"
 
             });
 
@@ -468,54 +414,49 @@ form.addEventListener(
             console.error(error);
 
             showMessage(
-                "Submission didn’t go through. Please try again.",
-                false
+                "Unable to submit donation: " +
+                error.message,
+                true
             );
 
             submitBtn.disabled = false;
 
             submitBtn.textContent =
-                "Submit Donation Details";
+                "Submit Donation";
 
             return;
         }
 
 
+        form.reset();
+
+
         showMessage(
-            "✅ Your donation details have been submitted. After verification, once approved, your name and the amount will be shown on the website.
+            "Thank you! Your donation has been submitted successfully and is pending verification. Once approved, it will appear on our website.",
+            false
         );
 
-
-        form.reset();
 
         submitBtn.disabled = false;
 
         submitBtn.textContent =
-            "Submit Donation Details";
+            "Submit Donation";
 
     }
 );
 
 
-function showMessage(text, success){
+function showMessage(text,isError){
 
-    message.style.display = "block";
+    message.style.display =
+        "block";
 
-    message.textContent = text;
+    message.className =
+        "message " +
+        (isError ? "error" : "success");
 
-    if(success){
-
-        message.style.background = "#e8f7e8";
-
-        message.style.color = "#176b17";
-
-    }else{
-
-        message.style.background = "#ffe8e8";
-
-        message.style.color = "#a00000";
-
-    }
+    message.textContent =
+        text;
 
 }
 
