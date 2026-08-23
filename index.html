@@ -11,513 +11,527 @@
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f7fa;
-  color:#222;
-  line-height:1.6;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fa;
+    color:#222;
+    line-height:1.6;
 }
 
 
 /* ================= HEADER ================= */
 
 header{
-  height:70px;
-  background:#b30000;
-  color:white;
+    min-height:70px;
+    background:#b30000;
+    color:white;
 
-  padding:0 6%;
+    padding:12px 6%;
 
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-  position:sticky;
-  top:0;
-  z-index:1000;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .logo{
-  font-size:23px;
-  font-weight:bold;
+    font-size:23px;
+    font-weight:bold;
 }
 
 nav{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-wrap:wrap;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
 }
 
 nav a{
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  margin-left:18px;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    margin-left:18px;
 }
 
 nav a:hover{
-  text-decoration:underline;
+    text-decoration:underline;
 }
 
 
 /* ================= HERO ================= */
 
 .hero{
-  position:relative;
-  width:100%;
-  height:calc(100vh - 70px);
-  min-height:500px;
-  overflow:hidden;
-  background:#222;
+    position:relative;
+    width:100%;
+    height:calc(100vh - 70px);
+    min-height:500px;
+    overflow:hidden;
+    background:#555;
 }
-
-
-/* ================= SLIDES ================= */
 
 .slideshow{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
 }
 
 
-/* BLURRED BACKGROUND */
+/* ================= BLURRED BACKGROUND ================= */
 
 .slide-bg{
-  position:absolute;
+    position:absolute;
 
-  inset:-25px;
+    top:-30px;
+    left:-30px;
 
-  width:calc(100% + 50px);
-  height:calc(100% + 50px);
+    width:calc(100% + 60px);
+    height:calc(100% + 60px);
 
-  object-fit:cover;
+    object-fit:cover;
 
-  filter:blur(25px);
+    filter:blur(25px);
 
-  transform:scale(1.08);
+    transform:scale(1.05);
 
-  opacity:.65;
+    opacity:0;
 
-  transition:opacity 1s ease-in-out;
+    transition:opacity 1s ease;
 
-  z-index:1;
+    z-index:1;
 }
 
 
-/* MAIN IMAGE */
+/* ================= MAIN IMAGE ================= */
 
 .slide{
-  position:absolute;
+    position:absolute;
 
-  inset:0;
+    top:50%;
+    left:50%;
 
-  width:100%;
-  height:100%;
+    width:100%;
+    height:100%;
 
-  object-fit:cover;
+    transform:translate(-50%,-50%);
 
-  object-position:center;
+    object-fit:cover;
+    object-position:center;
 
-  opacity:0;
+    opacity:0;
 
-  transition:opacity 1.2s ease-in-out;
+    transition:opacity 1.2s ease;
 
-  z-index:2;
+    z-index:2;
 }
 
 .slide.active{
-  opacity:1;
+    opacity:1;
 }
 
 
-/* DARK OVERLAY */
+/* ================= OVERLAY ================= */
 
 .slideshow::after{
-  content:"";
+    content:"";
 
-  position:absolute;
+    position:absolute;
 
-  inset:0;
+    inset:0;
 
-  background:rgba(0,0,0,.38);
+    background:rgba(0,0,0,.35);
 
-  z-index:3;
+    z-index:3;
 
-  pointer-events:none;
+    pointer-events:none;
 }
 
 
 /* ================= HERO TEXT ================= */
 
 .hero-text{
-  position:absolute;
+    position:absolute;
 
-  z-index:10;
+    top:50%;
+    left:50%;
 
-  top:50%;
-  left:50%;
+    transform:translate(-50%,-50%);
 
-  transform:translate(-50%,-50%);
+    width:90%;
+    max-width:900px;
 
-  width:90%;
-  max-width:900px;
+    text-align:center;
 
-  text-align:center;
+    color:white;
 
-  color:white;
+    z-index:10;
 }
 
 .hero-text h1{
-  font-size:clamp(32px,5vw,58px);
+    font-size:clamp(32px,5vw,58px);
 
-  line-height:1.15;
+    line-height:1.15;
 
-  margin-bottom:18px;
+    margin-bottom:18px;
 
-  text-shadow:2px 2px 8px #000;
+    text-shadow:2px 2px 8px #000;
 }
 
 .hero-text p{
-  font-size:clamp(16px,2.2vw,22px);
+    font-size:clamp(16px,2.2vw,22px);
 
-  text-shadow:1px 1px 6px #000;
+    text-shadow:1px 1px 6px #000;
 }
 
 
 /* ================= BUTTON ================= */
 
 .btn{
-  display:inline-block;
+    display:inline-block;
 
-  margin-top:28px;
+    margin-top:28px;
 
-  padding:14px 30px;
+    padding:14px 30px;
 
-  background:#e60000;
+    background:#e60000;
 
-  color:white;
+    color:white;
 
-  text-decoration:none;
+    text-decoration:none;
 
-  border-radius:8px;
+    border-radius:8px;
 
-  font-weight:bold;
+    font-weight:bold;
 
-  font-size:17px;
+    font-size:17px;
 }
 
 .btn:hover{
-  background:#8f0000;
+    background:#8f0000;
 }
 
 
 /* ================= SECTIONS ================= */
 
 section:not(.hero){
-  padding:70px 7%;
-
-  text-align:center;
+    padding:70px 7%;
+    text-align:center;
 }
 
 section h2{
-  color:#b30000;
+    color:#b30000;
 
-  font-size:clamp(28px,4vw,38px);
+    font-size:clamp(28px,4vw,38px);
 
-  margin-bottom:20px;
+    margin-bottom:20px;
 }
 
 
 /* ================= ABOUT ================= */
 
 .about{
-  background:white;
+    background:white;
 }
 
 .about p{
-  max-width:850px;
-
-  margin:auto;
-
-  font-size:17px;
+    max-width:850px;
+    margin:auto;
+    font-size:17px;
 }
 
 
 /* ================= WORK ================= */
 
 .cards{
-  display:grid;
+    display:grid;
 
-  grid-template-columns:
-  repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
 
-  gap:25px;
+    gap:25px;
 
-  margin-top:35px;
+    margin-top:35px;
 }
 
 .card{
-  background:white;
+    background:white;
 
-  padding:30px 20px;
+    padding:30px 20px;
 
-  border-radius:12px;
+    border-radius:12px;
 
-  box-shadow:
-  0 3px 15px rgba(0,0,0,.12);
+    box-shadow:
+    0 3px 15px rgba(0,0,0,.12);
 }
 
 .card h3{
-  color:#b30000;
-
-  margin-bottom:10px;
+    color:#b30000;
+    margin-bottom:10px;
 }
 
 
 /* ================= DONATION ================= */
 
 .donation{
-  background:#fff1f1;
+    background:#fff1f1;
 }
 
 .donation-box{
-  max-width:650px;
+    max-width:650px;
 
-  margin:30px auto 0;
+    margin:30px auto 0;
 
-  background:white;
+    background:white;
 
-  padding:35px 25px;
+    padding:35px 25px;
 
-  border-radius:12px;
+    border-radius:12px;
 
-  box-shadow:
-  0 3px 15px rgba(0,0,0,.12);
+    box-shadow:
+    0 3px 15px rgba(0,0,0,.12);
 }
 
 
 /* ================= CONTACT ================= */
 
 .contact{
-  background:white;
+    background:white;
 }
 
 .contact a:not(.btn){
-  color:#b30000;
-
-  font-weight:bold;
+    color:#b30000;
+    font-weight:bold;
 }
 
 
 /* ================= FOOTER ================= */
 
 footer{
-  background:#222;
-
-  color:white;
-
-  text-align:center;
-
-  padding:28px 15px;
-}
-
-
-/* ================= TABLET ================= */
-
-@media(min-width:601px) and (max-width:1000px){
-
-  header{
-    padding:0 4%;
-  }
-
-  .logo{
-    font-size:20px;
-  }
-
-  nav a{
-    margin-left:10px;
-
-    font-size:14px;
-  }
-
-}
-
-
-/* ================= MOBILE ================= */
-
-@media(max-width:600px){
-
-  header{
-
-    height:auto;
-
-    min-height:90px;
-
-    padding:12px 3%;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    gap:8px;
-
-  }
-
-
-  .logo{
-
-    font-size:20px;
-
+    background:#222;
+    color:white;
     text-align:center;
-
-  }
-
-
-  nav{
-
-    width:100%;
-
-  }
+    padding:28px 15px;
+}
 
 
-  nav a{
+/* ==================================================
+   TABLET
+================================================== */
 
-    margin:3px 6px;
+@media (min-width:601px) and (max-width:1000px){
 
-    font-size:13px;
+    header{
+        padding:12px 4%;
+    }
 
-  }
+    .logo{
+        font-size:20px;
+    }
 
+    nav a{
+        margin-left:10px;
+        font-size:14px;
+    }
 
-  /* MOBILE HERO */
-
-  .hero{
-
-    height:calc(100vh - 90px);
-
-    min-height:500px;
-
-  }
-
-
-  /*
-    Main image fills screen.
-    Background image removes empty space.
-  */
-
-  .slide{
-
-    object-fit:cover;
-
-    object-position:center center;
-
-  }
-
-
-  .slide-bg{
-
-    filter:blur(20px);
-
-    opacity:.8;
-
-  }
-
-
-  .slideshow::after{
-
-    background:rgba(0,0,0,.30);
-
-  }
-
-
-  .hero-text{
-
-    width:92%;
-
-    top:50%;
-
-  }
-
-
-  .hero-text h1{
-
-    font-size:30px;
-
-    line-height:1.2;
-
-  }
-
-
-  .hero-text p{
-
-    font-size:15px;
-
-    line-height:1.5;
-
-  }
-
-
-  .btn{
-
-    padding:12px 22px;
-
-    font-size:15px;
-
-  }
-
-
-  section:not(.hero){
-
-    padding:50px 5%;
-
-  }
-
-
-  .donation-box{
-
-    padding:25px 18px;
-
-  }
+    .hero{
+        height:calc(100vh - 70px);
+    }
 
 }
 
 
-/* ================= SMALL MOBILE ================= */
+/* ==================================================
+   MOBILE
+================================================== */
 
-@media(max-width:380px){
+@media (max-width:600px){
 
-  .logo{
-    font-size:18px;
-  }
+    header{
 
-  nav a{
-    font-size:11px;
-    margin:2px 4px;
-  }
+        min-height:90px;
 
-  .hero{
-    min-height:450px;
-  }
+        padding:10px 3%;
 
-  .hero-text h1{
-    font-size:26px;
-  }
+        flex-direction:column;
 
-  .hero-text p{
-    font-size:14px;
-  }
+        justify-content:center;
+
+        gap:8px;
+    }
+
+
+    .logo{
+
+        font-size:20px;
+
+        text-align:center;
+    }
+
+
+    nav{
+
+        width:100%;
+
+        justify-content:center;
+    }
+
+
+    nav a{
+
+        margin:2px 6px;
+
+        font-size:13px;
+    }
+
+
+    /* MOBILE HERO */
+
+    .hero{
+
+        height:calc(100vh - 90px);
+
+        min-height:480px;
+
+        background:#555;
+    }
+
+
+    /*
+      Main image is NOT full cover here.
+      It is fitted inside the screen.
+    */
+
+    .slide{
+
+        width:100%;
+
+        height:auto;
+
+        max-height:100%;
+
+        object-fit:contain;
+
+        background:transparent;
+
+        transform:translate(-50%,-50%);
+
+    }
+
+
+    /*
+      Blurred background fills
+      the remaining space.
+    */
+
+    .slide-bg{
+
+        top:-25px;
+
+        left:-25px;
+
+        width:calc(100% + 50px);
+
+        height:calc(100% + 50px);
+
+        object-fit:cover;
+
+        filter:blur(22px);
+
+        transform:scale(1.08);
+    }
+
+
+    .slideshow::after{
+
+        background:rgba(0,0,0,.25);
+    }
+
+
+    .hero-text{
+
+        width:92%;
+
+        top:50%;
+    }
+
+
+    .hero-text h1{
+
+        font-size:29px;
+
+        line-height:1.2;
+
+    }
+
+
+    .hero-text p{
+
+        font-size:15px;
+
+        line-height:1.5;
+    }
+
+
+    .btn{
+
+        padding:12px 22px;
+
+        font-size:15px;
+    }
+
+
+    section:not(.hero){
+
+        padding:50px 5%;
+    }
+
+
+    .donation-box{
+
+        padding:25px 18px;
+    }
+
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+================================================== */
+
+@media (max-width:380px){
+
+    .logo{
+        font-size:18px;
+    }
+
+    nav a{
+        font-size:11px;
+        margin:2px 4px;
+    }
+
+    .hero{
+        min-height:450px;
+    }
+
+    .hero-text h1{
+        font-size:25px;
+    }
+
+    .hero-text p{
+        font-size:14px;
+    }
 
 }
 
@@ -533,434 +547,373 @@ footer{
 
 <header>
 
-  <div class="logo">
-    🚨 Emergency Responders
-  </div>
+    <div class="logo">
+        🚨 Emergency Responders
+    </div>
 
+    <nav>
 
-  <nav>
+        <a href="#home">Home</a>
 
-    <a href="#home">Home</a>
+        <a href="#about">About</a>
 
-    <a href="#about">About</a>
+        <a href="#help">Our Work</a>
 
-    <a href="#help">Our Work</a>
+        <a href="#donate">Donate</a>
 
-    <a href="#donate">Donate</a>
+        <a href="#contact">Contact</a>
 
-    <a href="#contact">Contact</a>
-
-  </nav>
+    </nav>
 
 </header>
 
 
-
 <!-- ================= HERO ================= -->
 
-<section
-  class="hero"
-  id="home"
->
+<section class="hero" id="home">
 
-  <div class="slideshow">
+    <div class="slideshow">
 
 
-    <!-- BACKGROUND IMAGES -->
+        <!-- BLURRED BACKGROUNDS -->
 
-    <img
-      src="TEAM.jpeg"
-      class="slide-bg"
-      alt=""
-    >
+        <img src="TEAM.jpeg" class="slide-bg" alt="">
 
-    <img
-      src="flood-1.jpg"
-      class="slide-bg"
-      alt=""
-    >
+        <img src="flood-1.jpg" class="slide-bg" alt="">
 
-    <img
-      src="flood2.jpg"
-      class="slide-bg"
-      alt=""
-    >
+        <img src="flood2.jpg" class="slide-bg" alt="">
 
-    <img
-      src="flood3.avif"
-      class="slide-bg"
-      alt=""
-    >
+        <img src="flood3.avif" class="slide-bg" alt="">
 
-    <img
-      src="flood4.jpg"
-      class="slide-bg"
-      alt=""
-    >
+        <img src="flood4.jpg" class="slide-bg" alt="">
 
-    <img
-      src="flood5.jpg"
-      class="slide-bg"
-      alt=""
-    >
+        <img src="flood5.jpg" class="slide-bg" alt="">
 
-    <img
-      src="flood6.jpg"
-      class="slide-bg"
-      alt=""
-    >
+        <img src="flood6.jpg" class="slide-bg" alt="">
 
-    <img
-      src="flood7.jpg"
-      class="slide-bg"
-      alt=""
-    >
+        <img src="flood7.jpg" class="slide-bg" alt="">
 
 
-    <!-- MAIN IMAGES -->
+        <!-- MAIN IMAGES -->
 
-    <img
-      src="TEAM.jpeg"
-      class="slide active"
-      alt="Emergency Responders"
-    >
+        <img
+            src="TEAM.jpeg"
+            class="slide active"
+            alt="Emergency Responders"
+        >
 
-    <img
-      src="flood-1.jpg"
-      class="slide"
-      alt="Flood Relief"
-    >
+        <img
+            src="flood-1.jpg"
+            class="slide"
+            alt="Flood Relief"
+        >
 
-    <img
-      src="flood2.jpg"
-      class="slide"
-      alt="Emergency Support"
-    >
+        <img
+            src="flood2.jpg"
+            class="slide"
+            alt="Emergency Support"
+        >
 
-    <img
-      src="flood3.avif"
-      class="slide"
-      alt="Disaster Support"
-    >
+        <img
+            src="flood3.avif"
+            class="slide"
+            alt="Disaster Support"
+        >
 
-    <img
-      src="flood4.jpg"
-      class="slide"
-      alt="Community Help"
-    >
+        <img
+            src="flood4.jpg"
+            class="slide"
+            alt="Community Help"
+        >
 
-    <img
-      src="flood5.jpg"
-      class="slide"
-      alt="Humanitarian Support"
-    >
+        <img
+            src="flood5.jpg"
+            class="slide"
+            alt="Humanitarian Support"
+        >
 
-    <img
-      src="flood6.jpg"
-      class="slide"
-      alt="Emergency Response"
-    >
+        <img
+            src="flood6.jpg"
+            class="slide"
+            alt="Emergency Response"
+        >
 
-    <img
-      src="flood7.jpg"
-      class="slide"
-      alt="Helping Humanity"
-    >
+        <img
+            src="flood7.jpg"
+            class="slide"
+            alt="Helping Humanity"
+        >
 
 
-    <!-- TEXT -->
+        <!-- HERO TEXT -->
 
-    <div class="hero-text">
+        <div class="hero-text">
 
-      <h1>
-        A Helping Hand for Humanity
-      </h1>
+            <h1>
+                A Helping Hand for Humanity
+            </h1>
 
-      <p>
-        Standing together to support people affected
-        by emergencies, disasters and difficult situations.
-      </p>
+            <p>
+                Standing together to support people affected
+                by emergencies, disasters and difficult situations.
+            </p>
 
-      <a
-        href="donation.html"
-        class="btn"
-      >
-        ❤️ Donate Now
-      </a>
+            <a
+                href="donation.html"
+                class="btn"
+            >
+                ❤️ Donate Now
+            </a>
+
+        </div>
 
     </div>
 
-  </div>
-
 </section>
-
 
 
 <!-- ================= ABOUT ================= -->
 
-<section
-  class="about"
-  id="about"
->
+<section class="about" id="about">
 
-  <h2>
-    About Us
-  </h2>
+    <h2>
+        About Us
+    </h2>
 
-  <p>
-
-    Emergency Responders is a humanitarian initiative
-    created to help people during difficult times.
-    Our goal is to stand beside families and communities
-    affected by emergencies, natural disasters and other
-    critical situations.
-
-  </p>
+    <p>
+        Emergency Responders is a humanitarian initiative
+        created to help people during difficult times.
+        Our goal is to stand beside families and communities
+        affected by emergencies, natural disasters and other
+        critical situations.
+    </p>
 
 </section>
-
 
 
 <!-- ================= OUR WORK ================= -->
 
 <section id="help">
 
-  <h2>
-    What We Do
-  </h2>
+    <h2>
+        What We Do
+    </h2>
+
+    <div class="cards">
 
 
-  <div class="cards">
+        <div class="card">
+
+            <h3>
+                🌊 Disaster Support
+            </h3>
+
+            <p>
+                Supporting communities affected by floods,
+                storms and other natural disasters.
+            </p>
+
+        </div>
 
 
-    <div class="card">
+        <div class="card">
 
-      <h3>
-        🌊 Disaster Support
-      </h3>
+            <h3>
+                🍚 Food Support
+            </h3>
 
-      <p>
-        Supporting communities affected by floods,
-        storms and other natural disasters.
-      </p>
+            <p>
+                Helping provide essential food and basic
+                supplies to people who need assistance.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                🩹 Emergency Assistance
+            </h3>
+
+            <p>
+                Supporting people and families facing
+                urgent difficulties during emergencies.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>
+                🤝 Community Help
+            </h3>
+
+            <p>
+                Working together with local communities
+                to reach people who need help.
+            </p>
+
+        </div>
+
 
     </div>
-
-
-    <div class="card">
-
-      <h3>
-        🍚 Food Support
-      </h3>
-
-      <p>
-        Helping provide essential food and basic
-        supplies to people who need assistance.
-      </p>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>
-        🩹 Emergency Assistance
-      </h3>
-
-      <p>
-        Supporting people and families facing
-        urgent difficulties during emergencies.
-      </p>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>
-        🤝 Community Help
-      </h3>
-
-      <p>
-        Working together with local communities
-        to reach people who need help.
-      </p>
-
-    </div>
-
-
-  </div>
 
 </section>
-
 
 
 <!-- ================= DONATE ================= -->
 
-<section
-  class="donation"
-  id="donate"
->
+<section class="donation" id="donate">
 
-  <h2>
-    Support Our Work
-  </h2>
+    <h2>
+        Support Our Work
+    </h2>
 
+    <div class="donation-box">
 
-  <div class="donation-box">
+        <p>
+            Your support can help us reach people who are
+            facing difficult situations and emergencies.
+        </p>
 
-    <p>
+        <a
+            href="donation.html"
+            class="btn"
+        >
+            ❤️ Donate Now
+        </a>
 
-      Your support can help us reach people who are
-      facing difficult situations and emergencies.
-
-    </p>
-
-
-    <a
-      href="donation.html"
-      class="btn"
-    >
-
-      ❤️ Donate Now
-
-    </a>
-
-  </div>
+    </div>
 
 </section>
-
 
 
 <!-- ================= CONTACT ================= -->
 
-<section
-  class="contact"
-  id="contact"
->
+<section class="contact" id="contact">
 
-  <h2>
-    Contact Us
-  </h2>
-
-
-  <p>
-
-    If you want to support our humanitarian work or
-    learn more about our activities, please contact us.
-
-  </p>
-
-
-  <div
-    style="
-      margin-top:25px;
-      font-size:18px;
-      line-height:2.2;
-    "
-  >
+    <h2>
+        Contact Us
+    </h2>
 
     <p>
-
-      📧 Email:
-
-      <a href="mailto:proy2953@gmail.com">
-        proy2953@gmail.com
-      </a>
-
+        If you want to support our humanitarian work or
+        learn more about our activities, please contact us.
     </p>
 
 
-    <p>
+    <div
+        style="
+        margin-top:25px;
+        font-size:18px;
+        line-height:2.2;
+        "
+    >
 
-      📞 Phone:
+        <p>
 
-      <a href="tel:+918972645067">
-        +91 8972645067
-      </a>
+            📧 Email:
 
-    </p>
+            <a href="mailto:proy2953@gmail.com">
+                proy2953@gmail.com
+            </a>
+
+        </p>
 
 
-    <p>
+        <p>
 
-      💬 WhatsApp:
+            📞 Phone:
 
-      <a
-        href="https://wa.me/918972645067"
-        target="_blank"
-      >
+            <a href="tel:+918972645067">
+                +91 8972645067
+            </a>
 
-        Chat on WhatsApp
+        </p>
 
-      </a>
 
-    </p>
+        <p>
 
-  </div>
+            💬 WhatsApp:
+
+            <a
+                href="https://wa.me/918972645067"
+                target="_blank"
+            >
+                Chat on WhatsApp
+            </a>
+
+        </p>
+
+    </div>
 
 </section>
-
 
 
 <!-- ================= FOOTER ================= -->
 
 <footer>
 
-  <p>
-    © 2026 Emergency Responders
-  </p>
+    <p>
+        © 2026 Emergency Responders
+    </p>
 
-  <p>
-    A Helping Hand for Humanity ❤️
-  </p>
+    <p>
+        A Helping Hand for Humanity ❤️
+    </p>
 
 </footer>
 
 
-
-<!-- ================= SLIDESHOW ================= -->
+<!-- ================= SLIDESHOW SCRIPT ================= -->
 
 <script>
 
 const slides =
-  document.querySelectorAll(".slide");
+    document.querySelectorAll(".slide");
 
 const backgrounds =
-  document.querySelectorAll(".slide-bg");
+    document.querySelectorAll(".slide-bg");
 
 let currentSlide = 0;
 
 
 function showSlide(index){
 
-  slides.forEach(
-    slide => slide.classList.remove("active")
-  );
+    slides.forEach(function(slide){
 
-  backgrounds.forEach(
-    bg => bg.style.opacity = "0"
-  );
+        slide.classList.remove("active");
+
+    });
 
 
-  slides[index].classList.add("active");
+    backgrounds.forEach(function(bg){
 
-  backgrounds[index].style.opacity = "0.8";
+        bg.style.opacity = "0";
+
+    });
+
+
+    slides[index].classList.add("active");
+
+    backgrounds[index].style.opacity = "0.8";
 
 }
 
 
 function nextSlide(){
 
-  currentSlide++;
+    currentSlide++;
 
-  if(
-    currentSlide >= slides.length
-  ){
-    currentSlide = 0;
-  }
+    if(currentSlide >= slides.length){
 
-  showSlide(currentSlide);
+        currentSlide = 0;
+
+    }
+
+    showSlide(currentSlide);
 
 }
 
@@ -969,8 +922,8 @@ showSlide(0);
 
 
 setInterval(
-  nextSlide,
-  4000
+    nextSlide,
+    4000
 );
 
 </script>
