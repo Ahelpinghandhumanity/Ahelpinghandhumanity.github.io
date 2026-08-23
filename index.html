@@ -1,195 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Emergency Responders | A Helping Hand for Humanity</title>
+<title>Emergency Responders | A Helping Hand for Humanity</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      background: #f5f7fa;
-      color: #222;
-      line-height: 1.6;
-    }
+body {
+  background: #f5f7fa;
+  color: #222;
+  line-height: 1.6;
+}
 
-    header {
-      background: #b30000;
-      color: white;
-      padding: 18px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+header {
+  background: #b30000;
+  color: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 18px;
+  font-weight: bold;
+}
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+nav a:hover {
+  text-decoration: underline;
+}
 
-    .hero {
-      min-height: 500px;
-      background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-                  url("https://images.unsplash.com/photo-1593113630400-ea4288922497?auto=format&fit=crop&w=1600&q=80");
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      padding: 30px;
-    }
+/* HERO SLIDESHOW */
 
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 15px;
-    }
+.hero {
+  height: 550px;
+  position: relative;
+  overflow: hidden;
+  background: #111;
+}
 
-    .hero p {
-      font-size: 20px;
-      max-width: 700px;
-      margin: auto;
-    }
+.slideshow {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 13px 28px;
-      background: #e60000;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
 
-    .btn:hover {
-      background: #990000;
-    }
+.slide.active {
+  opacity: 1;
+}
 
-    section {
-      padding: 60px 8%;
-      text-align: center;
-    }
+.slideshow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
 
-    section h2 {
-      font-size: 32px;
-      margin-bottom: 15px;
-      color: #b30000;
-    }
+.hero-text {
+  position: absolute;
+  z-index: 5;
+  color: white;
+  text-align: center;
+  width: 90%;
+  max-width: 850px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
-    .about {
-      background: white;
-    }
+.hero-text h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
 
-    .about p {
-      max-width: 850px;
-      margin: auto;
-      font-size: 17px;
-    }
+.hero-text p {
+  font-size: 20px;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      margin-top: 35px;
-    }
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 13px 28px;
+  background: #e60000;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
 
-    .card {
-      background: white;
-      padding: 30px 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 12px rgba(0,0,0,.1);
-    }
+.btn:hover {
+  background: #8f0000;
+}
 
-    .card h3 {
-      color: #b30000;
-      margin-bottom: 10px;
-    }
+section {
+  padding: 60px 8%;
+  text-align: center;
+}
 
-    .donation {
-      background: #fff1f1;
-    }
+section h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #b30000;
+}
 
-    .donation-box {
-      max-width: 650px;
-      margin: 30px auto 0;
-      background: white;
-      padding: 35px;
-      border-radius: 10px;
-      box-shadow: 0 3px 12px rgba(0,0,0,.1);
-    }
+.about {
+  background: white;
+}
 
-    .contact {
-      background: white;
-    }
+.about p {
+  max-width: 850px;
+  margin: auto;
+  font-size: 17px;
+}
 
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 25px;
-    }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 35px;
+}
 
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        gap: 12px;
-      }
+.card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.1);
+}
 
-      nav a {
-        margin: 0 7px;
-        font-size: 14px;
-      }
+.card h3 {
+  color: #b30000;
+  margin-bottom: 10px;
+}
 
-      .hero h1 {
-        font-size: 34px;
-      }
+.donation {
+  background: #fff1f1;
+}
 
-      .hero p {
-        font-size: 17px;
-      }
-    }
-  </style>
+.donation-box {
+  max-width: 650px;
+  margin: 30px auto 0;
+  background: white;
+  padding: 35px;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.1);
+}
+
+.contact {
+  background: white;
+}
+
+.contact a {
+  color: #b30000;
+}
+
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+@media (max-width: 700px) {
+
+  header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  nav a {
+    margin: 0 6px;
+    font-size: 13px;
+  }
+
+  .hero {
+    height: 500px;
+  }
+
+  .hero-text h1 {
+    font-size: 34px;
+  }
+
+  .hero-text p {
+    font-size: 17px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">🚨 Emergency Responders</div>
+<header>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#help">Our Work</a>
-      <a href="#donate">Donate</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <div class="logo">
+    🚨 Emergency Responders
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#help">Our Work</a>
+    <a href="#donate">Donate</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+</header>
 
 
-  <section class="hero" id="home">
+<!-- HOME / SLIDESHOW -->
+
+<section class="hero" id="home">
 
   <div class="slideshow">
 
@@ -203,6 +249,7 @@
     <img src="flood7.jpg" class="slide">
 
     <div class="hero-text">
+
       <h1>A Helping Hand for Humanity</h1>
 
       <p>
@@ -210,7 +257,10 @@
         disasters and difficult situations.
       </p>
 
-      <a href="#donate" class="btn">❤️ Support Our Mission</a>
+      <a href="#donate" class="btn">
+        ❤️ Support Our Mission
+      </a>
+
     </div>
 
   </div>
@@ -218,60 +268,71 @@
 </section>
 
 
-  <section class="about" id="about">
-    <h2>About Us</h2>
+<!-- ABOUT -->
 
-    <p>
-      Emergency Responders is a humanitarian initiative created to help
-      people during difficult times. Our goal is to stand beside families
-      and communities affected by emergencies, natural disasters and
-      other critical situations.
-    </p>
-  </section>
+<section class="about" id="about">
+
+  <h2>About Us</h2>
+
+  <p>
+    Emergency Responders is a humanitarian initiative created to help
+    people during difficult times. Our goal is to stand beside families
+    and communities affected by emergencies, natural disasters and
+    other critical situations.
+  </p>
+
+</section>
 
 
-  <section id="help">
-    <h2>What We Do</h2>
+<!-- OUR WORK -->
 
-    <div class="cards">
+<section id="help">
 
-      <div class="card">
-        <h3>🌊 Disaster Support</h3>
-        <p>
-          Supporting communities affected by floods, storms and other
-          natural disasters.
-        </p>
-      </div>
+  <h2>What We Do</h2>
 
-      <div class="card">
-        <h3>🍚 Food Support</h3>
-        <p>
-          Helping provide essential food and basic supplies to people
-          who need assistance.
-        </p>
-      </div>
+  <div class="cards">
 
-      <div class="card">
-        <h3>🩹 Emergency Assistance</h3>
-        <p>
-          Supporting people and families facing urgent difficulties
-          during emergencies.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>🤝 Community Help</h3>
-        <p>
-          Working together with local communities to reach people
-          who need help.
-        </p>
-      </div>
-
+    <div class="card">
+      <h3>🌊 Disaster Support</h3>
+      <p>
+        Supporting communities affected by floods, storms and other
+        natural disasters.
+      </p>
     </div>
-  </section>
+
+    <div class="card">
+      <h3>🍚 Food Support</h3>
+      <p>
+        Helping provide essential food and basic supplies to people
+        who need assistance.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🩹 Emergency Assistance</h3>
+      <p>
+        Supporting people and families facing urgent difficulties
+        during emergencies.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🤝 Community Help</h3>
+      <p>
+        Working together with local communities to reach people
+        who need help.
+      </p>
+    </div>
+
+  </div>
+
+</section>
 
 
-  <section class="donation" id="donate">
+<!-- DONATION -->
+
+<section class="donation" id="donate">
+
   <h2>Support Our Work</h2>
 
   <div class="donation-box">
@@ -281,7 +342,9 @@
       situations and emergencies.
     </p>
 
-    <h3 style="margin-top:25px;">❤️ Donation Details</h3>
+    <h3 style="margin-top:25px;">
+      ❤️ Donation Details
+    </h3>
 
     <p style="margin-top:15px;">
       <strong>Bank Name:</strong> State Bank of India
@@ -304,10 +367,14 @@
     </a>
 
   </div>
+
 </section>
 
 
- <section class="contact" id="contact">
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
   <h2>Contact Us</h2>
 
   <p>
@@ -324,15 +391,70 @@
       </a>
     </p>
 
+    <p>
+      📞 Phone:
+      <a href="tel:+918972645067">
+        +91 8972645067
+      </a>
+    </p>
+
+    <p>
+      💬 WhatsApp:
+      <a href="https://wa.me/918972645067" target="_blank">
+        Chat on WhatsApp
+      </a>
+    </p>
+
   </div>
 
+  <a href="mailto:proy2953@gmail.com" class="btn">
+    📧 Send Email
+  </a>
 
 </section>
 
-  <footer>
-    <p>© 2026 Emergency Responders</p>
-    <p>A Helping Hand for Humanity ❤️</p>
-  </footer>
+
+<footer>
+
+  <p>© 2026 Emergency Responders</p>
+
+  <p>
+    A Helping Hand for Humanity ❤️
+  </p>
+
+</footer>
+
+
+<!-- SLIDESHOW JAVASCRIPT -->
+
+<script>
+
+let slides = document.querySelectorAll(".slide");
+
+let currentSlide = 0;
+
+function showSlide(index) {
+
+  slides.forEach(function(slide) {
+    slide.classList.remove("active");
+  });
+
+  slides[index].classList.add("active");
+}
+
+setInterval(function() {
+
+  currentSlide++;
+
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  }
+
+  showSlide(currentSlide);
+
+}, 4000);
+
+</script>
 
 </body>
 </html>
