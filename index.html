@@ -11,7 +11,6 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial,sans-serif;
 }
 
 html{
@@ -19,21 +18,22 @@ html{
 }
 
 body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
   background:#f5f7fa;
   color:#222;
-  line-height:1.6;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
-  min-height:70px;
+  height:70px;
   background:#b30000;
   color:white;
-  padding:14px 6%;
+  padding:0 6%;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   position:sticky;
   top:0;
   z-index:1000;
@@ -46,6 +46,7 @@ header{
 
 nav{
   display:flex;
+  align-items:center;
   flex-wrap:wrap;
   justify-content:center;
 }
@@ -53,123 +54,116 @@ nav{
 nav a{
   color:white;
   text-decoration:none;
-  margin:5px 10px;
   font-weight:bold;
+  margin-left:18px;
 }
 
 nav a:hover{
   text-decoration:underline;
 }
 
-/* HERO */
+/* ================= FULL SCREEN HERO ================= */
 
 .hero{
+  position:relative;
+  width:100%;
   height:calc(100vh - 70px);
   min-height:500px;
-  position:relative;
   overflow:hidden;
-  background:#222;
+  background:#111;
 }
 
 .slideshow{
+  position:absolute;
+  inset:0;
   width:100%;
   height:100%;
-  position:relative;
 }
-
-/* blurred background */
-
-.slide-bg{
-  position:absolute;
-  inset:-25px;
-  width:calc(100% + 50px);
-  height:calc(100% + 50px);
-  object-fit:cover;
-  filter:blur(22px);
-  transform:scale(1.08);
-  opacity:.65;
-}
-
-/* actual image */
 
 .slide{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
-  object-fit:contain;
-  object-position:center;
+
+  /* FULL SCREEN */
+  object-fit:cover;
+  object-position:center center;
+
   opacity:0;
-  transition:opacity 1s ease-in-out;
-  z-index:1;
+  transition:opacity 1.2s ease-in-out;
 }
 
 .slide.active{
   opacity:1;
 }
 
+/* Dark overlay */
+
 .slideshow::after{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,.35);
+  background:rgba(0,0,0,0.42);
   z-index:2;
 }
 
-/* HERO TEXT */
+/* ================= HERO TEXT ================= */
 
 .hero-text{
   position:absolute;
   z-index:5;
-  color:white;
-  text-align:center;
-  width:90%;
-  max-width:850px;
-  left:50%;
   top:50%;
+  left:50%;
   transform:translate(-50%,-50%);
+  width:90%;
+  max-width:900px;
+  text-align:center;
+  color:white;
 }
 
 .hero-text h1{
-  font-size:clamp(32px,5vw,55px);
-  margin-bottom:15px;
+  font-size:clamp(32px,5vw,58px);
+  line-height:1.15;
+  margin-bottom:18px;
   text-shadow:2px 2px 8px #000;
 }
 
 .hero-text p{
-  font-size:clamp(16px,2vw,21px);
-  text-shadow:1px 1px 5px #000;
+  font-size:clamp(16px,2.2vw,22px);
+  text-shadow:1px 1px 6px #000;
 }
 
 .btn{
   display:inline-block;
-  margin-top:25px;
-  padding:13px 28px;
+  margin-top:28px;
+  padding:14px 30px;
   background:#e60000;
   color:white;
   text-decoration:none;
-  border-radius:7px;
+  border-radius:8px;
   font-weight:bold;
+  font-size:17px;
 }
 
 .btn:hover{
   background:#8f0000;
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
 
 section:not(.hero){
-  padding:65px 7%;
+  padding:70px 7%;
   text-align:center;
 }
 
 section h2{
-  font-size:clamp(28px,4vw,36px);
   color:#b30000;
-  margin-bottom:18px;
+  font-size:clamp(28px,4vw,38px);
+  margin-bottom:20px;
 }
 
-/* ABOUT */
+/* ================= ABOUT ================= */
 
 .about{
   background:white;
@@ -181,7 +175,7 @@ section h2{
   font-size:17px;
 }
 
-/* WORK */
+/* ================= WORK ================= */
 
 .cards{
   display:grid;
@@ -192,9 +186,9 @@ section h2{
 
 .card{
   background:white;
-  padding:28px 20px;
+  padding:30px 20px;
   border-radius:12px;
-  box-shadow:0 3px 15px rgba(0,0,0,.12);
+  box-shadow:0 3px 15px rgba(0,0,0,0.12);
 }
 
 .card h3{
@@ -202,7 +196,7 @@ section h2{
   margin-bottom:10px;
 }
 
-/* DONATION */
+/* ================= DONATION ================= */
 
 .donation{
   background:#fff1f1;
@@ -210,14 +204,14 @@ section h2{
 
 .donation-box{
   max-width:650px;
-  margin:30px auto;
+  margin:30px auto 0;
   background:white;
   padding:35px 25px;
   border-radius:12px;
-  box-shadow:0 3px 15px rgba(0,0,0,.12);
+  box-shadow:0 3px 15px rgba(0,0,0,0.12);
 }
 
-/* CONTACT */
+/* ================= CONTACT ================= */
 
 .contact{
   background:white;
@@ -228,7 +222,7 @@ section h2{
   font-weight:bold;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
   background:#222;
@@ -237,14 +231,40 @@ footer{
   padding:28px 15px;
 }
 
-/* MOBILE */
+/* ================= TABLET ================= */
+
+@media(max-width:900px){
+
+  header{
+    padding:0 4%;
+  }
+
+  .logo{
+    font-size:20px;
+  }
+
+  nav a{
+    margin-left:10px;
+    font-size:14px;
+  }
+
+  .hero{
+    height:calc(100vh - 70px);
+  }
+
+}
+
+/* ================= MOBILE ================= */
 
 @media(max-width:700px){
 
   header{
+    height:auto;
+    min-height:90px;
+    padding:12px 3%;
     flex-direction:column;
+    justify-content:center;
     gap:8px;
-    padding:14px 3%;
   }
 
   .logo{
@@ -252,14 +272,22 @@ footer{
     text-align:center;
   }
 
+  nav{
+    width:100%;
+  }
+
   nav a{
+    margin:3px 6px;
     font-size:13px;
-    margin:4px 6px;
   }
 
   .hero{
-    height:calc(100vh - 105px);
-    min-height:450px;
+    height:calc(100vh - 90px);
+    min-height:500px;
+  }
+
+  .slide{
+    object-position:center center;
   }
 
   .hero-text{
@@ -275,8 +303,8 @@ footer{
   }
 
   .btn{
-    padding:12px 21px;
-    font-size:14px;
+    padding:12px 22px;
+    font-size:15px;
   }
 
   section:not(.hero){
@@ -288,7 +316,7 @@ footer{
   }
 }
 
-/* SMALL PHONE */
+/* ================= SMALL MOBILE ================= */
 
 @media(max-width:400px){
 
@@ -298,7 +326,11 @@ footer{
 
   nav a{
     font-size:12px;
-    margin:3px 4px;
+    margin:2px 4px;
+  }
+
+  .hero{
+    min-height:450px;
   }
 
   .hero-text h1{
@@ -313,6 +345,8 @@ footer{
 </head>
 
 <body>
+
+<!-- HEADER -->
 
 <header>
 
@@ -331,29 +365,36 @@ footer{
 </header>
 
 
+<!-- FULL SCREEN SLIDESHOW -->
+
 <section class="hero" id="home">
 
   <div class="slideshow">
 
-    <img src="TEAM.jpeg" class="slide-bg" id="bg">
-    
-    <img src="TEAM.jpeg" class="slide active">
+    <img src="TEAM.jpeg" class="slide active" alt="Emergency Responders">
 
-    <img src="flood-1.jpg" class="slide">
-    <img src="flood2.jpg" class="slide">
-    <img src="flood3.avif" class="slide">
-    <img src="flood4.jpg" class="slide">
-    <img src="flood5.jpg" class="slide">
-    <img src="flood6.jpg" class="slide">
-    <img src="flood7.jpg" class="slide">
+    <img src="flood-1.jpg" class="slide" alt="Flood Relief">
+
+    <img src="flood2.jpg" class="slide" alt="Emergency Support">
+
+    <img src="flood3.avif" class="slide" alt="Disaster Support">
+
+    <img src="flood4.jpg" class="slide" alt="Community Help">
+
+    <img src="flood5.jpg" class="slide" alt="Humanitarian Support">
+
+    <img src="flood6.jpg" class="slide" alt="Emergency Response">
+
+    <img src="flood7.jpg" class="slide" alt="Helping Humanity">
+
 
     <div class="hero-text">
 
       <h1>A Helping Hand for Humanity</h1>
 
       <p>
-        Standing together to support people affected by emergencies,
-        disasters and difficult situations.
+        Standing together to support people affected by
+        emergencies, disasters and difficult situations.
       </p>
 
       <a href="donation.html" class="btn">
@@ -367,19 +408,23 @@ footer{
 </section>
 
 
+<!-- ABOUT -->
+
 <section class="about" id="about">
 
   <h2>About Us</h2>
 
   <p>
-    Emergency Responders is a humanitarian initiative created to help
-    people during difficult times. Our goal is to stand beside families
-    and communities affected by emergencies, natural disasters and
-    other critical situations.
+    Emergency Responders is a humanitarian initiative created
+    to help people during difficult times. Our goal is to stand
+    beside families and communities affected by emergencies,
+    natural disasters and other critical situations.
   </p>
 
 </section>
 
+
+<!-- OUR WORK -->
 
 <section id="help">
 
@@ -388,40 +433,58 @@ footer{
   <div class="cards">
 
     <div class="card">
+
       <h3>🌊 Disaster Support</h3>
+
       <p>
-        Supporting communities affected by floods, storms and other
-        natural disasters.
+        Supporting communities affected by floods,
+        storms and other natural disasters.
       </p>
+
     </div>
 
+
     <div class="card">
+
       <h3>🍚 Food Support</h3>
+
       <p>
-        Helping provide essential food and basic supplies to people
-        who need assistance.
+        Helping provide essential food and basic
+        supplies to people who need assistance.
       </p>
+
     </div>
 
+
     <div class="card">
+
       <h3>🩹 Emergency Assistance</h3>
+
       <p>
-        Supporting people and families facing urgent difficulties.
+        Supporting people and families facing
+        urgent difficulties during emergencies.
       </p>
+
     </div>
 
+
     <div class="card">
+
       <h3>🤝 Community Help</h3>
+
       <p>
-        Working together with local communities to reach people
-        who need help.
+        Working together with local communities
+        to reach people who need help.
       </p>
+
     </div>
 
   </div>
 
 </section>
 
+
+<!-- DONATION -->
 
 <section class="donation" id="donate">
 
@@ -430,8 +493,8 @@ footer{
   <div class="donation-box">
 
     <p>
-      Your support can help us reach people who are facing difficult
-      situations and emergencies.
+      Your support can help us reach people who are
+      facing difficult situations and emergencies.
     </p>
 
     <a href="donation.html" class="btn">
@@ -443,13 +506,15 @@ footer{
 </section>
 
 
+<!-- CONTACT -->
+
 <section class="contact" id="contact">
 
   <h2>Contact Us</h2>
 
   <p>
-    If you want to support our humanitarian work or learn more about
-    our activities, please contact us.
+    If you want to support our humanitarian work or
+    learn more about our activities, please contact us.
   </p>
 
   <div style="margin-top:25px;font-size:18px;line-height:2.2;">
@@ -470,7 +535,9 @@ footer{
 
     <p>
       💬 WhatsApp:
-      <a href="https://wa.me/918972645067" target="_blank">
+      <a
+        href="https://wa.me/918972645067"
+        target="_blank">
         Chat on WhatsApp
       </a>
     </p>
@@ -479,6 +546,8 @@ footer{
 
 </section>
 
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -489,13 +558,15 @@ footer{
 </footer>
 
 
+<!-- SLIDESHOW SCRIPT -->
+
 <script>
 
-let slides = document.querySelectorAll(".slide");
-let background = document.getElementById("bg");
+const slides = document.querySelectorAll(".slide");
+
 let currentSlide = 0;
 
-setInterval(function(){
+function nextSlide(){
 
   slides[currentSlide].classList.remove("active");
 
@@ -507,10 +578,9 @@ setInterval(function(){
 
   slides[currentSlide].classList.add("active");
 
-  /* Change blurred background */
-  background.src = slides[currentSlide].src;
+}
 
-},4000);
+setInterval(nextSlide,4000);
 
 </script>
 
