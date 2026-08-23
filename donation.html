@@ -33,10 +33,6 @@ header h1{
   font-size:clamp(25px,5vw,40px);
 }
 
-header p{
-  margin-top:5px;
-}
-
 .container{
   max-width:700px;
   margin:35px auto;
@@ -73,20 +69,15 @@ h2{
   font-size:21px;
   font-weight:bold;
   color:#b30000;
-  margin-top:15px;
+  margin:15px 0;
   word-break:break-all;
 }
 
-.qr-box{
-  margin:25px auto;
-  width:230px;
-  height:230px;
-  border:2px dashed #ccc;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:#777;
+.qr{
+  width:250px;
+  max-width:100%;
+  display:block;
+  margin:20px auto;
   border-radius:10px;
 }
 
@@ -101,10 +92,6 @@ h2{
   color:white;
   text-decoration:none;
   font-weight:bold;
-}
-
-.btn:hover{
-  opacity:.9;
 }
 
 .whatsapp{
@@ -154,14 +141,10 @@ footer{
     font-size:18px;
   }
 
-  .btn{
-    font-size:15px;
+  .qr{
+    width:220px;
   }
 
-  .qr-box{
-    width:200px;
-    height:200px;
-  }
 }
 
 </style>
@@ -169,7 +152,6 @@ footer{
 </head>
 
 <body>
-
 
 <header>
 
@@ -182,8 +164,6 @@ footer{
 
 <div class="container">
 
-
-<!-- BANK DONATION -->
 
 <div class="box">
 
@@ -209,51 +189,48 @@ footer{
   </div>
 
   <p class="note">
-    Please verify the bank details carefully before making a donation.
+    Please verify the details carefully before making a donation.
   </p>
 
 </div>
 
-
-<!-- UPI DONATION -->
 
 <div class="box upi">
 
   <h2>📱 UPI Donation</h2>
 
-  <p>Send your donation using our UPI ID:</p>
+  <p>UPI ID:</p>
 
   <p class="upi-id">
     emergencyresponders@ptyes
   </p>
 
-  <div class="qr-box">
-
-    <p>
-      UPI QR Code<br>
-      will be added here
-    </p>
-
-  </div>
+  <img
+    src="upi-qr.png"
+    alt="Emergency Responders UPI QR Code"
+    class="qr">
 
   <p class="note">
-    Open your UPI app and use the above UPI ID.
+    Scan the QR code using your UPI app.
   </p>
+
+  <a
+    href="upi://pay?pa=emergencyresponders@ptyes&pn=Emergency%20Responders&cu=INR"
+    class="btn">
+
+    💳 Pay via UPI
+
+  </a>
 
 </div>
 
-
-<!-- WHATSAPP -->
 
 <div class="box">
 
   <h2>💬 Donation Confirmation</h2>
 
   <p style="text-align:center;">
-
-    After making a donation, you can contact us
-    for confirmation.
-
+    After making a donation, you can contact us for confirmation.
   </p>
 
   <a
@@ -265,7 +242,6 @@ footer{
 
   </a>
 
-
   <a
     href="mailto:proy2953@gmail.com"
     class="btn email">
@@ -273,7 +249,6 @@ footer{
     📧 Contact by Email
 
   </a>
-
 
   <a
     href="tel:+918972645067"
@@ -286,12 +261,8 @@ footer{
 </div>
 
 
-<!-- BACK -->
-
 <a href="index.html" class="btn back">
-
   ← Back to Website
-
 </a>
 
 
@@ -301,11 +272,9 @@ footer{
 <footer>
 
   <p>© 2026 Emergency Responders</p>
-
   <p>A Helping Hand for Humanity ❤️</p>
 
 </footer>
-
 
 </body>
 </html>
