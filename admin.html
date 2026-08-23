@@ -21,9 +21,14 @@ body{
 
 header{
     background:#b30000;
-    color:white;
-    padding:20px;
+    color:#fff;
+    padding:22px 15px;
     text-align:center;
+}
+
+header h1{
+    font-size:26px;
+    margin-bottom:6px;
 }
 
 .container{
@@ -33,21 +38,21 @@ header{
 }
 
 .card{
-    background:white;
+    background:#fff;
     padding:25px;
     border-radius:12px;
-    box-shadow:0 3px 15px rgba(0,0,0,.12);
+    box-shadow:0 3px 15px rgba(0,0,0,.10);
     margin-bottom:25px;
 }
 
 h2{
-    margin-bottom:20px;
     color:#b30000;
+    margin-bottom:18px;
 }
 
 label{
     display:block;
-    margin:12px 0 6px;
+    margin:13px 0 6px;
     font-weight:bold;
 }
 
@@ -72,24 +77,24 @@ button{
     width:100%;
     margin-top:18px;
     background:#b30000;
-    color:white;
+    color:#fff;
+}
+
+.logout{
+    float:right;
+    background:#333;
+    color:#fff;
 }
 
 .approve{
     background:#168534;
-    color:white;
+    color:#fff;
 }
 
 .reject{
     background:#d40000;
-    color:white;
+    color:#fff;
     margin-left:8px;
-}
-
-.logout{
-    background:#333;
-    color:white;
-    float:right;
 }
 
 .message{
@@ -97,22 +102,17 @@ button{
     padding:12px;
     border-radius:7px;
     display:none;
+    word-break:break-word;
 }
 
-.donation{
-    border:1px solid #ddd;
-    border-radius:10px;
-    padding:18px;
-    margin-bottom:15px;
-    background:#fafafa;
+.error{
+    background:#ffe8e8;
+    color:#9b0000;
 }
 
-.donation strong{
-    color:#b30000;
-}
-
-.actions{
-    margin-top:15px;
+.success{
+    background:#e7f7e7;
+    color:#176b17;
 }
 
 .hidden{
@@ -128,15 +128,47 @@ button{
 
 .stat{
     background:#fff;
-    padding:20px;
+    padding:22px;
     border-radius:10px;
     text-align:center;
     box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
+.stat p{
+    margin-bottom:8px;
+}
+
 .stat h3{
     font-size:28px;
     color:#b30000;
+}
+
+.donation{
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:18px;
+    margin-bottom:15px;
+    background:#fafafa;
+}
+
+.donation p{
+    margin-bottom:8px;
+    word-break:break-word;
+}
+
+.donation strong{
+    color:#b30000;
+}
+
+.actions{
+    margin-top:15px;
+}
+
+.status{
+    padding:10px;
+    background:#fff7e6;
+    border-radius:7px;
+    margin-bottom:15px;
 }
 
 @media(max-width:600px){
@@ -159,6 +191,11 @@ button{
         width:100%;
         margin:5px 0;
     }
+
+    .logout{
+        float:none;
+        margin-bottom:15px;
+    }
 }
 </style>
 </head>
@@ -173,7 +210,6 @@ button{
 
 <div class="container">
 
-
 <!-- LOGIN -->
 
 <div class="card" id="loginBox">
@@ -182,15 +218,16 @@ button{
 
     <form id="loginForm">
 
-        <label>Email</label>
+        <label for="email">Email</label>
 
         <input
             type="email"
             id="email"
+            value="proy2953@gmail.com"
             required
         >
 
-        <label>Password</label>
+        <label for="password">Password</label>
 
         <input
             type="password"
@@ -208,12 +245,11 @@ button{
     </form>
 
     <div
-        class="message"
         id="loginMessage"
+        class="message"
     ></div>
 
 </div>
-
 
 
 <!-- ADMIN PANEL -->
@@ -238,8 +274,12 @@ button{
             Review and approve pending donation submissions.
         </p>
 
-    </div>
+        <div
+            id="panelMessage"
+            class="message"
+        ></div>
 
+    </div>
 
 
     <!-- STATS -->
@@ -250,34 +290,30 @@ button{
 
             <p>Verified Donors</p>
 
-            <h3 id="donorCount">
-                0
-            </h3>
+            <h3 id="donorCount">0</h3>
 
         </div>
-
 
         <div class="stat">
 
             <p>Total Donations</p>
 
-            <h3 id="totalAmount">
-                ₹0
-            </h3>
+            <h3 id="totalAmount">₹0</h3>
 
         </div>
 
     </div>
 
 
-
-    <!-- PENDING -->
+    <!-- PENDING DONATIONS -->
 
     <div class="card">
 
         <h2>Pending Donations</h2>
 
-        <div id="pendingList">
+        <div
+            id="pendingList"
+        >
             Loading...
         </div>
 
@@ -286,7 +322,6 @@ button{
 </div>
 
 </div>
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -308,7 +343,6 @@ window.supabase.createClient(
 );
 
 
-
 const loginForm =
 document.getElementById("loginForm");
 
@@ -321,53 +355,60 @@ document.getElementById("adminPanel");
 const loginMessage =
 document.getElementById("loginMessage");
 
+const panelMessage =
+document.getElementById("panelMessage");
 
+
+/* LOGIN */
 
 loginForm.addEventListener(
-"submit",
-async function(e){
+    "submit",
+    async function(event){
 
-    e.preventDefault();
+        event.preventDefault();
 
+        const email =
+            document.getElementById("email").value.trim();
 
-    const email =
-    document.getElementById("email").value;
-
-    const password =
-    document.getElementById("password").value;
-
-
-    const {data,error} =
-    await supabaseClient.auth.signInWithPassword({
-        email:email,
-        password:password
-    });
+        const password =
+            document.getElementById("password").value;
 
 
-    if(error){
+        showLoginMessage(
+            "Signing in...",
+            false
+        );
 
-        loginMessage.style.display="block";
 
-        loginMessage.style.background="#ffe8e8";
+        const { data, error } =
+            await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
 
-        loginMessage.style.color="#a00000";
 
-        loginMessage.textContent =
-        "Login failed. Please check your email and password.";
+        if(error){
 
-        return;
+            showLoginMessage(
+                "Login failed: " + error.message,
+                true
+            );
+
+            return;
+        }
+
+
+        loginBox.classList.add("hidden");
+
+        adminPanel.classList.remove("hidden");
+
+        await loadData();
+
     }
+);
 
 
-    loginBox.classList.add("hidden");
-
-    adminPanel.classList.remove("hidden");
-
-    loadData();
-
-});
-
-
+/* LOAD ALL DATA */
 
 async function loadData(){
 
@@ -378,36 +419,49 @@ async function loadData(){
 }
 
 
+/* LOAD PENDING DONATIONS */
 
 async function loadPending(){
 
     const list =
-    document.getElementById("pendingList");
+        document.getElementById("pendingList");
 
 
-    const {data,error} =
-    await supabaseClient
-    .from("donations")
-    .select("*")
-    .eq("status","pending")
-    .order("created_at",{ascending:false});
+    list.innerHTML =
+        "<p>Loading...</p>";
+
+
+    const { data, error } =
+        await supabaseClient
+        .from("donations")
+        .select("*")
+        .eq("status","pending")
+        .order("created_at",{
+            ascending:false
+        });
 
 
     if(error){
 
         list.innerHTML =
-        "<p>Unable to load donations.</p>";
+            "<div class='message error' style='display:block'>" +
+            "Database error: " +
+            escapeHtml(error.message) +
+            "</div>";
 
-        console.error(error);
+        console.error(
+            "Pending donations error:",
+            error
+        );
 
         return;
     }
 
 
-    if(!data || data.length===0){
+    if(!data || data.length === 0){
 
         list.innerHTML =
-        "<p>No pending donations.</p>";
+            "<p>No pending donations.</p>";
 
         return;
     }
@@ -419,9 +473,10 @@ async function loadPending(){
     data.forEach(function(donation){
 
         const div =
-        document.createElement("div");
+            document.createElement("div");
 
-        div.className="donation";
+        div.className =
+            "donation";
 
 
         div.innerHTML = `
@@ -448,7 +503,9 @@ async function loadPending(){
 
             <p>
                 <strong>Submitted:</strong>
-                ${new Date(donation.created_at).toLocaleString()}
+                ${new Date(
+                    donation.created_at
+                ).toLocaleString()}
             </p>
 
             <div class="actions">
@@ -478,93 +535,92 @@ async function loadPending(){
 }
 
 
+/* APPROVE */
 
 async function approveDonation(id){
 
-    const {error} =
-    await supabaseClient
-    .from("donations")
-    .update({
-
-        status:"approved",
-
-        approved_at:new Date().toISOString()
-
-    })
-    .eq("id",id);
+    const { error } =
+        await supabaseClient
+        .from("donations")
+        .update({
+            status:"approved",
+            approved_at:new Date().toISOString()
+        })
+        .eq("id",id);
 
 
     if(error){
 
-        alert(
-            "Unable to approve donation."
+        showPanelMessage(
+            "Approve failed: " +
+            error.message
         );
-
-        console.error(error);
 
         return;
     }
 
 
-    alert(
+    showPanelMessage(
         "Donation approved successfully."
     );
 
 
-    loadData();
+    await loadData();
 
 }
 
 
+/* REJECT */
 
 async function rejectDonation(id){
 
-    const {error} =
-    await supabaseClient
-    .from("donations")
-    .update({
-
-        status:"rejected"
-
-    })
-    .eq("id",id);
+    const { error } =
+        await supabaseClient
+        .from("donations")
+        .update({
+            status:"rejected"
+        })
+        .eq("id",id);
 
 
     if(error){
 
-        alert(
-            "Unable to reject donation."
+        showPanelMessage(
+            "Reject failed: " +
+            error.message
         );
-
-        console.error(error);
 
         return;
     }
 
 
-    alert(
+    showPanelMessage(
         "Donation rejected."
     );
 
 
-    loadData();
+    await loadData();
 
 }
 
 
+/* STATS */
 
 async function loadStats(){
 
-    const {data,error} =
-    await supabaseClient
-    .from("donations")
-    .select("amount,anonymous")
-    .eq("status","approved");
+    const { data, error } =
+        await supabaseClient
+        .from("donations")
+        .select("amount")
+        .eq("status","approved");
 
 
     if(error){
 
-        console.error(error);
+        console.error(
+            "Stats error:",
+            error
+        );
 
         return;
     }
@@ -592,11 +648,13 @@ async function loadStats(){
     document.getElementById(
         "totalAmount"
     ).textContent =
-    "₹" + total.toLocaleString("en-IN");
+        "₹" +
+        total.toLocaleString("en-IN");
 
 }
 
 
+/* LOGOUT */
 
 async function logout(){
 
@@ -607,20 +665,50 @@ async function logout(){
 }
 
 
+/* MESSAGES */
 
-function escapeHtml(text){
+function showLoginMessage(text,isError){
 
-    const div =
-    document.createElement("div");
+    loginMessage.style.display =
+        "block";
 
-    div.textContent =
-    text;
+    loginMessage.className =
+        "message " +
+        (isError ? "error" : "success");
 
-    return div.innerHTML;
+    loginMessage.textContent =
+        text;
 
 }
 
 
+function showPanelMessage(text){
+
+    panelMessage.style.display =
+        "block";
+
+    panelMessage.className =
+        "message success";
+
+    panelMessage.textContent =
+        text;
+
+}
+
+
+/* HTML SAFETY */
+
+function escapeHtml(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text == null ? "" : String(text);
+
+    return div.innerHTML;
+
+}
 
 </script>
 
