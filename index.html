@@ -1,23 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Emergency Responders | A Helping Hand for Humanity</title>
 
-
 <style>
-
-/* =========================
-   BASIC
-========================= */
 
 *{
   margin:0;
@@ -37,29 +28,21 @@ body{
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* ================= HEADER ================= */
 
 header{
   height:70px;
-
   background:#b30000;
-
   color:white;
 
   padding:0 6%;
 
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
 
   position:sticky;
-
   top:0;
-
   z-index:1000;
 }
 
@@ -71,8 +54,8 @@ header{
 nav{
   display:flex;
   align-items:center;
-  flex-wrap:wrap;
   justify-content:center;
+  flex-wrap:wrap;
 }
 
 nav a{
@@ -87,41 +70,53 @@ nav a:hover{
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* ================= HERO ================= */
 
 .hero{
   position:relative;
-
   width:100%;
-
   height:calc(100vh - 70px);
-
   min-height:500px;
-
   overflow:hidden;
-
-  background:#111;
+  background:#222;
 }
 
 
-/* =========================
-   SLIDESHOW
-========================= */
+/* ================= SLIDES ================= */
 
 .slideshow{
   position:absolute;
-
   inset:0;
-
   width:100%;
-
   height:100%;
 }
 
 
-/* DESKTOP IMAGE */
+/* BLURRED BACKGROUND */
+
+.slide-bg{
+  position:absolute;
+
+  inset:-25px;
+
+  width:calc(100% + 50px);
+  height:calc(100% + 50px);
+
+  object-fit:cover;
+
+  filter:blur(25px);
+
+  transform:scale(1.08);
+
+  opacity:.65;
+
+  transition:opacity 1s ease-in-out;
+
+  z-index:1;
+}
+
+
+/* MAIN IMAGE */
 
 .slide{
   position:absolute;
@@ -129,7 +124,6 @@ nav a:hover{
   inset:0;
 
   width:100%;
-
   height:100%;
 
   object-fit:cover;
@@ -140,7 +134,7 @@ nav a:hover{
 
   transition:opacity 1.2s ease-in-out;
 
-  z-index:1;
+  z-index:2;
 }
 
 .slide.active{
@@ -157,31 +151,27 @@ nav a:hover{
 
   inset:0;
 
-  background:rgba(0,0,0,.40);
+  background:rgba(0,0,0,.38);
 
-  z-index:2;
+  z-index:3;
 
   pointer-events:none;
 }
 
 
-/* =========================
-   HERO TEXT
-========================= */
+/* ================= HERO TEXT ================= */
 
 .hero-text{
   position:absolute;
 
-  z-index:5;
+  z-index:10;
 
   top:50%;
-
   left:50%;
 
   transform:translate(-50%,-50%);
 
   width:90%;
-
   max-width:900px;
 
   text-align:center;
@@ -204,6 +194,9 @@ nav a:hover{
 
   text-shadow:1px 1px 6px #000;
 }
+
+
+/* ================= BUTTON ================= */
 
 .btn{
   display:inline-block;
@@ -230,9 +223,7 @@ nav a:hover{
 }
 
 
-/* =========================
-   SECTIONS
-========================= */
+/* ================= SECTIONS ================= */
 
 section:not(.hero){
   padding:70px 7%;
@@ -249,9 +240,7 @@ section h2{
 }
 
 
-/* =========================
-   ABOUT
-========================= */
+/* ================= ABOUT ================= */
 
 .about{
   background:white;
@@ -266,9 +255,7 @@ section h2{
 }
 
 
-/* =========================
-   WORK
-========================= */
+/* ================= WORK ================= */
 
 .cards{
   display:grid;
@@ -299,9 +286,7 @@ section h2{
 }
 
 
-/* =========================
-   DONATION
-========================= */
+/* ================= DONATION ================= */
 
 .donation{
   background:#fff1f1;
@@ -323,9 +308,7 @@ section h2{
 }
 
 
-/* =========================
-   CONTACT
-========================= */
+/* ================= CONTACT ================= */
 
 .contact{
   background:white;
@@ -338,9 +321,7 @@ section h2{
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* ================= FOOTER ================= */
 
 footer{
   background:#222;
@@ -353,11 +334,9 @@ footer{
 }
 
 
-/* =====================================================
-   TABLET
-===================================================== */
+/* ================= TABLET ================= */
 
-@media (min-width:601px) and (max-width:1000px){
+@media(min-width:601px) and (max-width:1000px){
 
   header{
     padding:0 4%;
@@ -373,16 +352,10 @@ footer{
     font-size:14px;
   }
 
-  .hero{
-    height:calc(100vh - 70px);
-  }
-
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
@@ -399,6 +372,7 @@ footer{
     justify-content:center;
 
     gap:8px;
+
   }
 
 
@@ -407,12 +381,14 @@ footer{
     font-size:20px;
 
     text-align:center;
+
   }
 
 
   nav{
 
     width:100%;
+
   }
 
 
@@ -421,6 +397,7 @@ footer{
     margin:3px 6px;
 
     font-size:13px;
+
   }
 
 
@@ -432,31 +409,31 @@ footer{
 
     min-height:500px;
 
-    background:#111;
   }
 
 
   /*
-     MOBILE IMAGE:
-     পুরো ছবি দেখানোর জন্য
-     contain ব্যবহার করা হচ্ছে
+    Main image fills screen.
+    Background image removes empty space.
   */
 
   .slide{
 
-    object-fit:contain;
+    object-fit:cover;
 
-    object-position:center;
-
-    background:#111;
+    object-position:center center;
 
   }
 
 
-  /*
-     Mobile-এ dark overlay
-     একটু কম
-  */
+  .slide-bg{
+
+    filter:blur(20px);
+
+    opacity:.8;
+
+  }
+
 
   .slideshow::after{
 
@@ -470,6 +447,7 @@ footer{
     width:92%;
 
     top:50%;
+
   }
 
 
@@ -516,46 +494,29 @@ footer{
 }
 
 
-/* =====================================================
-   VERY SMALL MOBILE
-===================================================== */
+/* ================= SMALL MOBILE ================= */
 
 @media(max-width:380px){
 
   .logo{
-
     font-size:18px;
-
   }
-
 
   nav a{
-
     font-size:11px;
-
     margin:2px 4px;
-
   }
-
 
   .hero{
-
     min-height:450px;
-
   }
-
 
   .hero-text h1{
-
     font-size:26px;
-
   }
 
-
   .hero-text p{
-
     font-size:14px;
-
   }
 
 }
@@ -568,16 +529,12 @@ footer{
 <body>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
   <div class="logo">
-
     🚨 Emergency Responders
-
   </div>
 
 
@@ -599,18 +556,68 @@ footer{
 
 
 
-<!-- =========================
-     HERO SLIDESHOW
-========================= -->
+<!-- ================= HERO ================= -->
 
 <section
   class="hero"
   id="home"
 >
 
-
   <div class="slideshow">
 
+
+    <!-- BACKGROUND IMAGES -->
+
+    <img
+      src="TEAM.jpeg"
+      class="slide-bg"
+      alt=""
+    >
+
+    <img
+      src="flood-1.jpg"
+      class="slide-bg"
+      alt=""
+    >
+
+    <img
+      src="flood2.jpg"
+      class="slide-bg"
+      alt=""
+    >
+
+    <img
+      src="flood3.avif"
+      class="slide-bg"
+      alt=""
+    >
+
+    <img
+      src="flood4.jpg"
+      class="slide-bg"
+      alt=""
+    >
+
+    <img
+      src="flood5.jpg"
+      class="slide-bg"
+      alt=""
+    >
+
+    <img
+      src="flood6.jpg"
+      class="slide-bg"
+      alt=""
+    >
+
+    <img
+      src="flood7.jpg"
+      class="slide-bg"
+      alt=""
+    >
+
+
+    <!-- MAIN IMAGES -->
 
     <img
       src="TEAM.jpeg"
@@ -618,13 +625,11 @@ footer{
       alt="Emergency Responders"
     >
 
-
     <img
       src="flood-1.jpg"
       class="slide"
       alt="Flood Relief"
     >
-
 
     <img
       src="flood2.jpg"
@@ -632,13 +637,11 @@ footer{
       alt="Emergency Support"
     >
 
-
     <img
       src="flood3.avif"
       class="slide"
       alt="Disaster Support"
     >
-
 
     <img
       src="flood4.jpg"
@@ -646,20 +649,17 @@ footer{
       alt="Community Help"
     >
 
-
     <img
       src="flood5.jpg"
       class="slide"
       alt="Humanitarian Support"
     >
 
-
     <img
       src="flood6.jpg"
       class="slide"
       alt="Emergency Response"
     >
-
 
     <img
       src="flood7.jpg"
@@ -668,39 +668,27 @@ footer{
     >
 
 
-
-    <!-- HERO TEXT -->
+    <!-- TEXT -->
 
     <div class="hero-text">
 
-
       <h1>
-
         A Helping Hand for Humanity
-
       </h1>
 
-
       <p>
-
-        Standing together to support people affected by
-        emergencies, disasters and difficult situations.
-
+        Standing together to support people affected
+        by emergencies, disasters and difficult situations.
       </p>
-
 
       <a
         href="donation.html"
         class="btn"
       >
-
         ❤️ Donate Now
-
       </a>
 
-
     </div>
-
 
   </div>
 
@@ -708,9 +696,7 @@ footer{
 
 
 
-<!-- =========================
-     ABOUT
-========================= -->
+<!-- ================= ABOUT ================= -->
 
 <section
   class="about"
@@ -718,11 +704,8 @@ footer{
 >
 
   <h2>
-
     About Us
-
   </h2>
-
 
   <p>
 
@@ -738,16 +721,12 @@ footer{
 
 
 
-<!-- =========================
-     OUR WORK
-========================= -->
+<!-- ================= OUR WORK ================= -->
 
 <section id="help">
 
   <h2>
-
     What We Do
-
   </h2>
 
 
@@ -757,77 +736,54 @@ footer{
     <div class="card">
 
       <h3>
-
         🌊 Disaster Support
-
       </h3>
 
-
       <p>
-
         Supporting communities affected by floods,
         storms and other natural disasters.
-
       </p>
 
     </div>
 
 
-
     <div class="card">
 
       <h3>
-
         🍚 Food Support
-
       </h3>
 
-
       <p>
-
         Helping provide essential food and basic
         supplies to people who need assistance.
-
       </p>
 
     </div>
 
 
-
     <div class="card">
 
       <h3>
-
         🩹 Emergency Assistance
-
       </h3>
 
-
       <p>
-
         Supporting people and families facing
         urgent difficulties during emergencies.
-
       </p>
 
     </div>
 
 
-
     <div class="card">
 
       <h3>
-
         🤝 Community Help
-
       </h3>
 
-
       <p>
-
         Working together with local communities
         to reach people who need help.
-
       </p>
 
     </div>
@@ -839,9 +795,7 @@ footer{
 
 
 
-<!-- =========================
-     DONATION
-========================= -->
+<!-- ================= DONATE ================= -->
 
 <section
   class="donation"
@@ -849,14 +803,11 @@ footer{
 >
 
   <h2>
-
     Support Our Work
-
   </h2>
 
 
   <div class="donation-box">
-
 
     <p>
 
@@ -875,16 +826,13 @@ footer{
 
     </a>
 
-
   </div>
 
 </section>
 
 
 
-<!-- =========================
-     CONTACT
-========================= -->
+<!-- ================= CONTACT ================= -->
 
 <section
   class="contact"
@@ -892,9 +840,7 @@ footer{
 >
 
   <h2>
-
     Contact Us
-
   </h2>
 
 
@@ -914,17 +860,12 @@ footer{
     "
   >
 
-
     <p>
 
       📧 Email:
 
-      <a
-        href="mailto:proy2953@gmail.com"
-      >
-
+      <a href="mailto:proy2953@gmail.com">
         proy2953@gmail.com
-
       </a>
 
     </p>
@@ -934,12 +875,8 @@ footer{
 
       📞 Phone:
 
-      <a
-        href="tel:+918972645067"
-      >
-
+      <a href="tel:+918972645067">
         +91 8972645067
-
       </a>
 
     </p>
@@ -960,72 +897,75 @@ footer{
 
     </p>
 
-
   </div>
 
 </section>
 
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
   <p>
-
     © 2026 Emergency Responders
-
   </p>
 
-
   <p>
-
     A Helping Hand for Humanity ❤️
-
   </p>
 
 </footer>
 
 
 
-<!-- =========================
-     SLIDESHOW SCRIPT
-========================= -->
+<!-- ================= SLIDESHOW ================= -->
 
 <script>
 
 const slides =
   document.querySelectorAll(".slide");
 
+const backgrounds =
+  document.querySelectorAll(".slide-bg");
+
 let currentSlide = 0;
+
+
+function showSlide(index){
+
+  slides.forEach(
+    slide => slide.classList.remove("active")
+  );
+
+  backgrounds.forEach(
+    bg => bg.style.opacity = "0"
+  );
+
+
+  slides[index].classList.add("active");
+
+  backgrounds[index].style.opacity = "0.8";
+
+}
 
 
 function nextSlide(){
 
-  slides[currentSlide]
-    .classList
-    .remove("active");
-
-
   currentSlide++;
-
 
   if(
     currentSlide >= slides.length
   ){
-
     currentSlide = 0;
-
   }
 
-
-  slides[currentSlide]
-    .classList
-    .add("active");
+  showSlide(currentSlide);
 
 }
+
+
+showSlide(0);
 
 
 setInterval(
@@ -1037,5 +977,4 @@ setInterval(
 
 
 </body>
-
 </html>
