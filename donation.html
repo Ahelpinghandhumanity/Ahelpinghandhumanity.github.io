@@ -246,8 +246,7 @@ footer{
             </a>
 
             <p class="small">
-                Mobile থেকে button চাপলে আপনার available
-                UPI/payment app খুলতে পারে।
+                When you press the button from your mobile, it can open your available UPI/payment app.
             </p>
 
         </div>
@@ -263,8 +262,7 @@ footer{
         <h2>🧾 I Have Donated</h2>
 
         <p style="text-align:center;">
-            Payment করার পরে নিচের form পূরণ করুন।
-            আপনার তথ্য verification-এর জন্য রাখা হবে।
+           After making the payment, fill out the form below. Your information will be kept for verification.
         </p>
 
 
@@ -433,7 +431,7 @@ form.addEventListener(
         if(!name || !amount || !transaction){
 
             showMessage(
-                "সব তথ্য পূরণ করুন।",
+                "Fill in all the information.",
                 false
             );
 
@@ -470,7 +468,7 @@ form.addEventListener(
             console.error(error);
 
             showMessage(
-                "Submission হয়নি। আবার চেষ্টা করুন।",
+                "Submission didn’t go through. Please try again.",
                 false
             );
 
@@ -484,8 +482,7 @@ form.addEventListener(
 
 
         showMessage(
-            "✅ আপনার donation details জমা হয়েছে। Verification-এর পরে approved হলে website-এ আপনার নাম ও amount দেখানো হবে।",
-            true
+            "✅ Your donation details have been submitted. After verification, once approved, your name and the amount will be shown on the website.
         );
 
 
