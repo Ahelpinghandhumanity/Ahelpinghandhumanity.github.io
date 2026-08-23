@@ -1,565 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Donate | Emergency Responders</title>
 
-
 <style>
-
-/* =========================
-   BASIC
-========================= */
-
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f7fa;
-  color:#222;
-  line-height:1.6;
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#222;
 }
 
-
-/* =========================
-   HEADER
-========================= */
-
 header{
-  background:#b30000;
-  color:white;
-  text-align:center;
-  padding:28px 15px;
+    background:#b30000;
+    color:white;
+    padding:18px 6%;
+    text-align:center;
 }
 
 header h1{
-  font-size:clamp(26px,6vw,42px);
+    font-size:26px;
 }
-
-header p{
-  margin-top:5px;
-  font-size:16px;
-}
-
-
-/* =========================
-   CONTAINER
-========================= */
 
 .container{
-  width:100%;
-  max-width:720px;
-  margin:30px auto;
-  padding:0 15px;
+    width:92%;
+    max-width:700px;
+    margin:35px auto;
 }
 
-
-/* =========================
-   BOX
-========================= */
-
 .box{
-  background:white;
-  padding:30px 25px;
-  margin-bottom:25px;
-  border-radius:15px;
-  box-shadow:0 4px 16px rgba(0,0,0,.12);
+    background:white;
+    padding:30px 25px;
+    margin-bottom:25px;
+    border-radius:14px;
+    box-shadow:0 4px 18px rgba(0,0,0,.12);
 }
 
 h2{
-  color:#b30000;
-  text-align:center;
-  margin-bottom:20px;
-  font-size:clamp(23px,5vw,30px);
+    color:#b30000;
+    margin-bottom:18px;
+    text-align:center;
 }
-
-
-/* =========================
-   BANK DETAILS
-========================= */
 
 .details{
-  background:#fff1f1;
-  padding:20px;
-  border-radius:10px;
-  line-height:2;
-  overflow-wrap:anywhere;
+    background:#fff5f5;
+    padding:20px;
+    border-radius:10px;
+    line-height:2;
+    margin-bottom:20px;
 }
 
-
-/* =========================
-   UPI
-========================= */
-
 .upi{
-  text-align:center;
+    text-align:center;
 }
 
 .upi-id{
-  display:inline-block;
-  margin:15px 0;
-  padding:12px 16px;
-
-  background:#fff1f1;
-
-  border:2px solid #e60000;
-  border-radius:9px;
-
-  color:#b30000;
-
-  font-size:clamp(17px,4vw,22px);
-
-  font-weight:bold;
-
-  text-decoration:none;
-
-  word-break:break-all;
-
-  cursor:pointer;
-
-  transition:.2s;
+    font-size:20px;
+    font-weight:bold;
+    color:#b30000;
+    word-break:break-all;
 }
 
-.upi-id:hover{
-  background:#ffe0e0;
-  transform:scale(1.02);
+.pay-btn{
+    display:inline-block;
+    margin-top:18px;
+    padding:14px 25px;
+    background:#e60000;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:17px;
 }
 
-
-/* =========================
-   QR CODE
-========================= */
-
-.qr-container{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  margin:20px auto;
-
-  width:100%;
+.pay-btn:hover{
+    background:#8f0000;
 }
 
-.qr-container a{
-  display:block;
-  text-decoration:none;
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:6px;
+    font-weight:bold;
 }
 
-.qr-container img{
-  display:block;
-
-  width:min(280px,75vw);
-
-  height:auto;
-
-  max-width:100%;
-
-  padding:8px;
-
-  background:white;
-
-  border:2px solid #ddd;
-
-  border-radius:12px;
-
-  box-shadow:0 4px 15px rgba(0,0,0,.18);
-
-  cursor:pointer;
-
-  transition:.2s;
+input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:7px;
+    font-size:16px;
 }
 
-.qr-container img:hover{
-  transform:scale(1.03);
+.check{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:15px;
 }
 
-.qr-text{
-  text-align:center;
-
-  font-size:15px;
-
-  color:#555;
-
-  margin-top:10px;
+.check input{
+    width:auto;
 }
 
-
-/* =========================
-   BUTTON
-========================= */
-
-.btn{
-  display:block;
-
-  width:100%;
-
-  text-align:center;
-
-  padding:14px 15px;
-
-  margin-top:16px;
-
-  border-radius:8px;
-
-  background:#e60000;
-
-  color:white;
-
-  text-decoration:none;
-
-  font-weight:bold;
-
-  font-size:16px;
-
-  transition:.2s;
+.submit{
+    width:100%;
+    margin-top:22px;
+    padding:14px;
+    border:0;
+    border-radius:8px;
+    background:#b30000;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.btn:hover{
-  opacity:.9;
+.submit:disabled{
+    opacity:.6;
 }
 
-.whatsapp{
-  background:#128c7e;
-}
-
-.email{
-  background:#555;
+.message{
+    margin-top:18px;
+    padding:12px;
+    border-radius:7px;
+    display:none;
 }
 
 .back{
-  background:#333;
+    text-align:center;
+    margin:25px 0;
 }
 
-
-/* =========================
-   NOTE
-========================= */
-
-.note{
-  text-align:center;
-
-  color:#555;
-
-  font-size:14px;
-
-  margin-top:12px;
+.back a{
+    color:#b30000;
+    font-weight:bold;
+    text-decoration:none;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
+.small{
+    font-size:13px;
+    color:#666;
+    margin-top:10px;
+}
 
 footer{
-  background:#222;
-
-  color:white;
-
-  text-align:center;
-
-  padding:25px 15px;
-
-  margin-top:40px;
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:40px;
 }
 
+@media(max-width:600px){
 
-/* =========================
-   TABLET
-========================= */
+    header h1{
+        font-size:22px;
+    }
 
-@media(min-width:600px) and (max-width:1000px){
+    .container{
+        width:94%;
+        margin:20px auto;
+    }
 
-  .container{
-    max-width:680px;
-  }
+    .box{
+        padding:22px 17px;
+    }
 
-  .box{
-    padding:32px 28px;
-  }
+    .upi-id{
+        font-size:17px;
+    }
 
-  .qr-container img{
-    width:300px;
-  }
-
+    .pay-btn{
+        width:100%;
+    }
 }
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:599px){
-
-  header{
-    padding:23px 12px;
-  }
-
-  header h1{
-    font-size:30px;
-  }
-
-  .container{
-    margin:20px auto;
-
-    padding:0 10px;
-  }
-
-  .box{
-    padding:24px 16px;
-
-    border-radius:12px;
-  }
-
-  .details{
-    padding:15px;
-
-    font-size:15px;
-  }
-
-  .qr-container img{
-    width:75vw;
-
-    max-width:270px;
-  }
-
-  .upi-id{
-    font-size:18px;
-
-    padding:11px 12px;
-  }
-
-  .btn{
-    font-size:15px;
-
-    padding:13px 10px;
-  }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
-
-  <h1>❤️ Donation Details</h1>
-
-  <p>
-    A Helping Hand for Humanity
-  </p>
-
+    <h1>❤️ Emergency Responders</h1>
+    <p>A Helping Hand for Humanity</p>
 </header>
-
 
 
 <div class="container">
 
 
-<!-- =========================
-     BANK DONATION
-========================= -->
+    <!-- DONATION DETAILS -->
 
-<div class="box">
+    <div class="box">
 
-  <h2>🏦 Bank Donation</h2>
+        <h2>❤️ Support Our Mission</h2>
 
-  <div class="details">
+        <p style="text-align:center;margin-bottom:20px;">
+            Your support can help people affected by
+            emergencies and difficult situations.
+        </p>
 
-    <p>
-      <strong>Bank Name:</strong>
-      State Bank of India
-    </p>
 
-    <p>
-      <strong>Account Number:</strong>
-      35276390472
-    </p>
+        <div class="details">
 
-    <p>
-      <strong>IFSC Code:</strong>
-      SBIN0008926
-    </p>
+            <strong>Bank Name:</strong>
+            State Bank of India<br>
 
-  </div>
+            <strong>Account Number:</strong>
+            35276390472<br>
 
-  <p class="note">
+            <strong>IFSC:</strong>
+            SBIN0008926
 
-    Please verify the bank details carefully
-    before making a donation.
+        </div>
 
-  </p>
+
+        <div class="upi">
+
+            <h3>📱 UPI Payment</h3>
+
+            <p style="margin-top:10px;">
+                UPI ID
+            </p>
+
+            <div class="upi-id">
+                proy29531@ybl
+            </div>
+
+
+            <!-- UPI PAYMENT BUTTON -->
+
+            <a
+                class="pay-btn"
+                href="upi://pay?pa=proy29531@ybl&pn=Emergency%20Responders&cu=INR"
+            >
+                💳 Pay with UPI
+            </a>
+
+            <p class="small">
+                Mobile থেকে button চাপলে আপনার available
+                UPI/payment app খুলতে পারে।
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- DONOR FORM -->
+
+    <div class="box">
+
+        <h2>🧾 I Have Donated</h2>
+
+        <p style="text-align:center;">
+            Payment করার পরে নিচের form পূরণ করুন।
+            আপনার তথ্য verification-এর জন্য রাখা হবে।
+        </p>
+
+
+        <form id="donorForm">
+
+
+            <label for="name">
+                Donor Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="আপনার নাম"
+                required
+            >
+
+
+            <label for="amount">
+                Donation Amount (₹)
+            </label>
+
+            <input
+                type="number"
+                id="amount"
+                placeholder="যেমন 500"
+                min="1"
+                step="0.01"
+                required
+            >
+
+
+            <label for="transaction">
+                Transaction / Reference ID
+            </label>
+
+            <input
+                type="text"
+                id="transaction"
+                placeholder="Payment reference / transaction ID"
+                required
+            >
+
+
+            <label class="check">
+
+                <input
+                    type="checkbox"
+                    id="anonymous"
+                >
+
+                <span>
+                    আমার নামের পরিবর্তে Anonymous দেখান
+                </span>
+
+            </label>
+
+
+            <button
+                type="submit"
+                class="submit"
+                id="submitBtn"
+            >
+                Submit Donation Details
+            </button>
+
+
+            <div
+                class="message"
+                id="message"
+            ></div>
+
+        </form>
+
+    </div>
+
+
+    <div class="back">
+
+        <a href="index.html">
+            ← Back to Home
+        </a>
+
+    </div>
 
 </div>
 
-
-
-<!-- =========================
-     UPI DONATION
-========================= -->
-
-<div class="box upi">
-
-  <h2>📱 UPI Donation</h2>
-
-  <p>
-    Tap the UPI ID or scan the QR code
-    to make a payment.
-  </p>
-
-
-  <!-- CLICKABLE QR -->
-
-  <div class="qr-container">
-
-    <a
-      href="upi://pay?pa=emergencyresponders@ptyes&pn=Emergency%20Responders&cu=INR"
-      aria-label="Pay using UPI"
-    >
-
-      <img
-        src="emergencyresponders-upi-qr.png"
-        alt="Emergency Responders UPI QR Code"
-      >
-
-    </a>
-
-  </div>
-
-
-  <p class="qr-text">
-
-    👆 Tap QR Code to pay
-
-  </p>
-
-
-  <!-- CLICKABLE UPI ID -->
-
-  <a
-    href="upi://pay?pa=emergencyresponders@ptyes&pn=Emergency%20Responders&cu=INR"
-    class="upi-id"
-  >
-
-    emergencyresponders@ptyes
-
-  </a>
-
-
-  <p class="note">
-
-    👆 Tap the UPI ID to open your available
-    UPI payment app.
-
-  </p>
-
-</div>
-
-
-
-<!-- =========================
-     CONFIRMATION
-========================= -->
-
-<div class="box">
-
-  <h2>💬 Donation Confirmation</h2>
-
-  <p style="text-align:center;">
-
-    After making a donation, you can contact us
-    for confirmation.
-
-  </p>
-
-
-  <!-- WHATSAPP -->
-
-  <a
-    href="https://wa.me/918016584529?text=Hello%20Emergency%20Responders,%20I%20have%20made%20a%20donation."
-    target="_blank"
-    class="btn whatsapp"
-  >
-
-    💬 Confirm Donation on WhatsApp
-
-  </a>
-
-
-  <!-- EMAIL -->
-
-  <a
-    href="mailto:proy2953@gmail.com"
-    class="btn email"
-  >
-
-    📧 Contact by Email
-
-  </a>
-
-
-</div>
-
-
-
-<!-- =========================
-     BACK
-========================= -->
-
-<a
-  href="index.html"
-  class="btn back"
->
-
-  ← Back to Website
-
-</a>
-
-
-</div>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
-  <p>
-    © 2026 Emergency Responders
-  </p>
+    <p>
+        © 2026 Emergency Responders
+    </p>
 
-  <p>
-    A Helping Hand for Humanity ❤️
-  </p>
+    <p>
+        A Helping Hand for Humanity ❤️
+    </p>
 
 </footer>
 
 
-</body>
 
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+    "https://gjfbqzwcatpvejuofdvc.supabase.co";
+
+
+/*
+ IMPORTANT:
+ এখানে তোমার Supabase-এর
+ PUBLISHABLE KEY বসাতে হবে।
+
+ sb_publishable_ দিয়ে শুরু হওয়া key।
+
+ Secret key কখনো এখানে বসাবে না।
+*/
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+const form =
+    document.getElementById("donorForm");
+
+const message =
+    document.getElementById("message");
+
+const submitBtn =
+    document.getElementById("submitBtn");
+
+
+form.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const amount =
+            Number(
+                document.getElementById("amount").value
+            );
+
+        const transaction =
+            document.getElementById("transaction").value.trim();
+
+        const anonymous =
+            document.getElementById("anonymous").checked;
+
+
+        if(!name || !amount || !transaction){
+
+            showMessage(
+                "সব তথ্য পূরণ করুন।",
+                false
+            );
+
+            return;
+        }
+
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent =
+            "Submitting...";
+
+
+        const { error } =
+            await supabaseClient
+            .from("donations")
+            .insert({
+
+                donor_name:name,
+
+                amount:amount,
+
+                transaction_id:transaction,
+
+                anonymous:anonymous,
+
+                status:"pending"
+
+            });
+
+
+        if(error){
+
+            console.error(error);
+
+            showMessage(
+                "Submission হয়নি। আবার চেষ্টা করুন।",
+                false
+            );
+
+            submitBtn.disabled = false;
+
+            submitBtn.textContent =
+                "Submit Donation Details";
+
+            return;
+        }
+
+
+        showMessage(
+            "✅ আপনার donation details জমা হয়েছে। Verification-এর পরে approved হলে website-এ আপনার নাম ও amount দেখানো হবে।",
+            true
+        );
+
+
+        form.reset();
+
+        submitBtn.disabled = false;
+
+        submitBtn.textContent =
+            "Submit Donation Details";
+
+    }
+);
+
+
+function showMessage(text, success){
+
+    message.style.display = "block";
+
+    message.textContent = text;
+
+    if(success){
+
+        message.style.background = "#e8f7e8";
+
+        message.style.color = "#176b17";
+
+    }else{
+
+        message.style.background = "#ffe8e8";
+
+        message.style.color = "#a00000";
+
+    }
+
+}
+
+</script>
+
+</body>
 </html>
