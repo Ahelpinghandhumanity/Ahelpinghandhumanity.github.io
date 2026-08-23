@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Emergency Responders | A Helping Hand for Humanity</title>
+
+<meta name="description"
+content="Emergency Responders - A Helping Hand for Humanity. Supporting people and communities affected by emergencies, disasters and difficult situations.">
+
+<meta name="theme-color" content="#b30000">
+
+<!-- FAVICON -->
+<link rel="icon"
+href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚨%3C/text%3E%3C/svg%3E">
+
+<!-- SOCIAL SHARING -->
+<meta property="og:title"
+content="Emergency Responders | A Helping Hand for Humanity">
+
+<meta property="og:description"
+content="Standing together to support people affected by emergencies, disasters and difficult situations.">
+
+<meta property="og:type" content="website">
+
+<meta property="og:image" content="TEAM.jpeg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title"
+content="Emergency Responders | A Helping Hand for Humanity">
+<meta name="twitter:description"
+content="A Helping Hand for Humanity">
+<meta name="twitter:image" content="TEAM.jpeg">
+
 
 <style>
 
@@ -40,6 +69,7 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 
 .logo{
@@ -59,10 +89,11 @@ nav a{
     text-decoration:none;
     font-weight:bold;
     margin-left:18px;
+    transition:.2s;
 }
 
 nav a:hover{
-    text-decoration:underline;
+    opacity:.8;
 }
 
 
@@ -120,7 +151,7 @@ nav a:hover{
     content:"";
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,.35);
+    background:rgba(0,0,0,.38);
     z-index:3;
     pointer-events:none;
 }
@@ -133,7 +164,7 @@ nav a:hover{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    width:90%;
+    width:92%;
     max-width:900px;
     text-align:center;
     color:white;
@@ -165,10 +196,13 @@ nav a:hover{
     border-radius:8px;
     font-weight:bold;
     font-size:17px;
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
+    transition:.2s;
 }
 
 .btn:hover{
     background:#8f0000;
+    transform:translateY(-1px);
 }
 
 
@@ -192,10 +226,14 @@ section h2{
     background:white;
 }
 
-.about p{
-    max-width:850px;
+.about-content{
+    max-width:900px;
     margin:auto;
+}
+
+.about p{
     font-size:17px;
+    margin-bottom:15px;
 }
 
 
@@ -213,6 +251,11 @@ section h2{
     padding:30px 20px;
     border-radius:12px;
     box-shadow:0 3px 15px rgba(0,0,0,.12);
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
 }
 
 .card h3{
@@ -237,7 +280,7 @@ section h2{
 }
 
 
-/* ================= DONATION STATS ================= */
+/* ================= STATS ================= */
 
 .donation-stats{
     display:grid;
@@ -274,6 +317,12 @@ section h2{
     text-align:center;
 }
 
+.qr-title{
+    font-weight:bold;
+    margin-bottom:8px;
+    color:#333;
+}
+
 .qr-box img{
     width:150px;
     height:150px;
@@ -283,17 +332,11 @@ section h2{
     border-radius:10px;
     border:1px solid #ddd;
     cursor:pointer;
-    transition:transform .2s ease;
+    transition:.2s;
 }
 
 .qr-box img:hover{
     transform:scale(1.04);
-}
-
-.qr-title{
-    font-weight:bold;
-    margin-bottom:8px;
-    color:#333;
 }
 
 .qr-caption{
@@ -345,11 +388,7 @@ section h2{
     white-space:nowrap;
 }
 
-.no-donors{
-    text-align:center;
-    color:#777;
-}
-
+.no-donors,
 .loading{
     text-align:center;
     color:#777;
@@ -363,9 +402,27 @@ section h2{
     background:white;
 }
 
-.contact a:not(.btn){
+.contact-box{
+    max-width:650px;
+    margin:25px auto 0;
+    padding:25px;
+    background:#f8f8f8;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.contact-box p{
+    margin:10px 0;
+}
+
+.contact a{
     color:#b30000;
     font-weight:bold;
+    text-decoration:none;
+}
+
+.contact a:hover{
+    text-decoration:underline;
 }
 
 
@@ -376,6 +433,10 @@ footer{
     color:white;
     text-align:center;
     padding:28px 15px;
+}
+
+footer p{
+    margin:4px 0;
 }
 
 
@@ -394,10 +455,6 @@ footer{
     nav a{
         margin-left:10px;
         font-size:14px;
-    }
-
-    .hero{
-        height:calc(100vh - 70px);
     }
 }
 
@@ -432,7 +489,6 @@ footer{
     .hero{
         height:calc(100vh - 90px);
         min-height:480px;
-        background:#555;
     }
 
     .slide{
@@ -440,8 +496,6 @@ footer{
         height:auto;
         max-height:100%;
         object-fit:contain;
-        background:transparent;
-        transform:translate(-50%,-50%);
     }
 
     .slide-bg{
@@ -449,18 +503,16 @@ footer{
         left:-25px;
         width:calc(100% + 50px);
         height:calc(100% + 50px);
-        object-fit:cover;
         filter:blur(22px);
         transform:scale(1.08);
     }
 
     .slideshow::after{
-        background:rgba(0,0,0,.25);
+        background:rgba(0,0,0,.30);
     }
 
     .hero-text{
         width:92%;
-        top:50%;
     }
 
     .hero-text h1{
@@ -505,6 +557,9 @@ footer{
         font-size:14px;
     }
 
+    .contact-box{
+        padding:20px 15px;
+    }
 }
 
 
@@ -542,6 +597,7 @@ footer{
 </style>
 
 </head>
+
 
 <body>
 
@@ -629,13 +685,26 @@ footer{
         About Us
     </h2>
 
-    <p>
-        Emergency Responders is a humanitarian initiative
-        created to help people during difficult times.
-        Our goal is to stand beside families and communities
-        affected by emergencies, natural disasters and other
-        critical situations.
-    </p>
+    <div class="about-content">
+
+        <p>
+            Emergency Responders is a humanitarian initiative
+            created to help people during difficult times.
+        </p>
+
+        <p>
+            Our goal is to stand beside families and communities
+            affected by emergencies, natural disasters and other
+            critical situations.
+        </p>
+
+        <p>
+            Together, we believe that a helping hand can bring
+            hope, dignity and support to people when they need
+            it most.
+        </p>
+
+    </div>
 
 </section>
 
@@ -732,10 +801,7 @@ footer{
 
             <div class="stat">
 
-                <div
-                    class="stat-number"
-                    id="donorCount"
-                >
+                <div class="stat-number" id="donorCount">
                     0
                 </div>
 
@@ -748,10 +814,7 @@ footer{
 
             <div class="stat">
 
-                <div
-                    class="stat-number"
-                    id="totalAmount"
-                >
+                <div class="stat-number" id="totalAmount">
                     ₹0
                 </div>
 
@@ -791,17 +854,12 @@ footer{
         </div>
 
 
-        <!-- DONATE BUTTON -->
-
-        <a
-            href="donation.html"
-            class="btn"
-        >
+        <a href="donation.html" class="btn">
             ❤️ Donate Now
         </a>
 
 
-        <!-- APPROVED DONOR LIST -->
+        <!-- APPROVED DONORS -->
 
         <div class="donor-section">
 
@@ -809,10 +867,7 @@ footer{
                 Our Supporters
             </h3>
 
-            <div
-                id="donorList"
-                class="donor-list"
-            >
+            <div id="donorList" class="donor-list">
 
                 <div class="loading">
                     Loading verified donors...
@@ -841,36 +896,25 @@ footer{
     </p>
 
 
-    <div
-        style="
-        margin-top:25px;
-        font-size:18px;
-        line-height:2.2;
-        "
-    >
+    <div class="contact-box">
 
         <p>
-
             📧 Email:
-
-            <a href="mailto:emergencyresponders2026@gmail.com">
-                emergencyresponders2026@gmail.com
+            <a href="mailto:proy2953@gmail.com">
+                proy2953@gmail.com
             </a>
-
         </p>
 
 
         <p>
-
             💬 WhatsApp:
-
             <a
                 href="https://wa.me/918016584529"
                 target="_blank"
+                rel="noopener"
             >
                 Chat on WhatsApp
             </a>
-
         </p>
 
     </div>
@@ -904,7 +948,6 @@ const SUPABASE_URL =
 
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
-
 
 const supabaseClient =
 window.supabase.createClient(
@@ -959,8 +1002,7 @@ async function loadApprovedDonations(){
     }
 
 
-    const donations =
-        data || [];
+    const donations = data || [];
 
 
     /* DONOR COUNT */
@@ -969,7 +1011,7 @@ async function loadApprovedDonations(){
         donations.length;
 
 
-    /* TOTAL AMOUNT */
+    /* TOTAL */
 
     const total =
         donations.reduce(
@@ -1046,7 +1088,6 @@ async function loadApprovedDonations(){
 
 
             item.appendChild(name);
-
             item.appendChild(amount);
 
             donorList.appendChild(item);
@@ -1063,9 +1104,8 @@ loadApprovedDonations();
 
 
 /*
-   Check every 10 seconds.
-   When Admin approves a donation,
-   Home page automatically updates.
+   Refresh every 10 seconds.
+   Approved donations automatically appear.
 */
 
 setInterval(
@@ -1117,9 +1157,7 @@ function nextSlide(){
 
     currentSlide++;
 
-    if(
-        currentSlide >= slides.length
-    ){
+    if(currentSlide >= slides.length){
 
         currentSlide = 0;
 
@@ -1139,6 +1177,7 @@ setInterval(
 );
 
 </script>
+
 
 </body>
 </html>
