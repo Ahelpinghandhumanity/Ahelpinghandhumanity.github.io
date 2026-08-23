@@ -7,269 +7,305 @@
 <title>Emergency Responders | A Helping Hand for Humanity</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+  scroll-behavior:smooth;
 }
 
-body {
-  background: #f5f7fa;
-  color: #222;
-  line-height: 1.6;
+body{
+  background:#f5f7fa;
+  color:#222;
+  line-height:1.6;
 }
 
 /* HEADER */
 
-header {
-  height: 70px;
-  background: #b30000;
-  color: white;
-  padding: 0 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+header{
+  min-height:70px;
+  background:#b30000;
+  color:white;
+  padding:14px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
+.logo{
+  font-size:23px;
+  font-weight:bold;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 18px;
-  font-weight: bold;
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
-nav a:hover {
-  text-decoration: underline;
+nav a{
+  color:white;
+  text-decoration:none;
+  margin:5px 10px;
+  font-weight:bold;
 }
 
-
-/* FULL SCREEN HERO */
-
-.hero {
-  height: calc(100vh - 70px);
-  min-height: 600px;
-  position: relative;
-  overflow: hidden;
-  background: #111;
-}
-
-.slideshow {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.slide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: 0;
-  transition: opacity 1.2s ease-in-out;
-}
-
-.slide.active {
-  opacity: 1;
+nav a:hover{
+  text-decoration:underline;
 }
 
 
-/* DARK OVERLAY */
+/* HERO */
 
-.slideshow::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.50);
-  z-index: 2;
+.hero{
+  height:calc(100vh - 70px);
+  min-height:500px;
+  position:relative;
+  overflow:hidden;
+  background:#111;
+}
+
+.slideshow{
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:#111;
+  opacity:0;
+  transition:opacity 1s ease-in-out;
+}
+
+.slide.active{
+  opacity:1;
+}
+
+.slideshow::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.48);
+  z-index:2;
 }
 
 
 /* HERO TEXT */
 
-.hero-text {
-  position: absolute;
-  z-index: 5;
-  color: white;
-  text-align: center;
-  width: 90%;
-  max-width: 900px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.hero-text{
+  position:absolute;
+  z-index:5;
+  color:white;
+  text-align:center;
+  width:90%;
+  max-width:850px;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
 }
 
-.hero-text h1 {
-  font-size: 52px;
-  margin-bottom: 18px;
-  text-shadow: 2px 2px 8px #000;
+.hero-text h1{
+  font-size:clamp(32px,5vw,55px);
+  margin-bottom:15px;
+  text-shadow:2px 2px 8px #000;
 }
 
-.hero-text p {
-  font-size: 21px;
-  text-shadow: 1px 1px 5px #000;
+.hero-text p{
+  font-size:clamp(16px,2vw,21px);
+  text-shadow:1px 1px 5px #000;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 28px;
-  padding: 14px 30px;
-  background: #e60000;
-  color: white;
-  text-decoration: none;
-  border-radius: 7px;
-  font-weight: bold;
-  font-size: 17px;
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  padding:13px 28px;
+  background:#e60000;
+  color:white;
+  text-decoration:none;
+  border-radius:7px;
+  font-weight:bold;
 }
 
-.btn:hover {
-  background: #8f0000;
+.btn:hover{
+  background:#8f0000;
 }
 
 
 /* SECTIONS */
 
-section:not(.hero) {
-  padding: 70px 8%;
-  text-align: center;
+section:not(.hero){
+  padding:65px 7%;
+  text-align:center;
 }
 
-section h2 {
-  font-size: 34px;
-  margin-bottom: 18px;
-  color: #b30000;
+section h2{
+  font-size:clamp(28px,4vw,36px);
+  color:#b30000;
+  margin-bottom:18px;
 }
 
 
 /* ABOUT */
 
-.about {
-  background: white;
+.about{
+  background:white;
 }
 
-.about p {
-  max-width: 850px;
-  margin: auto;
-  font-size: 17px;
+.about p{
+  max-width:850px;
+  margin:auto;
+  font-size:17px;
 }
 
 
 /* WORK */
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  margin-top: 40px;
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-top:35px;
 }
 
-.card {
-  background: white;
-  padding: 30px 20px;
-  border-radius: 12px;
-  box-shadow: 0 3px 15px rgba(0,0,0,.12);
+.card{
+  background:white;
+  padding:28px 20px;
+  border-radius:12px;
+  box-shadow:0 3px 15px rgba(0,0,0,.12);
 }
 
-.card h3 {
-  color: #b30000;
-  margin-bottom: 10px;
+.card h3{
+  color:#b30000;
+  margin-bottom:10px;
 }
 
 
 /* DONATION */
 
-.donation {
-  background: #fff1f1;
+.donation{
+  background:#fff1f1;
 }
 
-.donation-box {
-  max-width: 650px;
-  margin: 30px auto 0;
-  background: white;
-  padding: 35px;
-  border-radius: 12px;
-  box-shadow: 0 3px 15px rgba(0,0,0,.12);
+.donation-box{
+  max-width:650px;
+  margin:30px auto;
+  background:white;
+  padding:35px 25px;
+  border-radius:12px;
+  box-shadow:0 3px 15px rgba(0,0,0,.12);
 }
 
 
 /* CONTACT */
 
-.contact {
-  background: white;
+.contact{
+  background:white;
 }
 
-.contact a:not(.btn) {
-  color: #b30000;
-  font-weight: bold;
+.contact a:not(.btn){
+  color:#b30000;
+  font-weight:bold;
 }
 
 
 /* FOOTER */
 
-footer {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 28px;
+footer{
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:28px 15px;
 }
 
 
 /* MOBILE */
 
-@media (max-width: 700px) {
+@media(max-width:700px){
 
-  header {
-    height: auto;
-    min-height: 70px;
-    padding: 15px 4%;
-    flex-direction: column;
-    gap: 12px;
+  header{
+    flex-direction:column;
+    gap:8px;
+    padding:14px 3%;
   }
 
-  .logo {
-    font-size: 20px;
+  .logo{
+    font-size:20px;
+    text-align:center;
   }
 
-  nav a {
-    margin: 0 5px;
-    font-size: 13px;
+  nav a{
+    font-size:13px;
+    margin:4px 6px;
   }
 
-  .hero {
-    height: calc(100vh - 100px);
-    min-height: 550px;
+  .hero{
+    height:calc(100vh - 105px);
+    min-height:450px;
   }
 
-  .hero-text h1 {
-    font-size: 34px;
+  .hero-text{
+    width:92%;
   }
 
-  .hero-text p {
-    font-size: 17px;
+  .hero-text h1{
+    font-size:32px;
   }
 
-  .btn {
-    font-size: 15px;
-    padding: 12px 22px;
+  .hero-text p{
+    font-size:16px;
+  }
+
+  .btn{
+    padding:12px 21px;
+    font-size:14px;
+  }
+
+  section:not(.hero){
+    padding:50px 5%;
+  }
+
+  .donation-box{
+    padding:25px 18px;
   }
 }
+
+
+/* SMALL PHONES */
+
+@media(max-width:400px){
+
+  .logo{
+    font-size:18px;
+  }
+
+  nav a{
+    font-size:12px;
+    margin:3px 4px;
+  }
+
+  .hero-text h1{
+    font-size:28px;
+  }
+
+  .hero-text p{
+    font-size:15px;
+  }
+}
+
 </style>
 </head>
-
 
 <body>
 
@@ -293,28 +329,20 @@ footer {
 </header>
 
 
-<!-- FULL SCREEN SLIDESHOW -->
+<!-- HERO SLIDESHOW -->
 
 <section class="hero" id="home">
 
   <div class="slideshow">
 
     <img src="TEAM.jpeg" class="slide active">
-
     <img src="flood-1.jpg" class="slide">
-
     <img src="flood2.jpg" class="slide">
-
     <img src="flood3.avif" class="slide">
-
     <img src="flood4.jpg" class="slide">
-
     <img src="flood5.jpg" class="slide">
-
     <img src="flood6.jpg" class="slide">
-
     <img src="flood7.jpg" class="slide">
-
 
     <div class="hero-text">
 
@@ -325,8 +353,8 @@ footer {
         disasters and difficult situations.
       </p>
 
-      <a href="#donate" class="btn">
-        ❤️ Support Our Mission
+      <a href="donation.html" class="btn">
+        ❤️ Donate Now
       </a>
 
     </div>
@@ -379,8 +407,7 @@ footer {
     <div class="card">
       <h3>🩹 Emergency Assistance</h3>
       <p>
-        Supporting people and families facing urgent difficulties
-        during emergencies.
+        Supporting people and families facing urgent difficulties.
       </p>
     </div>
 
@@ -410,28 +437,8 @@ footer {
       situations and emergencies.
     </p>
 
-    <h3 style="margin-top:25px;">
-      ❤️ Donation Details
-    </h3>
-
-    <p style="margin-top:15px;">
-      <strong>Bank Name:</strong> State Bank of India
-    </p>
-
-    <p>
-      <strong>Account Number:</strong> 35276390472
-    </p>
-
-    <p>
-      <strong>IFSC Code:</strong> SBIN0008926
-    </p>
-
-    <p style="margin-top:20px; font-size:14px;">
-      Please contact us after making a donation.
-    </p>
-
-    <a href="#contact" class="btn">
-      📞 Contact Us
+    <a href="donation.html" class="btn">
+      ❤️ Donate Now
     </a>
 
   </div>
@@ -450,7 +457,7 @@ footer {
     our activities, please contact us.
   </p>
 
-  <div style="margin-top:25px; font-size:18px; line-height:2.2;">
+  <div style="margin-top:25px;font-size:18px;line-height:2.2;">
 
     <p>
       📧 Email:
@@ -459,11 +466,21 @@ footer {
       </a>
     </p>
 
-  </div>
+    <p>
+      📞 Phone:
+      <a href="tel:+918972645067">
+        +91 8972645067
+      </a>
+    </p>
 
-  <a href="mailto:proy2953@gmail.com" class="btn">
-    📧 Send Email
-  </a>
+    <p>
+      💬 WhatsApp:
+      <a href="https://wa.me/918972645067" target="_blank">
+        Chat on WhatsApp
+      </a>
+    </p>
+
+  </div>
 
 </section>
 
@@ -474,7 +491,9 @@ footer {
 
   <p>© 2026 Emergency Responders</p>
 
-  <p>A Helping Hand for Humanity ❤️</p>
+  <p>
+    A Helping Hand for Humanity ❤️
+  </p>
 
 </footer>
 
@@ -487,27 +506,19 @@ let slides = document.querySelectorAll(".slide");
 
 let currentSlide = 0;
 
-function showSlide(index) {
+setInterval(function(){
 
-  slides.forEach(function(slide) {
-    slide.classList.remove("active");
-  });
-
-  slides[index].classList.add("active");
-}
-
-
-setInterval(function() {
+  slides[currentSlide].classList.remove("active");
 
   currentSlide++;
 
-  if (currentSlide >= slides.length) {
+  if(currentSlide >= slides.length){
     currentSlide = 0;
   }
 
-  showSlide(currentSlide);
+  slides[currentSlide].classList.add("active");
 
-}, 4000);
+},4000);
 
 </script>
 
