@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Donation Details | Emergency Responders</title>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Donate | Emergency Responders</title>
+
 
 <style>
+
+/* =========================
+   BASIC
+========================= */
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
+  font-family:Arial,Helvetica,sans-serif;
   background:#f5f7fa;
   color:#222;
   line-height:1.6;
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 header{
   background:#b30000;
@@ -35,7 +54,13 @@ header h1{
 
 header p{
   margin-top:5px;
+  font-size:16px;
 }
+
+
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
   width:100%;
@@ -43,6 +68,11 @@ header p{
   margin:30px auto;
   padding:0 15px;
 }
+
+
+/* =========================
+   BOX
+========================= */
 
 .box{
   background:white;
@@ -59,6 +89,11 @@ h2{
   font-size:clamp(23px,5vw,30px);
 }
 
+
+/* =========================
+   BANK DETAILS
+========================= */
+
 .details{
   background:#fff1f1;
   padding:20px;
@@ -67,59 +102,132 @@ h2{
   overflow-wrap:anywhere;
 }
 
+
+/* =========================
+   UPI
+========================= */
+
 .upi{
   text-align:center;
 }
 
 .upi-id{
   display:inline-block;
-  margin:10px 0 20px;
-  padding:10px 15px;
+  margin:15px 0;
+  padding:12px 16px;
+
   background:#fff1f1;
-  border-radius:8px;
+
+  border:2px solid #e60000;
+  border-radius:9px;
+
   color:#b30000;
+
   font-size:clamp(17px,4vw,22px);
+
   font-weight:bold;
+
+  text-decoration:none;
+
   word-break:break-all;
+
+  cursor:pointer;
+
+  transition:.2s;
 }
 
-/* QR CODE */
+.upi-id:hover{
+  background:#ffe0e0;
+  transform:scale(1.02);
+}
+
+
+/* =========================
+   QR CODE
+========================= */
 
 .qr-container{
   display:flex;
   justify-content:center;
   align-items:center;
-  margin:15px auto 20px;
+
+  margin:20px auto;
+
+  width:100%;
+}
+
+.qr-container a{
+  display:block;
+  text-decoration:none;
 }
 
 .qr-container img{
-  width:min(280px,75vw);
-  height:auto;
-  max-width:100%;
   display:block;
-  border:8px solid white;
-  border-radius:10px;
-  box-shadow:0 3px 12px rgba(0,0,0,.18);
+
+  width:min(280px,75vw);
+
+  height:auto;
+
+  max-width:100%;
+
+  padding:8px;
+
+  background:white;
+
+  border:2px solid #ddd;
+
+  border-radius:12px;
+
+  box-shadow:0 4px 15px rgba(0,0,0,.18);
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.qr-container img:hover{
+  transform:scale(1.03);
 }
 
 .qr-text{
   text-align:center;
+
   font-size:15px;
+
   color:#555;
+
+  margin-top:10px;
 }
+
+
+/* =========================
+   BUTTON
+========================= */
 
 .btn{
   display:block;
+
   width:100%;
+
   text-align:center;
+
   padding:14px 15px;
+
   margin-top:16px;
+
   border-radius:8px;
+
   background:#e60000;
+
   color:white;
+
   text-decoration:none;
+
   font-weight:bold;
+
   font-size:16px;
+
+  transition:.2s;
 }
 
 .btn:hover{
@@ -136,27 +244,46 @@ h2{
 
 .back{
   background:#333;
-  margin-bottom:30px;
 }
+
+
+/* =========================
+   NOTE
+========================= */
 
 .note{
   text-align:center;
+
   color:#555;
+
   font-size:14px;
+
   margin-top:12px;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
   background:#222;
+
   color:white;
+
   text-align:center;
+
   padding:25px 15px;
+
+  margin-top:40px;
 }
 
 
-/* TABLET */
+/* =========================
+   TABLET
+========================= */
 
-@media (min-width:600px) and (max-width:1000px){
+@media(min-width:600px) and (max-width:1000px){
 
   .container{
     max-width:680px;
@@ -173,7 +300,9 @@ footer{
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:599px){
 
@@ -181,28 +310,43 @@ footer{
     padding:23px 12px;
   }
 
+  header h1{
+    font-size:30px;
+  }
+
   .container{
     margin:20px auto;
+
     padding:0 10px;
   }
 
   .box{
     padding:24px 16px;
+
     border-radius:12px;
   }
 
   .details{
     padding:15px;
+
     font-size:15px;
   }
 
   .qr-container img{
     width:75vw;
+
     max-width:270px;
+  }
+
+  .upi-id{
+    font-size:18px;
+
+    padding:11px 12px;
   }
 
   .btn{
     font-size:15px;
+
     padding:13px 10px;
   }
 
@@ -212,22 +356,32 @@ footer{
 
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
   <h1>❤️ Donation Details</h1>
 
-  <p>A Helping Hand for Humanity</p>
+  <p>
+    A Helping Hand for Humanity
+  </p>
 
 </header>
+
 
 
 <div class="container">
 
 
-<!-- BANK -->
+<!-- =========================
+     BANK DONATION
+========================= -->
 
 <div class="box">
 
@@ -253,44 +407,82 @@ footer{
   </div>
 
   <p class="note">
-    Please verify the details carefully before making a donation.
+
+    Please verify the bank details carefully
+    before making a donation.
+
   </p>
 
 </div>
 
 
-<!-- UPI -->
+
+<!-- =========================
+     UPI DONATION
+========================= -->
 
 <div class="box upi">
 
   <h2>📱 UPI Donation</h2>
 
-  <p>Scan the QR Code or use our UPI ID</p>
+  <p>
+    Tap the UPI ID or scan the QR code
+    to make a payment.
+  </p>
+
+
+  <!-- CLICKABLE QR -->
 
   <div class="qr-container">
 
-    <img
-      src="emergencyresponders-upi-qr.png"
-      alt="Emergency Responders UPI QR Code">
+    <a
+      href="upi://pay?pa=emergencyresponders@ptyes&pn=Emergency%20Responders&cu=INR"
+      aria-label="Pay using UPI"
+    >
+
+      <img
+        src="emergencyresponders-upi-qr.png"
+        alt="Emergency Responders UPI QR Code"
+      >
+
+    </a>
 
   </div>
 
+
   <p class="qr-text">
-    Scan this QR code using your UPI app
+
+    👆 Tap QR Code to pay
+
   </p>
 
-  <p class="upi-id">
+
+  <!-- CLICKABLE UPI ID -->
+
+  <a
+    href="upi://pay?pa=emergencyresponders@ptyes&pn=Emergency%20Responders&cu=INR"
+    class="upi-id"
+  >
+
     emergencyresponders@ptyes
-  </p>
+
+  </a>
+
 
   <p class="note">
-    Please verify the UPI details before making your donation.
+
+    👆 Tap the UPI ID to open your available
+    UPI payment app.
+
   </p>
 
 </div>
 
 
-<!-- CONTACT -->
+
+<!-- =========================
+     CONFIRMATION
+========================= -->
 
 <div class="box">
 
@@ -304,28 +496,37 @@ footer{
   </p>
 
 
+  <!-- WHATSAPP -->
+
   <a
     href="https://wa.me/918972645067?text=Hello%20Emergency%20Responders,%20I%20have%20made%20a%20donation."
     target="_blank"
-    class="btn whatsapp">
+    class="btn whatsapp"
+  >
 
     💬 Confirm Donation on WhatsApp
 
   </a>
 
 
+  <!-- EMAIL -->
+
   <a
     href="mailto:proy2953@gmail.com"
-    class="btn email">
+    class="btn email"
+  >
 
     📧 Contact by Email
 
   </a>
 
 
+  <!-- PHONE -->
+
   <a
     href="tel:+918972645067"
-    class="btn">
+    class="btn"
+  >
 
     📞 Call Us
 
@@ -334,7 +535,15 @@ footer{
 </div>
 
 
-<a href="index.html" class="btn back">
+
+<!-- =========================
+     BACK
+========================= -->
+
+<a
+  href="index.html"
+  class="btn back"
+>
 
   ← Back to Website
 
@@ -344,14 +553,24 @@ footer{
 </div>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-  <p>© 2026 Emergency Responders</p>
+  <p>
+    © 2026 Emergency Responders
+  </p>
 
-  <p>A Helping Hand for Humanity ❤️</p>
+  <p>
+    A Helping Hand for Humanity ❤️
+  </p>
 
 </footer>
 
 
 </body>
+
 </html>
