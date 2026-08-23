@@ -1,76 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Helping Hand for Humanity</title>
-    <meta name="description" content="A Helping Hand for Humanity — Standing Together for Humanity.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Emergency Responders | A Helping Hand for Humanity</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #b30000;
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      min-height: 500px;
+      background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+                  url("https://images.unsplash.com/photo-1593113630400-ea4288922497?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 30px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 13px 28px;
+      background: #e60000;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #990000;
+    }
+
+    section {
+      padding: 60px 8%;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #b30000;
+    }
+
+    .about {
+      background: white;
+    }
+
+    .about p {
+      max-width: 850px;
+      margin: auto;
+      font-size: 17px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.1);
+    }
+
+    .card h3 {
+      color: #b30000;
+      margin-bottom: 10px;
+    }
+
+    .donation {
+      background: #fff1f1;
+    }
+
+    .donation-box {
+      max-width: 650px;
+      margin: 30px auto 0;
+      background: white;
+      padding: 35px;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.1);
+    }
+
+    .contact {
+      background: white;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 7px;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <h1>A Helping Hand for Humanity</h1>
-    <p>Standing Together for Humanity</p>
-</header>
+  <header>
+    <div class="logo">🚨 Emergency Responders</div>
 
-<nav>
-    <a href="#home">Home</a>
-    <a href="#about">About Us</a>
-    <a href="#emergency">Emergency Help</a>
-    <a href="#donate">Donate</a>
-    <a href="#contact">Contact</a>
-</nav>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#help">Our Work</a>
+      <a href="#donate">Donate</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<main>
 
-<section id="home">
-    <h2>Standing Together for Humanity</h2>
-    <p>
-        We stand beside people affected by floods, earthquakes,
-        fires and other emergencies.
-    </p>
+  <section class="hero" id="home">
+    <div>
+      <h1>A Helping Hand for Humanity</h1>
 
-    <a href="#donate">Donate Now</a>
-</section>
+      <p>
+        Standing together to support people affected by emergencies,
+        disasters and difficult situations.
+      </p>
 
-<section id="about">
+      <a href="#donate" class="btn">❤️ Support Our Mission</a>
+    </div>
+  </section>
+
+
+  <section class="about" id="about">
     <h2>About Us</h2>
+
     <p>
-        A Helping Hand for Humanity is a community initiative
-        dedicated to helping people during difficult times.
+      Emergency Responders is a humanitarian initiative created to help
+      people during difficult times. Our goal is to stand beside families
+      and communities affected by emergencies, natural disasters and
+      other critical situations.
     </p>
-</section>
+  </section>
 
-<section id="emergency">
-    <h2>Emergency Help</h2>
-    <p>
-        If you or someone you know needs emergency assistance,
-        please contact our response team.
-    </p>
-</section>
 
-<section id="donate">
-    <h2>Support Our Mission</h2>
-    <p>
-        Your contribution can help provide essential support
-        to people affected by emergencies.
-    </p>
+  <section id="help">
+    <h2>What We Do</h2>
 
-    <button>Donate Now</button>
-</section>
+    <div class="cards">
 
-<section id="contact">
+      <div class="card">
+        <h3>🌊 Disaster Support</h3>
+        <p>
+          Supporting communities affected by floods, storms and other
+          natural disasters.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🍚 Food Support</h3>
+        <p>
+          Helping provide essential food and basic supplies to people
+          who need assistance.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🩹 Emergency Assistance</h3>
+        <p>
+          Supporting people and families facing urgent difficulties
+          during emergencies.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🤝 Community Help</h3>
+        <p>
+          Working together with local communities to reach people
+          who need help.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="donation" id="donate">
+    <h2>Support Our Work</h2>
+
+    <div class="donation-box">
+
+      <p>
+        Your support can help us reach people who are facing difficult
+        situations and emergencies.
+      </p>
+
+      <a href="#" class="btn">❤️ Donate Now</a>
+
+      <p style="margin-top:20px; font-size:14px;">
+        Donation details will be added here.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="contact" id="contact">
     <h2>Contact Us</h2>
-    <p>Email: YOUR-EMAIL@example.com</p>
-</section>
 
-</main>
+    <p>
+      If you want to support our humanitarian work or learn more about
+      our activities, please contact us.
+    </p>
 
-<footer>
-    <p>© 2026 A Helping Hand for Humanity</p>
-    <p>Standing Together for Humanity</p>
-</footer>
+    <a href="mailto:YOUR-EMAIL@example.com" class="btn">
+      📧 Contact Us
+    </a>
+  </section>
+
+
+  <footer>
+    <p>© 2026 Emergency Responders</p>
+    <p>A Helping Hand for Humanity ❤️</p>
+  </footer>
 
 </body>
 </html>
