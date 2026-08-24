@@ -21,14 +21,13 @@ body{
 
 header{
     background:#b30000;
-    color:#fff;
+    color:white;
     padding:22px 15px;
     text-align:center;
 }
 
 header h1{
-    font-size:26px;
-    margin-bottom:6px;
+    margin-bottom:5px;
 }
 
 .container{
@@ -38,7 +37,7 @@ header h1{
 }
 
 .card{
-    background:#fff;
+    background:white;
     padding:25px;
     border-radius:12px;
     box-shadow:0 3px 15px rgba(0,0,0,.10);
@@ -52,8 +51,8 @@ h2{
 
 label{
     display:block;
-    margin:13px 0 6px;
     font-weight:bold;
+    margin:14px 0 6px;
 }
 
 input{
@@ -67,7 +66,7 @@ input{
 button{
     border:0;
     border-radius:7px;
-    padding:11px 18px;
+    padding:12px 18px;
     cursor:pointer;
     font-weight:bold;
     font-size:15px;
@@ -75,39 +74,39 @@ button{
 
 .login-btn{
     width:100%;
-    margin-top:18px;
+    margin-top:20px;
     background:#b30000;
-    color:#fff;
+    color:white;
+}
+
+.login-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
 }
 
 .logout{
     float:right;
     background:#333;
-    color:#fff;
+    color:white;
 }
 
 .approve{
     background:#168534;
-    color:#fff;
+    color:white;
 }
 
 .reject{
     background:#d40000;
-    color:#fff;
+    color:white;
     margin-left:8px;
 }
 
 .message{
-    margin-top:15px;
-    padding:12px;
-    border-radius:7px;
     display:none;
+    margin-top:15px;
+    padding:13px;
+    border-radius:7px;
     word-break:break-word;
-}
-
-.error{
-    background:#ffe8e8;
-    color:#9b0000;
 }
 
 .success{
@@ -115,40 +114,21 @@ button{
     color:#176b17;
 }
 
+.error{
+    background:#ffe8e8;
+    color:#9b0000;
+}
+
 .hidden{
-    display:none;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-bottom:25px;
-}
-
-.stat{
-    background:#fff;
-    padding:22px;
-    border-radius:10px;
-    text-align:center;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-}
-
-.stat p{
-    margin-bottom:8px;
-}
-
-.stat h3{
-    font-size:28px;
-    color:#b30000;
+    display:none !important;
 }
 
 .item{
+    background:#fafafa;
     border:1px solid #ddd;
     border-radius:10px;
     padding:18px;
     margin-bottom:15px;
-    background:#fafafa;
 }
 
 .item p{
@@ -162,8 +142,8 @@ button{
 
 .item img{
     width:100%;
-    max-width:400px;
-    max-height:280px;
+    max-width:420px;
+    max-height:300px;
     object-fit:cover;
     border-radius:8px;
     margin:10px 0;
@@ -174,14 +154,29 @@ button{
     margin-top:15px;
 }
 
-.section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.stat h3{
+    color:#b30000;
+    font-size:27px;
+    margin-top:6px;
 }
 
 .badge{
+    display:inline-block;
     background:#fff0d9;
     color:#9a5b00;
     padding:6px 10px;
@@ -215,15 +210,6 @@ button{
         float:none;
         margin-bottom:15px;
     }
-
-    .section-title{
-        display:block;
-    }
-
-    .badge{
-        display:inline-block;
-        margin-top:8px;
-    }
 }
 </style>
 </head>
@@ -241,16 +227,17 @@ button{
 
 <div class="card" id="loginBox">
 
-    <h2>Admin Login</h2>
+    <h2>🔐 Admin Login</h2>
 
     <form id="loginForm">
 
-        <label for="email">Email</label>
+        <label for="email">Admin Email</label>
 
         <input
             type="email"
             id="email"
             value="proy2953@gmail.com"
+            autocomplete="username"
             required
         >
 
@@ -259,37 +246,54 @@ button{
         <input
             type="password"
             id="password"
+            autocomplete="current-password"
             required
         >
 
-        <button type="submit" class="login-btn">
-            Login
+        <button
+            type="submit"
+            class="login-btn"
+            id="loginButton"
+        >
+            🔐 Login
         </button>
 
     </form>
 
-    <div id="loginMessage" class="message"></div>
+    <div
+        id="loginMessage"
+        class="message"
+    ></div>
 
 </div>
 
 
 <!-- ADMIN PANEL -->
 
-<div id="adminPanel" class="hidden">
+<div
+    id="adminPanel"
+    class="hidden"
+>
 
     <div class="card">
 
-        <button class="logout" onclick="logout()">
+        <button
+            class="logout"
+            onclick="logout()"
+        >
             Logout
         </button>
 
         <h2>Admin Dashboard</h2>
 
         <p>
-            Review donations and relief work submissions.
+            Manage donations and relief work submissions.
         </p>
 
-        <div id="panelMessage" class="message"></div>
+        <div
+            id="panelMessage"
+            class="message"
+        ></div>
 
     </div>
 
@@ -299,7 +303,7 @@ button{
     <div class="stats">
 
         <div class="stat">
-            <p>Verified Donors</p>
+            <p>Approved Donations</p>
             <h3 id="donorCount">0</h3>
         </div>
 
@@ -316,19 +320,22 @@ button{
     </div>
 
 
-    <!-- RELIEF WORK -->
+    <!-- RELIEF -->
 
     <div class="card">
 
-        <div class="section-title">
+        <h2>
+            📸 Pending Relief Work
+        </h2>
 
-            <h2>📸 Pending Relief Work</h2>
+        <span
+            class="badge"
+            id="reliefBadge"
+        >
+            0 Pending
+        </span>
 
-            <span class="badge" id="reliefBadge">
-                0 Pending
-            </span>
-
-        </div>
+        <br><br>
 
         <div id="reliefList">
             Loading...
@@ -341,7 +348,9 @@ button{
 
     <div class="card">
 
-        <h2>💰 Pending Donations</h2>
+        <h2>
+            💰 Pending Donations
+        </h2>
 
         <div id="pendingList">
             Loading...
@@ -364,6 +373,7 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
 
+
 const supabaseClient =
 window.supabase.createClient(
     SUPABASE_URL,
@@ -374,17 +384,17 @@ window.supabase.createClient(
 const loginForm =
 document.getElementById("loginForm");
 
+const loginButton =
+document.getElementById("loginButton");
+
+const loginMessage =
+document.getElementById("loginMessage");
+
 const loginBox =
 document.getElementById("loginBox");
 
 const adminPanel =
 document.getElementById("adminPanel");
-
-const loginMessage =
-document.getElementById("loginMessage");
-
-const panelMessage =
-document.getElementById("panelMessage");
 
 
 /* =========================
@@ -392,66 +402,157 @@ document.getElementById("panelMessage");
 ========================= */
 
 loginForm.addEventListener(
-"submit",
-async function(event){
+    "submit",
+    async function(event){
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const email =
-        document.getElementById("email")
-        .value
-        .trim();
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim()
+            .toLowerCase();
 
-    const password =
-        document.getElementById("password")
-        .value;
+        const password =
+            document
+            .getElementById("password")
+            .value;
 
-    showLoginMessage(
-        "Signing in...",
-        false
-    );
 
-    const { data, error } =
-        await supabaseClient.auth
-        .signInWithPassword({
+        if(!email || !password){
 
-            email:email,
+            showLoginMessage(
+                "Please enter email and password.",
+                true
+            );
 
-            password:password
+            return;
+        }
 
-        });
 
-    if(error){
+        loginButton.disabled = true;
+
+        loginButton.textContent =
+            "Signing in...";
+
 
         showLoginMessage(
-            "Login failed: " +
-            error.message,
-            true
+            "Connecting to Supabase...",
+            false
         );
 
-        return;
+
+        try{
+
+            const result =
+                await supabaseClient.auth
+                .signInWithPassword({
+
+                    email:email,
+
+                    password:password
+
+                });
+
+
+            if(result.error){
+
+                console.error(
+                    "LOGIN ERROR:",
+                    result.error
+                );
+
+
+                showLoginMessage(
+                    "❌ " +
+                    result.error.message,
+                    true
+                );
+
+
+                loginButton.disabled = false;
+
+                loginButton.textContent =
+                    "🔐 Login";
+
+                return;
+            }
+
+
+            if(!result.data.session){
+
+                showLoginMessage(
+                    "Login failed: no session was created.",
+                    true
+                );
+
+                loginButton.disabled = false;
+
+                loginButton.textContent =
+                    "🔐 Login";
+
+                return;
+            }
+
+
+            showLoginMessage(
+                "✅ Login successful. Opening Admin Panel...",
+                false
+            );
+
+
+            loginBox.classList.add(
+                "hidden"
+            );
+
+            adminPanel.classList.remove(
+                "hidden"
+            );
+
+
+            await loadData();
+
+
+        }catch(error){
+
+            console.error(
+                "LOGIN EXCEPTION:",
+                error
+            );
+
+
+            showLoginMessage(
+                "❌ Connection error: " +
+                error.message,
+                true
+            );
+
+
+        }finally{
+
+            loginButton.disabled = false;
+
+            loginButton.textContent =
+                "🔐 Login";
+
+        }
+
     }
-
-    loginBox.classList.add("hidden");
-
-    adminPanel.classList.remove("hidden");
-
-    await loadData();
-
-});
+);
 
 
 /* =========================
-   LOAD ALL DATA
+   LOAD DATA
 ========================= */
 
 async function loadData(){
 
+    await loadReliefWork();
+
     await loadPendingDonations();
 
     await loadStats();
-
-    await loadReliefWork();
 
 }
 
@@ -463,23 +564,20 @@ async function loadData(){
 async function loadReliefWork(){
 
     const list =
-        document.getElementById("reliefList");
+        document.getElementById(
+            "reliefList"
+        );
+
 
     list.innerHTML =
-        "<p>Loading...</p>";
+        "<p>Loading relief work...</p>";
+
 
     const { data, error } =
         await supabaseClient
-
         .from("relief_work")
-
         .select("*")
-
-        .eq(
-            "status",
-            "pending"
-        )
-
+        .eq("status","pending")
         .order(
             "created_at",
             {
@@ -490,9 +588,14 @@ async function loadReliefWork(){
 
     if(error){
 
+        console.error(
+            "RELIEF ERROR:",
+            error
+        );
+
+
         list.innerHTML =
             "<div class='message error' style='display:block'>" +
-            "Relief work error: " +
             escapeHtml(error.message) +
             "</div>";
 
@@ -506,7 +609,8 @@ async function loadReliefWork(){
 
     document.getElementById(
         "reliefCount"
-    ).textContent = count;
+    ).textContent =
+        count;
 
 
     document.getElementById(
@@ -515,7 +619,7 @@ async function loadReliefWork(){
         count + " Pending";
 
 
-    if(!data || data.length === 0){
+    if(count === 0){
 
         list.innerHTML =
             "<p>No pending relief work.</p>";
@@ -531,6 +635,7 @@ async function loadReliefWork(){
 
         const div =
             document.createElement("div");
+
 
         div.className =
             "item";
@@ -550,19 +655,21 @@ async function loadReliefWork(){
 
             <p>
                 <strong>Relief Work:</strong>
-                ${escapeHtml(item.activity)}
+                ${escapeHtml(
+                    item.activity ||
+                    item.description ||
+                    ""
+                )}
             </p>
 
             <p>
-                <strong>Submitted:</strong>
-                ${new Date(
-                    item.created_at
-                ).toLocaleString()}
+                <strong>Status:</strong>
+                ${escapeHtml(item.status)}
             </p>
 
             <img
                 src="${escapeHtml(item.photo_url)}"
-                alt="Relief work photo"
+                alt="Relief work"
                 loading="lazy"
             >
 
@@ -583,7 +690,6 @@ async function loadReliefWork(){
                 </button>
 
             </div>
-
         `;
 
 
@@ -602,9 +708,7 @@ async function approveRelief(id){
 
     const { error } =
         await supabaseClient
-
         .from("relief_work")
-
         .update({
 
             status:"approved",
@@ -613,7 +717,6 @@ async function approveRelief(id){
                 new Date().toISOString()
 
         })
-
         .eq(
             "id",
             id
@@ -623,7 +726,7 @@ async function approveRelief(id){
     if(error){
 
         showPanelMessage(
-            "Approve failed: " +
+            "❌ Approve failed: " +
             error.message,
             true
         );
@@ -633,7 +736,8 @@ async function approveRelief(id){
 
 
     showPanelMessage(
-        "✅ Relief work approved successfully."
+        "✅ Relief work approved successfully.",
+        false
     );
 
 
@@ -650,15 +754,12 @@ async function rejectRelief(id){
 
     const { error } =
         await supabaseClient
-
         .from("relief_work")
-
         .update({
 
             status:"rejected"
 
         })
-
         .eq(
             "id",
             id
@@ -668,7 +769,7 @@ async function rejectRelief(id){
     if(error){
 
         showPanelMessage(
-            "Reject failed: " +
+            "❌ Reject failed: " +
             error.message,
             true
         );
@@ -678,7 +779,8 @@ async function rejectRelief(id){
 
 
     showPanelMessage(
-        "Relief work rejected."
+        "Relief work rejected.",
+        false
     );
 
 
@@ -698,22 +800,16 @@ async function loadPendingDonations(){
             "pendingList"
         );
 
+
     list.innerHTML =
-        "<p>Loading...</p>";
+        "<p>Loading donations...</p>";
 
 
     const { data, error } =
         await supabaseClient
-
         .from("donations")
-
         .select("*")
-
-        .eq(
-            "status",
-            "pending"
-        )
-
+        .eq("status","pending")
         .order(
             "created_at",
             {
@@ -726,7 +822,6 @@ async function loadPendingDonations(){
 
         list.innerHTML =
             "<div class='message error' style='display:block'>" +
-            "Donation error: " +
             escapeHtml(error.message) +
             "</div>";
 
@@ -746,10 +841,11 @@ async function loadPendingDonations(){
     list.innerHTML = "";
 
 
-    data.forEach(function(donation){
+    data.forEach(function(item){
 
         const div =
             document.createElement("div");
+
 
         div.className =
             "item";
@@ -760,58 +856,41 @@ async function loadPendingDonations(){
             <p>
                 <strong>Donor:</strong>
                 ${escapeHtml(
-                    donation.donor_name
+                    item.donor_name || ""
                 )}
             </p>
 
             <p>
                 <strong>Amount:</strong>
                 ₹${Number(
-                    donation.amount
+                    item.amount || 0
                 ).toLocaleString("en-IN")}
             </p>
 
             <p>
                 <strong>Transaction ID:</strong>
                 ${escapeHtml(
-                    donation.transaction_id
+                    item.transaction_id || ""
                 )}
-            </p>
-
-            <p>
-                <strong>Anonymous:</strong>
-                ${
-                    donation.anonymous
-                    ? "Yes"
-                    : "No"
-                }
-            </p>
-
-            <p>
-                <strong>Submitted:</strong>
-                ${new Date(
-                    donation.created_at
-                ).toLocaleString()}
             </p>
 
             <div class="actions">
 
                 <button
                     class="approve"
-                    onclick="approveDonation(${donation.id})"
+                    onclick="approveDonation(${item.id})"
                 >
                     ✅ Approve
                 </button>
 
                 <button
                     class="reject"
-                    onclick="rejectDonation(${donation.id})"
+                    onclick="rejectDonation(${item.id})"
                 >
                     ❌ Reject
                 </button>
 
             </div>
-
         `;
 
 
@@ -823,16 +902,14 @@ async function loadPendingDonations(){
 
 
 /* =========================
-   APPROVE DONATION
+   DONATION APPROVE
 ========================= */
 
 async function approveDonation(id){
 
     const { error } =
         await supabaseClient
-
         .from("donations")
-
         .update({
 
             status:"approved",
@@ -841,7 +918,6 @@ async function approveDonation(id){
                 new Date().toISOString()
 
         })
-
         .eq(
             "id",
             id
@@ -851,7 +927,7 @@ async function approveDonation(id){
     if(error){
 
         showPanelMessage(
-            "Approve failed: " +
+            "❌ Approve failed: " +
             error.message,
             true
         );
@@ -861,7 +937,8 @@ async function approveDonation(id){
 
 
     showPanelMessage(
-        "Donation approved successfully."
+        "✅ Donation approved.",
+        false
     );
 
 
@@ -871,22 +948,19 @@ async function approveDonation(id){
 
 
 /* =========================
-   REJECT DONATION
+   DONATION REJECT
 ========================= */
 
 async function rejectDonation(id){
 
     const { error } =
         await supabaseClient
-
         .from("donations")
-
         .update({
 
             status:"rejected"
 
         })
-
         .eq(
             "id",
             id
@@ -896,7 +970,7 @@ async function rejectDonation(id){
     if(error){
 
         showPanelMessage(
-            "Reject failed: " +
+            "❌ Reject failed: " +
             error.message,
             true
         );
@@ -906,7 +980,8 @@ async function rejectDonation(id){
 
 
     showPanelMessage(
-        "Donation rejected."
+        "Donation rejected.",
+        false
     );
 
 
@@ -923,11 +998,8 @@ async function loadStats(){
 
     const { data, error } =
         await supabaseClient
-
         .from("donations")
-
         .select("amount")
-
         .eq(
             "status",
             "approved"
@@ -937,7 +1009,7 @@ async function loadStats(){
     if(error){
 
         console.error(
-            "Stats error:",
+            "STATS ERROR:",
             error
         );
 
@@ -947,22 +1019,19 @@ async function loadStats(){
 
     let total = 0;
 
-    let count = 0;
-
 
     data.forEach(function(item){
 
-        count++;
-
         total +=
-            Number(item.amount);
+            Number(item.amount || 0);
 
     });
 
 
     document.getElementById(
         "donorCount"
-    ).textContent = count;
+    ).textContent =
+        data.length;
 
 
     document.getElementById(
@@ -981,8 +1050,8 @@ async function loadStats(){
 async function logout(){
 
     await supabaseClient
-        .auth
-        .signOut();
+    .auth
+    .signOut();
 
     location.reload();
 
@@ -1017,7 +1086,7 @@ function showLoginMessage(
 
 function showPanelMessage(
     text,
-    isError = false
+    isError
 ){
 
     panelMessage.style.display =
