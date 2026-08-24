@@ -95,6 +95,44 @@ textarea{
     resize:vertical;
 }
 
+/* PHOTO UPLOAD */
+
+.photo-box{
+    border:2px dashed #ccc;
+    border-radius:10px;
+    padding:20px;
+    margin-top:8px;
+    text-align:center;
+    background:#fafafa;
+}
+
+.photo-box input{
+    border:none;
+    padding:8px;
+    background:transparent;
+}
+
+.photo-note{
+    color:#666;
+    font-size:14px;
+    margin-top:8px;
+}
+
+.preview{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:15px;
+}
+
+.preview img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    border-radius:8px;
+    border:1px solid #ddd;
+}
+
 .help-note{
     background:#fff5f5;
     border-left:4px solid #b30000;
@@ -170,6 +208,14 @@ footer p{
 
     header h1{
         font-size:23px;
+    }
+
+    .preview{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .preview img{
+        height:110px;
     }
 
 }
@@ -258,7 +304,7 @@ footer p{
             >
 
 
-            <!-- PEOPLE HELPED -->
+            <!-- PEOPLE -->
 
             <label for="people">
                 Number of People Helped
@@ -273,7 +319,7 @@ footer p{
             >
 
 
-            <!-- SUPPORT TYPE -->
+            <!-- SUPPORT -->
 
             <label for="support">
                 Type of Support Provided
@@ -319,7 +365,7 @@ footer p{
             </select>
 
 
-            <!-- DESCRIPTION -->
+            <!-- DETAILS -->
 
             <label for="description">
                 Relief Work Details
@@ -335,20 +381,35 @@ footer p{
             <!-- PHOTO -->
 
             <label for="photo">
-                Photo / Evidence
+                📷 Photo / Evidence
             </label>
 
-            <input
-                type="file"
-                id="photo"
-                accept="image/*"
-            >
+            <div class="photo-box">
+
+                <input
+                    type="file"
+                    id="photo"
+                    accept="image/*"
+                    multiple
+                >
+
+                <div class="photo-note">
+                    Select up to 5 photos
+                </div>
+
+                <div
+                    id="preview"
+                    class="preview"
+                ></div>
+
+            </div>
+
 
             <div class="help-note">
 
-                📷 You can upload a photo showing the
-                relief activity. Please avoid sharing
-                sensitive personal information.
+                📷 Please upload photos related to the
+                relief activity. Avoid uploading sensitive
+                personal information.
 
             </div>
 
@@ -398,6 +459,76 @@ footer p{
 
 <script>
 
+/* ================= PHOTO PREVIEW ================= */
+
+const photoInput =
+    document.getElementById("photo");
+
+const preview =
+    document.getElementById("preview");
+
+
+photoInput.addEventListener(
+    "change",
+    function(){
+
+        preview.innerHTML = "";
+
+        const files =
+            Array.from(this.files);
+
+
+        if(files.length > 5){
+
+            alert(
+                "You can select a maximum of 5 photos."
+            );
+
+            this.value = "";
+
+            return;
+        }
+
+
+        files.forEach(
+            function(file){
+
+                if(!file.type.startsWith("image/")){
+                    return;
+                }
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function(event){
+
+                        const img =
+                            document.createElement("img");
+
+                        img.src =
+                            event.target.result;
+
+                        img.alt =
+                            "Relief work photo";
+
+                        preview.appendChild(img);
+
+                    };
+
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+
+    }
+);
+
+
+/* ================= FORM SUBMISSION ================= */
+
 document
 .getElementById("reliefForm")
 .addEventListener(
@@ -424,6 +555,9 @@ document
         document
         .getElementById("reliefForm")
         .reset();
+
+
+        preview.innerHTML = "";
 
     }
 );
