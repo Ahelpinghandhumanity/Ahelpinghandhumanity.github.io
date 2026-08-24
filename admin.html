@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Admin Panel | Emergency Responders</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -47,7 +49,12 @@ header h1{
 
 h2{
     color:#b30000;
-    margin-bottom:18px;
+    margin-bottom:12px;
+}
+
+.section-intro{
+    color:#666;
+    margin-bottom:20px;
 }
 
 label{
@@ -143,7 +150,7 @@ button{
     color:#b30000;
 }
 
-.donation{
+.item{
     border:1px solid #ddd;
     border-radius:10px;
     padding:18px;
@@ -151,12 +158,12 @@ button{
     background:#fafafa;
 }
 
-.donation p{
+.item p{
     margin-bottom:8px;
     word-break:break-word;
 }
 
-.donation strong{
+.item strong{
     color:#b30000;
 }
 
@@ -165,10 +172,22 @@ button{
 }
 
 .status{
-    padding:10px;
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:6px;
+    font-weight:bold;
     background:#fff7e6;
-    border-radius:7px;
-    margin-bottom:15px;
+    color:#a15c00;
+}
+
+.empty{
+    padding:20px;
+    text-align:center;
+    color:#777;
+}
+
+.section-title{
+    margin-top:35px;
 }
 
 @media(max-width:600px){
@@ -196,21 +215,28 @@ button{
         float:none;
         margin-bottom:15px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header>
+
     <h1>Emergency Responders</h1>
+
     <p>Admin Approval Panel</p>
+
 </header>
 
 
 <div class="container">
 
-<!-- LOGIN -->
+
+<!-- ================= LOGIN ================= -->
 
 <div class="card" id="loginBox">
 
@@ -218,7 +244,9 @@ button{
 
     <form id="loginForm">
 
-        <label for="email">Email</label>
+        <label for="email">
+            Email
+        </label>
 
         <input
             type="email"
@@ -227,7 +255,9 @@ button{
             required
         >
 
-        <label for="password">Password</label>
+        <label for="password">
+            Password
+        </label>
 
         <input
             type="password"
@@ -239,7 +269,7 @@ button{
             type="submit"
             class="login-btn"
         >
-            Login
+            🔐 Login
         </button>
 
     </form>
@@ -252,77 +282,174 @@ button{
 </div>
 
 
-<!-- ADMIN PANEL -->
+<!-- ================= ADMIN PANEL ================= -->
 
 <div
     id="adminPanel"
     class="hidden"
 >
 
-    <div class="card">
 
-        <button
-            class="logout"
-            onclick="logout()"
-        >
-            Logout
-        </button>
+<!-- ================= TOP ================= -->
 
-        <h2>Donation Management</h2>
+<div class="card">
+
+    <button
+        class="logout"
+        onclick="logout()"
+    >
+        Logout
+    </button>
+
+    <h2>
+        Admin Dashboard
+    </h2>
+
+    <p>
+        Manage donations, volunteers and community support requests.
+    </p>
+
+    <div
+        id="panelMessage"
+        class="message"
+    ></div>
+
+</div>
+
+
+<!-- ================= DONATION STATS ================= -->
+
+<div class="stats">
+
+    <div class="stat">
 
         <p>
-            Review and approve pending donation submissions.
+            Verified Donors
         </p>
 
-        <div
-            id="panelMessage"
-            class="message"
-        ></div>
+        <h3 id="donorCount">
+            0
+        </h3>
 
     </div>
 
 
-    <!-- STATS -->
+    <div class="stat">
 
-    <div class="stats">
+        <p>
+            Total Donations
+        </p>
 
-        <div class="stat">
-
-            <p>Verified Donors</p>
-
-            <h3 id="donorCount">0</h3>
-
-        </div>
-
-        <div class="stat">
-
-            <p>Total Donations</p>
-
-            <h3 id="totalAmount">₹0</h3>
-
-        </div>
-
-    </div>
-
-
-    <!-- PENDING DONATIONS -->
-
-    <div class="card">
-
-        <h2>Pending Donations</h2>
-
-        <div
-            id="pendingList"
-        >
-            Loading...
-        </div>
+        <h3 id="totalAmount">
+            ₹0
+        </h3>
 
     </div>
 
 </div>
 
+
+<!-- ================= DONATIONS ================= -->
+
+<div class="card">
+
+    <h2>
+        💰 Donation Management
+    </h2>
+
+    <p class="section-intro">
+        Review and approve pending donation submissions.
+    </p>
+
+    <div id="pendingList">
+        Loading...
+    </div>
+
 </div>
 
+
+<!-- ================= VOLUNTEERS ================= -->
+
+<div class="card">
+
+    <h2>
+        🤝 Volunteer Management
+    </h2>
+
+    <p class="section-intro">
+        Review volunteer applications and approve or reject requests.
+    </p>
+
+    <div id="volunteerList">
+        Loading...
+    </div>
+
+</div>
+
+
+<!-- ================= HELP REQUESTS ================= -->
+
+<div class="card">
+
+    <h2>
+        🆘 Help Request Management
+    </h2>
+
+    <p class="section-intro">
+        Review requests from people who need assistance.
+    </p>
+
+    <div id="helpRequestList">
+        Loading...
+    </div>
+
+</div>
+
+
+<!-- ================= SUPPORTERS ================= -->
+
+<div class="card">
+
+    <h2>
+        🏠 Supporter Management
+    </h2>
+
+    <p class="section-intro">
+        Review people who want to support Emergency Responders.
+    </p>
+
+    <div id="supporterList">
+        Loading...
+    </div>
+
+</div>
+
+
+<!-- ================= RELIEF WORK ================= -->
+
+<div class="card">
+
+    <h2>
+        📸 Relief Work Management
+    </h2>
+
+    <p class="section-intro">
+        Review reports and information about relief activities.
+    </p>
+
+    <div id="reliefWorkList">
+        Loading...
+    </div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ================= SUPABASE ================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -330,7 +457,6 @@ button{
 
 const SUPABASE_URL =
 "https://gjfbqzwcatpvejuofdvc.supabase.co";
-
 
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
@@ -359,7 +485,7 @@ const panelMessage =
 document.getElementById("panelMessage");
 
 
-/* LOGIN */
+/* ================= LOGIN ================= */
 
 loginForm.addEventListener(
     "submit",
@@ -368,10 +494,15 @@ loginForm.addEventListener(
         event.preventDefault();
 
         const email =
-            document.getElementById("email").value.trim();
+            document
+            .getElementById("email")
+            .value
+            .trim();
 
         const password =
-            document.getElementById("password").value;
+            document
+            .getElementById("password")
+            .value;
 
 
         showLoginMessage(
@@ -381,16 +512,20 @@ loginForm.addEventListener(
 
 
         const { data, error } =
-            await supabaseClient.auth.signInWithPassword({
-                email: email,
-                password: password
+            await supabaseClient.auth
+            .signInWithPassword({
+
+                email:email,
+                password:password
+
             });
 
 
         if(error){
 
             showLoginMessage(
-                "Login failed: " + error.message,
+                "Login failed: " +
+                error.message,
                 true
             );
 
@@ -398,9 +533,14 @@ loginForm.addEventListener(
         }
 
 
-        loginBox.classList.add("hidden");
+        loginBox.classList.add(
+            "hidden"
+        );
 
-        adminPanel.classList.remove("hidden");
+        adminPanel.classList.remove(
+            "hidden"
+        );
+
 
         await loadData();
 
@@ -408,7 +548,7 @@ loginForm.addEventListener(
 );
 
 
-/* LOAD ALL DATA */
+/* ================= LOAD ALL ================= */
 
 async function loadData(){
 
@@ -416,15 +556,25 @@ async function loadData(){
 
     await loadStats();
 
+    await loadVolunteers();
+
+    await loadHelpRequests();
+
+    await loadSupporters();
+
+    await loadReliefWork();
+
 }
 
 
-/* LOAD PENDING DONATIONS */
+/* ================= DONATIONS ================= */
 
 async function loadPending(){
 
     const list =
-        document.getElementById("pendingList");
+        document.getElementById(
+            "pendingList"
+        );
 
 
     list.innerHTML =
@@ -436,23 +586,20 @@ async function loadPending(){
         .from("donations")
         .select("*")
         .eq("status","pending")
-        .order("created_at",{
-            ascending:false
-        });
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
 
 
     if(error){
 
         list.innerHTML =
-            "<div class='message error' style='display:block'>" +
-            "Database error: " +
-            escapeHtml(error.message) +
-            "</div>";
-
-        console.error(
-            "Pending donations error:",
-            error
-        );
+            errorBox(
+                error.message
+            );
 
         return;
     }
@@ -461,7 +608,7 @@ async function loadPending(){
     if(!data || data.length === 0){
 
         list.innerHTML =
-            "<p>No pending donations.</p>";
+            '<div class="empty">No pending donations.</div>';
 
         return;
     }
@@ -470,90 +617,128 @@ async function loadPending(){
     list.innerHTML = "";
 
 
-    data.forEach(function(donation){
+    data.forEach(
+        function(donation){
 
-        const div =
-            document.createElement("div");
+            const div =
+                document.createElement(
+                    "div"
+                );
 
-        div.className =
-            "donation";
-
-
-        div.innerHTML = `
-
-            <p>
-                <strong>Donor:</strong>
-                ${escapeHtml(donation.donor_name)}
-            </p>
-
-            <p>
-                <strong>Amount:</strong>
-                ₹${Number(donation.amount).toLocaleString("en-IN")}
-            </p>
-
-            <p>
-                <strong>Transaction ID:</strong>
-                ${escapeHtml(donation.transaction_id)}
-            </p>
-
-            <p>
-                <strong>Anonymous:</strong>
-                ${donation.anonymous ? "Yes" : "No"}
-            </p>
-
-            <p>
-                <strong>Submitted:</strong>
-                ${new Date(
-                    donation.created_at
-                ).toLocaleString()}
-            </p>
-
-            <div class="actions">
-
-                <button
-                    class="approve"
-                    onclick="approveDonation(${donation.id})"
-                >
-                    Approve
-                </button>
-
-                <button
-                    class="reject"
-                    onclick="rejectDonation(${donation.id})"
-                >
-                    Reject
-                </button>
-
-            </div>
-        `;
+            div.className =
+                "item";
 
 
-        list.appendChild(div);
+            div.innerHTML = `
 
-    });
+                <p>
+                    <strong>Donor:</strong>
+                    ${escapeHtml(
+                        donation.donor_name
+                    )}
+                </p>
+
+                <p>
+                    <strong>Amount:</strong>
+                    ₹${Number(
+                        donation.amount || 0
+                    ).toLocaleString("en-IN")}
+                </p>
+
+                <p>
+                    <strong>Transaction ID:</strong>
+                    ${escapeHtml(
+                        donation.transaction_id
+                    )}
+                </p>
+
+                <p>
+                    <strong>Anonymous:</strong>
+                    ${
+                        donation.anonymous
+                        ? "Yes"
+                        : "No"
+                    }
+                </p>
+
+                <p>
+                    <strong>Submitted:</strong>
+                    ${formatDate(
+                        donation.created_at
+                    )}
+                </p>
+
+                <div class="actions">
+
+                    <button
+                        class="approve"
+                        onclick="
+                            updateDonation(
+                                ${donation.id},
+                                'approved'
+                            )
+                        "
+                    >
+                        ✅ Approve
+                    </button>
+
+                    <button
+                        class="reject"
+                        onclick="
+                            updateDonation(
+                                ${donation.id},
+                                'rejected'
+                            )
+                        "
+                    >
+                        ❌ Reject
+                    </button>
+
+                </div>
+            `;
+
+
+            list.appendChild(div);
+
+        }
+    );
 
 }
 
 
-/* APPROVE */
+/* ================= UPDATE DONATION ================= */
 
-async function approveDonation(id){
+async function updateDonation(
+    id,
+    status
+){
+
+    const updateData = {
+        status:status
+    };
+
+
+    if(status === "approved"){
+
+        updateData.approved_at =
+            new Date().toISOString();
+
+    }
+
 
     const { error } =
         await supabaseClient
         .from("donations")
-        .update({
-            status:"approved",
-            approved_at:new Date().toISOString()
-        })
+        .update(updateData)
         .eq("id",id);
 
 
     if(error){
 
         showPanelMessage(
-            "Approve failed: " +
-            error.message
+            "Donation update failed: " +
+            error.message,
+            true
         );
 
         return;
@@ -561,7 +746,10 @@ async function approveDonation(id){
 
 
     showPanelMessage(
-        "Donation approved successfully."
+        status === "approved"
+        ? "Donation approved successfully."
+        : "Donation rejected.",
+        false
     );
 
 
@@ -570,41 +758,7 @@ async function approveDonation(id){
 }
 
 
-/* REJECT */
-
-async function rejectDonation(id){
-
-    const { error } =
-        await supabaseClient
-        .from("donations")
-        .update({
-            status:"rejected"
-        })
-        .eq("id",id);
-
-
-    if(error){
-
-        showPanelMessage(
-            "Reject failed: " +
-            error.message
-        );
-
-        return;
-    }
-
-
-    showPanelMessage(
-        "Donation rejected."
-    );
-
-
-    await loadData();
-
-}
-
-
-/* STATS */
+/* ================= DONATION STATS ================= */
 
 async function loadStats(){
 
@@ -631,13 +785,17 @@ async function loadStats(){
     let count = 0;
 
 
-    data.forEach(function(item){
+    (data || []).forEach(
+        function(item){
 
-        count++;
+            count++;
 
-        total += Number(item.amount);
+            total += Number(
+                item.amount || 0
+            );
 
-    });
+        }
+    );
 
 
     document.getElementById(
@@ -649,12 +807,556 @@ async function loadStats(){
         "totalAmount"
     ).textContent =
         "₹" +
-        total.toLocaleString("en-IN");
+        total.toLocaleString(
+            "en-IN"
+        );
 
 }
 
 
-/* LOGOUT */
+/* ================= VOLUNTEERS ================= */
+
+async function loadVolunteers(){
+
+    const list =
+        document.getElementById(
+            "volunteerList"
+        );
+
+
+    list.innerHTML =
+        "<p>Loading...</p>";
+
+
+    const { data, error } =
+        await supabaseClient
+        .from("volunteers")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(error){
+
+        list.innerHTML =
+            errorBox(
+                "Volunteer table error: " +
+                error.message
+            );
+
+        return;
+    }
+
+
+    if(!data || data.length === 0){
+
+        list.innerHTML =
+            '<div class="empty">No volunteer requests yet.</div>';
+
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    data.forEach(
+        function(item){
+
+            list.appendChild(
+                createManagementItem(
+                    item,
+                    "volunteer"
+                )
+            );
+
+        }
+    );
+
+}
+
+
+/* ================= HELP REQUESTS ================= */
+
+async function loadHelpRequests(){
+
+    const list =
+        document.getElementById(
+            "helpRequestList"
+        );
+
+
+    list.innerHTML =
+        "<p>Loading...</p>";
+
+
+    const { data, error } =
+        await supabaseClient
+        .from("help_requests")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(error){
+
+        list.innerHTML =
+            errorBox(
+                "Help request table error: " +
+                error.message
+            );
+
+        return;
+    }
+
+
+    if(!data || data.length === 0){
+
+        list.innerHTML =
+            '<div class="empty">No help requests yet.</div>';
+
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    data.forEach(
+        function(item){
+
+            list.appendChild(
+                createManagementItem(
+                    item,
+                    "help"
+                )
+            );
+
+        }
+    );
+
+}
+
+
+/* ================= SUPPORTERS ================= */
+
+async function loadSupporters(){
+
+    const list =
+        document.getElementById(
+            "supporterList"
+        );
+
+
+    list.innerHTML =
+        "<p>Loading...</p>";
+
+
+    const { data, error } =
+        await supabaseClient
+        .from("supporters")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(error){
+
+        list.innerHTML =
+            errorBox(
+                "Supporter table error: " +
+                error.message
+            );
+
+        return;
+    }
+
+
+    if(!data || data.length === 0){
+
+        list.innerHTML =
+            '<div class="empty">No supporter applications yet.</div>';
+
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    data.forEach(
+        function(item){
+
+            list.appendChild(
+                createManagementItem(
+                    item,
+                    "supporter"
+                )
+            );
+
+        }
+    );
+
+}
+
+
+/* ================= RELIEF WORK ================= */
+
+async function loadReliefWork(){
+
+    const list =
+        document.getElementById(
+            "reliefWorkList"
+        );
+
+
+    list.innerHTML =
+        "<p>Loading...</p>";
+
+
+    const { data, error } =
+        await supabaseClient
+        .from("relief_work")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(error){
+
+        list.innerHTML =
+            errorBox(
+                "Relief work table error: " +
+                error.message
+            );
+
+        return;
+    }
+
+
+    if(!data || data.length === 0){
+
+        list.innerHTML =
+            '<div class="empty">No relief work submissions yet.</div>';
+
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    data.forEach(
+        function(item){
+
+            list.appendChild(
+                createManagementItem(
+                    item,
+                    "relief"
+                )
+            );
+
+        }
+    );
+
+}
+
+
+/* ================= CREATE ITEM ================= */
+
+function createManagementItem(
+    item,
+    type
+){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.className =
+        "item";
+
+
+    let title =
+        item.name ||
+        item.full_name ||
+        item.donor_name ||
+        item.title ||
+        "Submission";
+
+
+    let html = `
+
+        <p>
+            <strong>Name / Title:</strong>
+            ${escapeHtml(title)}
+        </p>
+    `;
+
+
+    if(item.age){
+
+        html += `
+            <p>
+                <strong>Age:</strong>
+                ${escapeHtml(item.age)}
+            </p>
+        `;
+
+    }
+
+
+    if(item.phone){
+
+        html += `
+            <p>
+                <strong>Phone:</strong>
+                ${escapeHtml(item.phone)}
+            </p>
+        `;
+
+    }
+
+
+    if(item.email){
+
+        html += `
+            <p>
+                <strong>Email:</strong>
+                ${escapeHtml(item.email)}
+            </p>
+        `;
+
+    }
+
+
+    if(item.location){
+
+        html += `
+            <p>
+                <strong>Location:</strong>
+                ${escapeHtml(item.location)}
+            </p>
+        `;
+
+    }
+
+
+    if(item.help_type){
+
+        html += `
+            <p>
+                <strong>Help Type:</strong>
+                ${escapeHtml(item.help_type)}
+            </p>
+        `;
+
+    }
+
+
+    if(item.availability){
+
+        html += `
+            <p>
+                <strong>Availability:</strong>
+                ${escapeHtml(item.availability)}
+            </p>
+        `;
+
+    }
+
+
+    if(item.message){
+
+        html += `
+            <p>
+                <strong>Message:</strong>
+                ${escapeHtml(item.message)}
+            </p>
+        `;
+
+    }
+
+
+    if(item.description){
+
+        html += `
+            <p>
+                <strong>Description:</strong>
+                ${escapeHtml(item.description)}
+            </p>
+        `;
+
+    }
+
+
+    if(item.status){
+
+        html += `
+            <p>
+                <strong>Status:</strong>
+                <span class="status">
+                    ${escapeHtml(item.status)}
+                </span>
+            </p>
+        `;
+
+    }
+
+
+    if(item.created_at){
+
+        html += `
+            <p>
+                <strong>Submitted:</strong>
+                ${formatDate(
+                    item.created_at
+                )}
+            </p>
+        `;
+
+    }
+
+
+    if(
+        item.status === "pending" ||
+        !item.status
+    ){
+
+        html += `
+
+            <div class="actions">
+
+                <button
+                    class="approve"
+                    onclick="
+                        updateManagement(
+                            '${escapeJs(item.id)}',
+                            '${type}',
+                            'approved'
+                        )
+                    "
+                >
+                    ✅ Approve
+                </button>
+
+                <button
+                    class="reject"
+                    onclick="
+                        updateManagement(
+                            '${escapeJs(item.id)}',
+                            '${type}',
+                            'rejected'
+                        )
+                    "
+                >
+                    ❌ Reject
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    div.innerHTML =
+        html;
+
+
+    return div;
+
+}
+
+
+/* ================= UPDATE MANAGEMENT ================= */
+
+async function updateManagement(
+    id,
+    type,
+    status
+){
+
+    const tables = {
+
+        volunteer:
+            "volunteers",
+
+        help:
+            "help_requests",
+
+        supporter:
+            "supporters",
+
+        relief:
+            "relief_work"
+
+    };
+
+
+    const table =
+        tables[type];
+
+
+    if(!table){
+
+        return;
+
+    }
+
+
+    const { error } =
+        await supabaseClient
+        .from(table)
+        .update({
+            status:status
+        })
+        .eq("id",id);
+
+
+    if(error){
+
+        showPanelMessage(
+            "Update failed: " +
+            error.message,
+            true
+        );
+
+        return;
+    }
+
+
+    showPanelMessage(
+        status === "approved"
+        ? "Approved successfully."
+        : "Rejected successfully.",
+        false
+    );
+
+
+    await loadData();
+
+}
+
+
+/* ================= LOGOUT ================= */
 
 async function logout(){
 
@@ -665,16 +1367,23 @@ async function logout(){
 }
 
 
-/* MESSAGES */
+/* ================= LOGIN MESSAGE ================= */
 
-function showLoginMessage(text,isError){
+function showLoginMessage(
+    text,
+    isError
+){
 
     loginMessage.style.display =
         "block";
 
     loginMessage.className =
         "message " +
-        (isError ? "error" : "success");
+        (
+            isError
+            ? "error"
+            : "success"
+        );
 
     loginMessage.textContent =
         text;
@@ -682,13 +1391,23 @@ function showLoginMessage(text,isError){
 }
 
 
-function showPanelMessage(text){
+/* ================= PANEL MESSAGE ================= */
+
+function showPanelMessage(
+    text,
+    isError = false
+){
 
     panelMessage.style.display =
         "block";
 
     panelMessage.className =
-        "message success";
+        "message " +
+        (
+            isError
+            ? "error"
+            : "success"
+        );
 
     panelMessage.textContent =
         text;
@@ -696,17 +1415,71 @@ function showPanelMessage(text){
 }
 
 
-/* HTML SAFETY */
+/* ================= ERROR BOX ================= */
+
+function errorBox(text){
+
+    return `
+        <div
+            class="message error"
+            style="display:block"
+        >
+            ❌ ${escapeHtml(text)}
+        </div>
+    `;
+
+}
+
+
+/* ================= HTML SAFETY ================= */
 
 function escapeHtml(text){
 
     const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
     div.textContent =
-        text == null ? "" : String(text);
+        text == null
+        ? ""
+        : String(text);
 
     return div.innerHTML;
+
+}
+
+
+/* ================= JS SAFETY ================= */
+
+function escapeJs(text){
+
+    return String(
+        text == null
+        ? ""
+        : text
+    )
+    .replace(/\\/g,"\\\\")
+    .replace(/'/g,"\\'");
+
+}
+
+
+/* ================= DATE ================= */
+
+function formatDate(date){
+
+    if(!date){
+
+        return "-";
+
+    }
+
+    return new Date(
+        date
+    ).toLocaleString(
+        "en-IN"
+    );
 
 }
 
