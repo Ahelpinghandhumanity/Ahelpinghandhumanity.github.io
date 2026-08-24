@@ -242,10 +242,10 @@ Share information about relief activities and community support work.
     required
 >
 
-<label for="description">Relief Work Description</label>
+<label for="activity">Relief Work Description</label>
 
 <textarea
-    id="description"
+    id="activity"
     placeholder="Describe the relief activity"
     required
 ></textarea>
@@ -342,7 +342,8 @@ function showMessage(text,type){
     message.className =
         "message " + type;
 
-    message.textContent = text;
+    message.textContent =
+        text;
 
 }
 
@@ -361,8 +362,8 @@ async function(event){
     const location =
         document.getElementById("location").value.trim();
 
-    const description =
-        document.getElementById("description").value.trim();
+    const activity =
+        document.getElementById("activity").value.trim();
 
     const photo =
         document.getElementById("photo").files[0];
@@ -468,7 +469,7 @@ async function(event){
             publicData.publicUrl;
 
 
-        /* SAVE REPORT */
+        /* SAVE REPORT AS PENDING */
 
         const { error: dbError } =
             await supabaseClient
@@ -479,9 +480,11 @@ async function(event){
 
                 location:location,
 
-                description:description,
+                activity:activity,
 
-                photo_url:photoUrl
+                photo_url:photoUrl,
+
+                status:"pending"
 
             });
 
@@ -494,7 +497,7 @@ async function(event){
 
 
         showMessage(
-            "✅ Thank you! Your relief work report has been submitted successfully. ❤️",
+            "✅ Your relief work report has been submitted. It will appear after admin approval. ❤️",
             "success"
         );
 
@@ -519,7 +522,7 @@ async function(event){
 });
 
 
-/* LOAD PUBLIC PHOTOS */
+/* LOAD ONLY APPROVED RELIEF WORK */
 
 async function loadReliefWork(){
 
@@ -531,6 +534,7 @@ async function loadReliefWork(){
         await supabaseClient
         .from("relief_work")
         .select("*")
+        .eq("status","approved")
         .order(
             "created_at",
             {
@@ -554,7 +558,7 @@ async function loadReliefWork(){
     if(!data || data.length === 0){
 
         photoGrid.innerHTML =
-            "<p>No relief work reports yet.</p>";
+            "<p>No approved relief work reports yet.</p>";
 
         return;
 
@@ -592,7 +596,7 @@ async function loadReliefWork(){
                 </p>
 
                 <p>
-                    ${escapeHtml(item.description)}
+                    ${escapeHtml(item.activity)}
                 </p>
 
             </div>
