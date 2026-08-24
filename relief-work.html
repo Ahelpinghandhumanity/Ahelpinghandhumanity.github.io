@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Share Relief Work | Emergency Responders</title>
 
 <meta name="description"
-content="Share relief work activities with Emergency Responders.">
-
-<meta name="theme-color" content="#b30000">
+content="Share relief activities and humanitarian work with Emergency Responders.">
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -30,7 +26,7 @@ body{
 header{
     background:#b30000;
     color:white;
-    padding:20px 15px;
+    padding:18px 6%;
     text-align:center;
     box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
@@ -41,7 +37,7 @@ header h1{
 
 .container{
     width:92%;
-    max-width:700px;
+    max-width:750px;
     margin:40px auto;
 }
 
@@ -67,7 +63,7 @@ h2{
 label{
     display:block;
     font-weight:bold;
-    margin-top:16px;
+    margin-top:17px;
     margin-bottom:6px;
 }
 
@@ -82,17 +78,22 @@ textarea{
 }
 
 textarea{
-    min-height:120px;
+    min-height:110px;
     resize:vertical;
+}
+
+input[type="file"]{
+    background:#fafafa;
+    padding:12px;
 }
 
 button{
     width:100%;
-    margin-top:24px;
+    margin-top:25px;
     padding:14px;
     background:#b30000;
     color:white;
-    border:0;
+    border:none;
     border-radius:8px;
     font-size:17px;
     font-weight:bold;
@@ -104,21 +105,19 @@ button:hover{
 }
 
 .message{
-    display:none;
     margin-top:18px;
-    padding:12px;
+    padding:13px;
     border-radius:7px;
+    display:none;
     text-align:center;
 }
 
 .success{
-    display:block;
     background:#e7f7e7;
     color:#176b17;
 }
 
 .error{
-    display:block;
     background:#ffe8e8;
     color:#9b0000;
 }
@@ -132,12 +131,44 @@ button:hover{
     font-weight:bold;
 }
 
-.note{
-    margin-top:18px;
+.gallery{
+    margin-top:35px;
+}
+
+.gallery h2{
+    margin-bottom:20px;
+}
+
+.photo-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.photo-card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,.10);
+}
+
+.photo-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+.photo-info{
     padding:12px;
-    background:#fff7e6;
-    border-radius:8px;
-    color:#665000;
+}
+
+.photo-info strong{
+    color:#b30000;
+}
+
+.photo-info p{
+    margin-top:5px;
     font-size:14px;
 }
 
@@ -149,10 +180,6 @@ footer{
     margin-top:50px;
 }
 
-footer p{
-    margin:4px 0;
-}
-
 @media(max-width:600px){
 
     .container{
@@ -161,120 +188,120 @@ footer p{
     }
 
     .form-box{
-        padding:22px 17px;
+        padding:22px 18px;
     }
 
     header h1{
         font-size:23px;
     }
 
-}
+    .photo-grid{
+        grid-template-columns:1fr;
+    }
 
+    .photo-card img{
+        height:240px;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
-    <h1>📸 Share Relief Work</h1>
-
+    <h1>📷 Share Relief Work</h1>
 </header>
-
 
 <div class="container">
 
-    <div class="form-box">
+<div class="form-box">
 
-        <h2>Relief Work Report</h2>
+<h2>Share Relief Work</h2>
 
-        <p class="intro">
-            Share information about relief activities
-            and community support work.
-        </p>
+<p class="intro">
+Share information about relief activities and community support work.
+</p>
 
+<form id="reliefForm">
 
-        <form id="reliefForm">
+<label for="name">Name / Organization</label>
 
-            <label for="name">
-                Your Name
-            </label>
+<input
+    type="text"
+    id="name"
+    placeholder="Enter your name or organization"
+    required
+>
 
-            <input
-                type="text"
-                id="name"
-                placeholder="Enter your name"
-                required
-            >
+<label for="location">Location</label>
 
+<input
+    type="text"
+    id="location"
+    placeholder="Village / Town / District"
+    required
+>
 
-            <label for="location">
-                Location
-            </label>
+<label for="description">Relief Work Description</label>
 
-            <input
-                type="text"
-                id="location"
-                placeholder="Village / Town / District"
-                required
-            >
+<textarea
+    id="description"
+    placeholder="Describe the relief activity"
+    required
+></textarea>
 
+<label for="photo">📷 Upload Photo</label>
 
-            <label for="activity">
-                Relief Activity
-            </label>
+<input
+    type="file"
+    id="photo"
+    accept="image/jpeg,image/png,image/webp"
+    required
+>
 
-            <textarea
-                id="activity"
-                placeholder="Describe the relief work..."
-                required
-            ></textarea>
+<p style="font-size:13px;color:#777;margin-top:6px;">
+Maximum photo size: 300 KB. JPG, PNG or WebP only.
+</p>
 
+<p style="font-size:13px;color:#777;margin-top:5px;">
+Please avoid sharing sensitive personal information.
+</p>
 
-            <label for="photo">
-                📷 Upload Photo
-            </label>
+<button type="submit">
+📸 Submit Relief Work Report
+</button>
 
-            <input
-                type="file"
-                id="photo"
-                accept="image/jpeg,image/png,image/webp"
-                required
-            >
+</form>
 
+<div id="message" class="message"></div>
 
-            <div class="note">
-                Please do not upload sensitive personal information
-                or private documents in the photo.
-            </div>
+<a href="index.html" class="back">
+← Back to Home
+</a>
 
-
-            <button type="submit">
-                📸 Submit Relief Work Report
-            </button>
-
-        </form>
+</div>
 
 
-        <div id="message" class="message"></div>
+<!-- PUBLIC RELIEF GALLERY -->
 
+<div class="gallery">
 
-        <a href="index.html" class="back">
-            ← Back to Home
-        </a>
+<h2>📸 Relief Work Gallery</h2>
 
-    </div>
+<div id="photoGrid" class="photo-grid">
+<p>Loading relief work...</p>
+</div>
+
+</div>
 
 </div>
 
 
 <footer>
 
-    <p>© 2026 Emergency Responders</p>
+<p>© 2026 Emergency Responders</p>
 
-    <p>
-        A Helping Hand for Humanity ❤️
-    </p>
+<p>A Helping Hand for Humanity ❤️</p>
 
 </footer>
 
@@ -302,175 +329,302 @@ document.getElementById("reliefForm");
 const message =
 document.getElementById("message");
 
-
-form.addEventListener(
-    "submit",
-    async function(event){
-
-        event.preventDefault();
-
-        message.className = "message";
-        message.textContent = "Submitting...";
-        message.style.display = "block";
+const photoGrid =
+document.getElementById("photoGrid");
 
 
-        const name =
-            document.getElementById("name").value.trim();
+/* SHOW MESSAGE */
 
-        const location =
-            document.getElementById("location").value.trim();
-
-        const activity =
-            document.getElementById("activity").value.trim();
-
-        const photo =
-            document.getElementById("photo").files[0];
-
-
-        if(!photo){
-
-            showMessage(
-                "Please select a photo.",
-                true
-            );
-
-            return;
-        }
-
-
-        if(photo.size > 5 * 1024 * 1024){
-
-            showMessage(
-                "Photo must be smaller than 5 MB.",
-                true
-            );
-
-            return;
-        }
-
-
-        try{
-
-            /* UNIQUE FILE NAME */
-
-            const fileName =
-                Date.now() +
-                "_" +
-                Math.random()
-                    .toString(36)
-                    .substring(2) +
-                "_" +
-                photo.name.replace(
-                    /[^a-zA-Z0-9._-]/g,
-                    "_"
-                );
-
-
-            /* UPLOAD PHOTO */
-
-            const { error: uploadError } =
-                await supabaseClient
-                .storage
-                .from("relief-work")
-                .upload(
-                    fileName,
-                    photo,
-                    {
-                        contentType:photo.type,
-                        upsert:false
-                    }
-                );
-
-
-            if(uploadError){
-
-                throw uploadError;
-
-            }
-
-
-            /* GET PUBLIC PHOTO URL */
-
-            const { data:publicData } =
-                supabaseClient
-                .storage
-                .from("relief-work")
-                .getPublicUrl(fileName);
-
-
-            const photoUrl =
-                publicData.publicUrl;
-
-
-            /* SAVE REPORT */
-
-            const { error:insertError } =
-                await supabaseClient
-                .from("relief_work")
-                .insert({
-
-                    name:name,
-
-                    location:location,
-
-                    activity:activity,
-
-                    photo_url:photoUrl,
-
-                    status:"pending"
-
-                });
-
-
-            if(insertError){
-
-                throw insertError;
-
-            }
-
-
-            form.reset();
-
-
-            showMessage(
-                "✅ Thank you! Your relief work report has been submitted successfully. It will appear publicly after admin approval. ❤️",
-                false
-            );
-
-
-        }catch(error){
-
-            console.error(
-                "Relief submission error:",
-                error
-            );
-
-
-            showMessage(
-                "❌ Submission failed. Please try again.",
-                true
-            );
-
-        }
-
-    }
-);
-
-
-function showMessage(
-    text,
-    isError
-){
+function showMessage(text,type){
 
     message.style.display = "block";
 
     message.className =
-        "message " +
-        (isError ? "error" : "success");
+        "message " + type;
 
     message.textContent = text;
 
 }
+
+
+/* SUBMIT RELIEF WORK */
+
+form.addEventListener(
+"submit",
+async function(event){
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const location =
+        document.getElementById("location").value.trim();
+
+    const description =
+        document.getElementById("description").value.trim();
+
+    const photo =
+        document.getElementById("photo").files[0];
+
+
+    if(!photo){
+
+        showMessage(
+            "Please select a photo.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    /* 300 KB LIMIT */
+
+    if(photo.size > 300 * 1024){
+
+        showMessage(
+            "Photo must be smaller than 300 KB.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    /* FILE TYPE */
+
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+    ];
+
+    if(!allowedTypes.includes(photo.type)){
+
+        showMessage(
+            "Only JPG, PNG and WebP images are allowed.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    showMessage(
+        "Uploading relief work...",
+        "success"
+    );
+
+
+    try{
+
+        /* UNIQUE FILE NAME */
+
+        const fileName =
+            Date.now() +
+            "-" +
+            Math.random()
+                .toString(36)
+                .substring(2) +
+            "-" +
+            photo.name
+                .replace(/[^a-zA-Z0-9.-]/g,"-");
+
+
+        /* UPLOAD PHOTO */
+
+        const { error: uploadError } =
+            await supabaseClient
+            .storage
+            .from("relief-work")
+            .upload(
+                fileName,
+                photo,
+                {
+                    contentType: photo.type,
+                    upsert:false
+                }
+            );
+
+
+        if(uploadError){
+
+            throw uploadError;
+
+        }
+
+
+        /* PUBLIC PHOTO URL */
+
+        const { data: publicData } =
+            supabaseClient
+            .storage
+            .from("relief-work")
+            .getPublicUrl(fileName);
+
+
+        const photoUrl =
+            publicData.publicUrl;
+
+
+        /* SAVE REPORT */
+
+        const { error: dbError } =
+            await supabaseClient
+            .from("relief_work")
+            .insert({
+
+                name:name,
+
+                location:location,
+
+                description:description,
+
+                photo_url:photoUrl
+
+            });
+
+
+        if(dbError){
+
+            throw dbError;
+
+        }
+
+
+        showMessage(
+            "✅ Thank you! Your relief work report has been submitted successfully. ❤️",
+            "success"
+        );
+
+
+        form.reset();
+
+
+        loadReliefWork();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            "❌ Submission failed. Please try again.",
+            "error"
+        );
+
+    }
+
+});
+
+
+/* LOAD PUBLIC PHOTOS */
+
+async function loadReliefWork(){
+
+    photoGrid.innerHTML =
+        "<p>Loading relief work...</p>";
+
+
+    const { data, error } =
+        await supabaseClient
+        .from("relief_work")
+        .select("*")
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(error){
+
+        console.error(error);
+
+        photoGrid.innerHTML =
+            "<p>Unable to load relief work.</p>";
+
+        return;
+
+    }
+
+
+    if(!data || data.length === 0){
+
+        photoGrid.innerHTML =
+            "<p>No relief work reports yet.</p>";
+
+        return;
+
+    }
+
+
+    photoGrid.innerHTML = "";
+
+
+    data.forEach(function(item){
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "photo-card";
+
+
+        card.innerHTML = `
+
+            <img
+                src="${escapeHtml(item.photo_url)}"
+                alt="Relief work"
+                loading="lazy"
+            >
+
+            <div class="photo-info">
+
+                <strong>
+                    ${escapeHtml(item.name)}
+                </strong>
+
+                <p>
+                    📍 ${escapeHtml(item.location)}
+                </p>
+
+                <p>
+                    ${escapeHtml(item.description)}
+                </p>
+
+            </div>
+
+        `;
+
+
+        photoGrid.appendChild(card);
+
+    });
+
+}
+
+
+/* HTML SAFETY */
+
+function escapeHtml(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text == null ? "" : String(text);
+
+    return div.innerHTML;
+
+}
+
+
+/* LOAD ON PAGE OPEN */
+
+loadReliefWork();
 
 </script>
 
