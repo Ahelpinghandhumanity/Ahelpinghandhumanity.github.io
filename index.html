@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -362,6 +363,35 @@ section h2{
 }
 
 
+/* ================= VOLUNTEER STAT ================= */
+
+.volunteer-stat-section{
+    background:#ffffff;
+    padding:35px 7% !important;
+}
+
+.volunteer-stat-box{
+    max-width:330px;
+    margin:auto;
+    background:white;
+    padding:25px 15px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.10);
+}
+
+.volunteer-number{
+    font-size:36px;
+    font-weight:bold;
+    color:#b30000;
+}
+
+.volunteer-label{
+    margin-top:5px;
+    font-weight:bold;
+    color:#555;
+}
+
+
 /* ================= QR ================= */
 
 .qr-box{
@@ -692,6 +722,10 @@ footer p{
         padding:50px 5%;
     }
 
+    .volunteer-stat-section{
+        padding:30px 5% !important;
+    }
+
     .donation-box{
         padding:25px 18px;
     }
@@ -703,6 +737,10 @@ footer p{
 
     .stat-number{
         font-size:28px;
+    }
+
+    .volunteer-number{
+        font-size:32px;
     }
 
     .qr-box img{
@@ -1048,6 +1086,28 @@ footer p{
 
         </div>
 
+
+    </div>
+
+</section>
+
+
+<!-- ================= VOLUNTEER TOTAL ================= -->
+
+<section class="volunteer-stat-section">
+
+    <div class="volunteer-stat-box">
+
+        <div
+            class="volunteer-number"
+            id="volunteerCount"
+        >
+            0
+        </div>
+
+        <div class="volunteer-label">
+            🤝 Total Volunteers
+        </div>
 
     </div>
 
@@ -1693,15 +1753,77 @@ async function loadApprovedDonations(){
 }
 
 
+/* ================= VOLUNTEER COUNT ================= */
+
+async function loadVolunteerCount(){
+
+    const volunteerCount =
+        document.getElementById(
+            "volunteerCount"
+        );
+
+
+    if(!volunteerCount){
+
+        return;
+
+    }
+
+
+    const { count, error } =
+        await supabaseClient
+        .from("volunteers")
+        .select(
+            "*",
+            {
+                count:"exact",
+                head:true
+            }
+        )
+        .eq(
+            "status",
+            "approved"
+        );
+
+
+    if(error){
+
+        console.error(
+            "Volunteer count error:",
+            error
+        );
+
+        volunteerCount.textContent =
+            "0";
+
+        return;
+
+    }
+
+
+    volunteerCount.textContent =
+        count || 0;
+
+}
+
+
 /* ================= FIRST LOAD ================= */
 
 loadApprovedDonations();
+
+loadVolunteerCount();
 
 
 /* ================= AUTO REFRESH ================= */
 
 setInterval(
     loadApprovedDonations,
+    10000
+);
+
+
+setInterval(
+    loadVolunteerCount,
     10000
 );
 
@@ -1760,6 +1882,7 @@ const slides =
     document.querySelectorAll(
         ".slide"
     );
+
 
 const backgrounds =
     document.querySelectorAll(
@@ -1848,3 +1971,4 @@ setInterval(
 </body>
 
 </html>
+```
