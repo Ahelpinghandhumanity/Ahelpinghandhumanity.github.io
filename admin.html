@@ -121,7 +121,7 @@ button{
 
 .stats{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:15px;
     margin-bottom:25px;
 }
@@ -143,8 +143,7 @@ button{
     color:#b30000;
 }
 
-.donation,
-.relief-item{
+.item{
     border:1px solid #ddd;
     border-radius:10px;
     padding:18px;
@@ -152,33 +151,43 @@ button{
     background:#fafafa;
 }
 
-.donation p,
-.relief-item p{
+.item p{
     margin-bottom:8px;
     word-break:break-word;
 }
 
-.donation strong,
-.relief-item strong{
+.item strong{
     color:#b30000;
+}
+
+.item img{
+    width:100%;
+    max-width:400px;
+    max-height:280px;
+    object-fit:cover;
+    border-radius:8px;
+    margin:10px 0;
+    display:block;
 }
 
 .actions{
     margin-top:15px;
 }
 
-.relief-image{
-    width:100%;
-    max-width:350px;
-    height:220px;
-    object-fit:cover;
-    border-radius:8px;
-    display:block;
-    margin-bottom:15px;
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
 }
 
-.section-title{
-    margin-top:10px;
+.badge{
+    background:#fff0d9;
+    color:#9a5b00;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:bold;
 }
 
 @media(max-width:600px){
@@ -207,8 +216,13 @@ button{
         margin-bottom:15px;
     }
 
-    .relief-image{
-        height:200px;
+    .section-title{
+        display:block;
+    }
+
+    .badge{
+        display:inline-block;
+        margin-top:8px;
     }
 }
 </style>
@@ -217,16 +231,11 @@ button{
 <body>
 
 <header>
-
     <h1>Emergency Responders</h1>
-
     <p>Admin Approval Panel</p>
-
 </header>
 
-
 <div class="container">
-
 
 <!-- LOGIN -->
 
@@ -236,9 +245,7 @@ button{
 
     <form id="loginForm">
 
-        <label for="email">
-            Email
-        </label>
+        <label for="email">Email</label>
 
         <input
             type="email"
@@ -247,9 +254,7 @@ button{
             required
         >
 
-        <label for="password">
-            Password
-        </label>
+        <label for="password">Password</label>
 
         <input
             type="password"
@@ -257,120 +262,92 @@ button{
             required
         >
 
-        <button
-            type="submit"
-            class="login-btn"
-        >
+        <button type="submit" class="login-btn">
             Login
         </button>
 
     </form>
 
-    <div
-        id="loginMessage"
-        class="message"
-    ></div>
+    <div id="loginMessage" class="message"></div>
 
 </div>
 
 
 <!-- ADMIN PANEL -->
 
-<div
-    id="adminPanel"
-    class="hidden"
->
+<div id="adminPanel" class="hidden">
 
+    <div class="card">
 
-<!-- TOP PANEL -->
+        <button class="logout" onclick="logout()">
+            Logout
+        </button>
 
-<div class="card">
+        <h2>Admin Dashboard</h2>
 
-    <button
-        class="logout"
-        onclick="logout()"
-    >
-        Logout
-    </button>
+        <p>
+            Review donations and relief work submissions.
+        </p>
 
-    <h2>Admin Dashboard</h2>
-
-    <p>
-        Review donations and relief work submissions.
-    </p>
-
-    <div
-        id="panelMessage"
-        class="message"
-    ></div>
-
-</div>
-
-
-<!-- STATS -->
-
-<div class="stats">
-
-    <div class="stat">
-
-        <p>Verified Donors</p>
-
-        <h3 id="donorCount">
-            0
-        </h3>
+        <div id="panelMessage" class="message"></div>
 
     </div>
 
-    <div class="stat">
 
-        <p>Total Donations</p>
+    <!-- STATS -->
 
-        <h3 id="totalAmount">
-            ₹0
-        </h3>
+    <div class="stats">
+
+        <div class="stat">
+            <p>Verified Donors</p>
+            <h3 id="donorCount">0</h3>
+        </div>
+
+        <div class="stat">
+            <p>Total Donations</p>
+            <h3 id="totalAmount">₹0</h3>
+        </div>
+
+        <div class="stat">
+            <p>Pending Relief Work</p>
+            <h3 id="reliefCount">0</h3>
+        </div>
 
     </div>
 
-</div>
 
+    <!-- RELIEF WORK -->
 
-<!-- DONATION MANAGEMENT -->
+    <div class="card">
 
-<div class="card">
+        <div class="section-title">
 
-    <h2>
-        💰 Donation Management
-    </h2>
+            <h2>📸 Pending Relief Work</h2>
 
-    <p style="margin-bottom:18px;">
-        Review and approve pending donation submissions.
-    </p>
+            <span class="badge" id="reliefBadge">
+                0 Pending
+            </span>
 
-    <div id="pendingDonations">
-        Loading...
+        </div>
+
+        <div id="reliefList">
+            Loading...
+        </div>
+
     </div>
 
-</div>
 
+    <!-- DONATIONS -->
 
-<!-- RELIEF WORK MANAGEMENT -->
+    <div class="card">
 
-<div class="card">
+        <h2>💰 Pending Donations</h2>
 
-    <h2>
-        📷 Relief Work Management
-    </h2>
+        <div id="pendingList">
+            Loading...
+        </div>
 
-    <p style="margin-bottom:18px;">
-        Review and approve submitted relief work photos.
-    </p>
-
-    <div id="pendingRelief">
-        Loading...
     </div>
-
-</div>
-
 
 </div>
 
@@ -384,10 +361,8 @@ button{
 const SUPABASE_URL =
 "https://gjfbqzwcatpvejuofdvc.supabase.co";
 
-
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
-
 
 const supabaseClient =
 window.supabase.createClient(
@@ -431,22 +406,20 @@ async function(event){
         document.getElementById("password")
         .value;
 
-
     showLoginMessage(
         "Signing in...",
         false
     );
 
-
     const { data, error } =
-        await supabaseClient.auth.signInWithPassword({
+        await supabaseClient.auth
+        .signInWithPassword({
 
             email:email,
 
             password:password
 
         });
-
 
     if(error){
 
@@ -457,14 +430,11 @@ async function(event){
         );
 
         return;
-
     }
-
 
     loginBox.classList.add("hidden");
 
     adminPanel.classList.remove("hidden");
-
 
     await loadData();
 
@@ -479,34 +449,37 @@ async function loadData(){
 
     await loadPendingDonations();
 
-    await loadPendingRelief();
-
     await loadStats();
+
+    await loadReliefWork();
 
 }
 
 
 /* =========================
-   DONATIONS
+   RELIEF WORK
 ========================= */
 
-async function loadPendingDonations(){
+async function loadReliefWork(){
 
     const list =
-        document.getElementById(
-            "pendingDonations"
-        );
-
+        document.getElementById("reliefList");
 
     list.innerHTML =
-        "<p>Loading donations...</p>";
-
+        "<p>Loading...</p>";
 
     const { data, error } =
         await supabaseClient
-        .from("donations")
+
+        .from("relief_work")
+
         .select("*")
-        .eq("status","pending")
+
+        .eq(
+            "status",
+            "pending"
+        )
+
         .order(
             "created_at",
             {
@@ -519,12 +492,245 @@ async function loadPendingDonations(){
 
         list.innerHTML =
             "<div class='message error' style='display:block'>" +
-            "Database error: " +
+            "Relief work error: " +
             escapeHtml(error.message) +
             "</div>";
 
         return;
+    }
 
+
+    const count =
+        data ? data.length : 0;
+
+
+    document.getElementById(
+        "reliefCount"
+    ).textContent = count;
+
+
+    document.getElementById(
+        "reliefBadge"
+    ).textContent =
+        count + " Pending";
+
+
+    if(!data || data.length === 0){
+
+        list.innerHTML =
+            "<p>No pending relief work.</p>";
+
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    data.forEach(function(item){
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "item";
+
+
+        div.innerHTML = `
+
+            <p>
+                <strong>Name / Organization:</strong>
+                ${escapeHtml(item.name)}
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                ${escapeHtml(item.location)}
+            </p>
+
+            <p>
+                <strong>Relief Work:</strong>
+                ${escapeHtml(item.activity)}
+            </p>
+
+            <p>
+                <strong>Submitted:</strong>
+                ${new Date(
+                    item.created_at
+                ).toLocaleString()}
+            </p>
+
+            <img
+                src="${escapeHtml(item.photo_url)}"
+                alt="Relief work photo"
+                loading="lazy"
+            >
+
+            <div class="actions">
+
+                <button
+                    class="approve"
+                    onclick="approveRelief(${item.id})"
+                >
+                    ✅ Approve
+                </button>
+
+                <button
+                    class="reject"
+                    onclick="rejectRelief(${item.id})"
+                >
+                    ❌ Reject
+                </button>
+
+            </div>
+
+        `;
+
+
+        list.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================
+   APPROVE RELIEF
+========================= */
+
+async function approveRelief(id){
+
+    const { error } =
+        await supabaseClient
+
+        .from("relief_work")
+
+        .update({
+
+            status:"approved",
+
+            approved_at:
+                new Date().toISOString()
+
+        })
+
+        .eq(
+            "id",
+            id
+        );
+
+
+    if(error){
+
+        showPanelMessage(
+            "Approve failed: " +
+            error.message,
+            true
+        );
+
+        return;
+    }
+
+
+    showPanelMessage(
+        "✅ Relief work approved successfully."
+    );
+
+
+    await loadData();
+
+}
+
+
+/* =========================
+   REJECT RELIEF
+========================= */
+
+async function rejectRelief(id){
+
+    const { error } =
+        await supabaseClient
+
+        .from("relief_work")
+
+        .update({
+
+            status:"rejected"
+
+        })
+
+        .eq(
+            "id",
+            id
+        );
+
+
+    if(error){
+
+        showPanelMessage(
+            "Reject failed: " +
+            error.message,
+            true
+        );
+
+        return;
+    }
+
+
+    showPanelMessage(
+        "Relief work rejected."
+    );
+
+
+    await loadData();
+
+}
+
+
+/* =========================
+   DONATIONS
+========================= */
+
+async function loadPendingDonations(){
+
+    const list =
+        document.getElementById(
+            "pendingList"
+        );
+
+    list.innerHTML =
+        "<p>Loading...</p>";
+
+
+    const { data, error } =
+        await supabaseClient
+
+        .from("donations")
+
+        .select("*")
+
+        .eq(
+            "status",
+            "pending"
+        )
+
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(error){
+
+        list.innerHTML =
+            "<div class='message error' style='display:block'>" +
+            "Donation error: " +
+            escapeHtml(error.message) +
+            "</div>";
+
+        return;
     }
 
 
@@ -534,7 +740,6 @@ async function loadPendingDonations(){
             "<p>No pending donations.</p>";
 
         return;
-
     }
 
 
@@ -547,7 +752,7 @@ async function loadPendingDonations(){
             document.createElement("div");
 
         div.className =
-            "donation";
+            "item";
 
 
         div.innerHTML = `
@@ -575,9 +780,11 @@ async function loadPendingDonations(){
 
             <p>
                 <strong>Anonymous:</strong>
-                ${donation.anonymous
+                ${
+                    donation.anonymous
                     ? "Yes"
-                    : "No"}
+                    : "No"
+                }
             </p>
 
             <p>
@@ -593,17 +800,18 @@ async function loadPendingDonations(){
                     class="approve"
                     onclick="approveDonation(${donation.id})"
                 >
-                    Approve
+                    ✅ Approve
                 </button>
 
                 <button
                     class="reject"
                     onclick="rejectDonation(${donation.id})"
                 >
-                    Reject
+                    ❌ Reject
                 </button>
 
             </div>
+
         `;
 
 
@@ -614,13 +822,17 @@ async function loadPendingDonations(){
 }
 
 
-/* APPROVE DONATION */
+/* =========================
+   APPROVE DONATION
+========================= */
 
 async function approveDonation(id){
 
     const { error } =
         await supabaseClient
+
         .from("donations")
+
         .update({
 
             status:"approved",
@@ -629,7 +841,11 @@ async function approveDonation(id){
                 new Date().toISOString()
 
         })
-        .eq("id",id);
+
+        .eq(
+            "id",
+            id
+        );
 
 
     if(error){
@@ -641,13 +857,11 @@ async function approveDonation(id){
         );
 
         return;
-
     }
 
 
     showPanelMessage(
-        "Donation approved successfully.",
-        false
+        "Donation approved successfully."
     );
 
 
@@ -656,19 +870,27 @@ async function approveDonation(id){
 }
 
 
-/* REJECT DONATION */
+/* =========================
+   REJECT DONATION
+========================= */
 
 async function rejectDonation(id){
 
     const { error } =
         await supabaseClient
+
         .from("donations")
+
         .update({
 
             status:"rejected"
 
         })
-        .eq("id",id);
+
+        .eq(
+            "id",
+            id
+        );
 
 
     if(error){
@@ -680,233 +902,11 @@ async function rejectDonation(id){
         );
 
         return;
-
     }
 
 
     showPanelMessage(
-        "Donation rejected.",
-        false
-    );
-
-
-    await loadData();
-
-}
-
-
-/* =========================
-   RELIEF WORK
-========================= */
-
-async function loadPendingRelief(){
-
-    const list =
-        document.getElementById(
-            "pendingRelief"
-        );
-
-
-    list.innerHTML =
-        "<p>Loading relief work...</p>";
-
-
-    const { data, error } =
-        await supabaseClient
-        .from("relief_work")
-        .select("*")
-        .eq("status","pending")
-        .order(
-            "created_at",
-            {
-                ascending:false
-            }
-        );
-
-
-    if(error){
-
-        list.innerHTML =
-            "<div class='message error' style='display:block'>" +
-            "Database error: " +
-            escapeHtml(error.message) +
-            "</div>";
-
-        console.error(
-            "Relief work error:",
-            error
-        );
-
-        return;
-
-    }
-
-
-    if(!data || data.length === 0){
-
-        list.innerHTML =
-            "<p>No pending relief work.</p>";
-
-        return;
-
-    }
-
-
-    list.innerHTML = "";
-
-
-    data.forEach(function(item){
-
-        const div =
-            document.createElement("div");
-
-        div.className =
-            "relief-item";
-
-
-        div.innerHTML = `
-
-            <img
-                class="relief-image"
-                src="${escapeHtml(
-                    item.photo_url
-                )}"
-                alt="Relief work photo"
-            >
-
-            <p>
-                <strong>Name / Organization:</strong>
-                ${escapeHtml(
-                    item.name
-                )}
-            </p>
-
-            <p>
-                <strong>Location:</strong>
-                ${escapeHtml(
-                    item.location
-                )}
-            </p>
-
-            <p>
-                <strong>Activity:</strong>
-                ${escapeHtml(
-                    item.activity
-                )}
-            </p>
-
-            <p>
-                <strong>Status:</strong>
-                Pending
-            </p>
-
-            <p>
-                <strong>Submitted:</strong>
-                ${new Date(
-                    item.created_at
-                ).toLocaleString()}
-            </p>
-
-            <div class="actions">
-
-                <button
-                    class="approve"
-                    onclick="approveRelief(${item.id})"
-                >
-                    Approve
-                </button>
-
-                <button
-                    class="reject"
-                    onclick="rejectRelief(${item.id})"
-                >
-                    Reject
-                </button>
-
-            </div>
-        `;
-
-
-        list.appendChild(div);
-
-    });
-
-}
-
-
-/* APPROVE RELIEF */
-
-async function approveRelief(id){
-
-    const { error } =
-        await supabaseClient
-        .from("relief_work")
-        .update({
-
-            status:"approved",
-
-            approved_at:
-                new Date().toISOString()
-
-        })
-        .eq("id",id);
-
-
-    if(error){
-
-        showPanelMessage(
-            "Relief approval failed: " +
-            error.message,
-            true
-        );
-
-        return;
-
-    }
-
-
-    showPanelMessage(
-        "✅ Relief work approved successfully.",
-        false
-    );
-
-
-    await loadData();
-
-}
-
-
-/* REJECT RELIEF */
-
-async function rejectRelief(id){
-
-    const { error } =
-        await supabaseClient
-        .from("relief_work")
-        .update({
-
-            status:"rejected"
-
-        })
-        .eq("id",id);
-
-
-    if(error){
-
-        showPanelMessage(
-            "Relief rejection failed: " +
-            error.message,
-            true
-        );
-
-        return;
-
-    }
-
-
-    showPanelMessage(
-        "Relief work rejected.",
-        false
+        "Donation rejected."
     );
 
 
@@ -923,9 +923,15 @@ async function loadStats(){
 
     const { data, error } =
         await supabaseClient
+
         .from("donations")
+
         .select("amount")
-        .eq("status","approved");
+
+        .eq(
+            "status",
+            "approved"
+        );
 
 
     if(error){
@@ -936,7 +942,6 @@ async function loadStats(){
         );
 
         return;
-
     }
 
 
@@ -949,17 +954,15 @@ async function loadStats(){
 
         count++;
 
-        total += Number(
-            item.amount
-        );
+        total +=
+            Number(item.amount);
 
     });
 
 
     document.getElementById(
         "donorCount"
-    ).textContent =
-        count;
+    ).textContent = count;
 
 
     document.getElementById(
@@ -998,7 +1001,6 @@ function showLoginMessage(
     loginMessage.style.display =
         "block";
 
-
     loginMessage.className =
         "message " +
         (
@@ -1006,7 +1008,6 @@ function showLoginMessage(
             ? "error"
             : "success"
         );
-
 
     loginMessage.textContent =
         text;
@@ -1016,12 +1017,11 @@ function showLoginMessage(
 
 function showPanelMessage(
     text,
-    isError
+    isError = false
 ){
 
     panelMessage.style.display =
         "block";
-
 
     panelMessage.className =
         "message " +
@@ -1030,7 +1030,6 @@ function showPanelMessage(
             ? "error"
             : "success"
         );
-
 
     panelMessage.textContent =
         text;
@@ -1045,16 +1044,12 @@ function showPanelMessage(
 function escapeHtml(text){
 
     const div =
-        document.createElement(
-            "div"
-        );
-
+        document.createElement("div");
 
     div.textContent =
         text == null
         ? ""
         : String(text);
-
 
     return div.innerHTML;
 
