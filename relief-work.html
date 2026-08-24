@@ -10,6 +10,7 @@
 content="Share relief activities and humanitarian work with Emergency Responders.">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -203,16 +204,21 @@ footer{
         height:240px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
+
     <h1>📷 Share Relief Work</h1>
+
 </header>
 
+
 <div class="container">
+
 
 <div class="form-box">
 
@@ -222,9 +228,13 @@ footer{
 Share information about relief activities and community support work.
 </p>
 
+
 <form id="reliefForm">
 
-<label for="name">Name / Organization</label>
+
+<label for="name">
+Name / Organization
+</label>
 
 <input
     type="text"
@@ -233,7 +243,10 @@ Share information about relief activities and community support work.
     required
 >
 
-<label for="location">Location</label>
+
+<label for="location">
+Location
+</label>
 
 <input
     type="text"
@@ -242,15 +255,21 @@ Share information about relief activities and community support work.
     required
 >
 
-<label for="activity">Relief Work Description</label>
+
+<label for="description">
+Relief Work Description
+</label>
 
 <textarea
-    id="activity"
+    id="description"
     placeholder="Describe the relief activity"
     required
 ></textarea>
 
-<label for="photo">📷 Upload Photo</label>
+
+<label for="photo">
+📷 Upload Photo
+</label>
 
 <input
     type="file"
@@ -259,13 +278,16 @@ Share information about relief activities and community support work.
     required
 >
 
+
 <p style="font-size:13px;color:#777;margin-top:6px;">
 Maximum photo size: 300 KB. JPG, PNG or WebP only.
 </p>
 
+
 <p style="font-size:13px;color:#777;margin-top:5px;">
 Please avoid sharing sensitive personal information.
 </p>
+
 
 <button type="submit">
 📸 Submit Relief Work Report
@@ -273,7 +295,9 @@ Please avoid sharing sensitive personal information.
 
 </form>
 
+
 <div id="message" class="message"></div>
+
 
 <a href="index.html" class="back">
 ← Back to Home
@@ -286,35 +310,50 @@ Please avoid sharing sensitive personal information.
 
 <div class="gallery">
 
-<h2>📸 Relief Work Gallery</h2>
+<h2>
+📸 Relief Work Gallery
+</h2>
+
 
 <div id="photoGrid" class="photo-grid">
-<p>Loading relief work...</p>
+
+<p>
+Loading relief work...
+</p>
+
 </div>
 
 </div>
+
 
 </div>
 
 
 <footer>
 
-<p>© 2026 Emergency Responders</p>
+<p>
+© 2026 Emergency Responders
+</p>
 
-<p>A Helping Hand for Humanity ❤️</p>
+<p>
+A Helping Hand for Humanity ❤️
+</p>
 
 </footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <script>
 
 const SUPABASE_URL =
 "https://gjfbqzwcatpvejuofdvc.supabase.co";
 
+
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
+
 
 const supabaseClient =
 window.supabase.createClient(
@@ -333,11 +372,14 @@ const photoGrid =
 document.getElementById("photoGrid");
 
 
-/* SHOW MESSAGE */
+/* =========================
+   MESSAGE
+========================= */
 
 function showMessage(text,type){
 
-    message.style.display = "block";
+    message.style.display =
+        "block";
 
     message.className =
         "message " + type;
@@ -348,7 +390,9 @@ function showMessage(text,type){
 }
 
 
-/* SUBMIT RELIEF WORK */
+/* =========================
+   SUBMIT
+========================= */
 
 form.addEventListener(
 "submit",
@@ -356,17 +400,28 @@ async function(event){
 
     event.preventDefault();
 
+
     const name =
-        document.getElementById("name").value.trim();
+        document.getElementById("name")
+        .value
+        .trim();
+
 
     const location =
-        document.getElementById("location").value.trim();
+        document.getElementById("location")
+        .value
+        .trim();
 
-    const activity =
-        document.getElementById("activity").value.trim();
+
+    const description =
+        document.getElementById("description")
+        .value
+        .trim();
+
 
     const photo =
-        document.getElementById("photo").files[0];
+        document.getElementById("photo")
+        .files[0];
 
 
     if(!photo){
@@ -377,6 +432,7 @@ async function(event){
         );
 
         return;
+
     }
 
 
@@ -390,16 +446,22 @@ async function(event){
         );
 
         return;
+
     }
 
 
     /* FILE TYPE */
 
     const allowedTypes = [
+
         "image/jpeg",
+
         "image/png",
+
         "image/webp"
+
     ];
+
 
     if(!allowedTypes.includes(photo.type)){
 
@@ -409,6 +471,7 @@ async function(event){
         );
 
         return;
+
     }
 
 
@@ -420,32 +483,53 @@ async function(event){
 
     try{
 
+
         /* UNIQUE FILE NAME */
 
         const fileName =
+
             Date.now() +
+
             "-" +
+
             Math.random()
                 .toString(36)
                 .substring(2) +
+
             "-" +
+
             photo.name
-                .replace(/[^a-zA-Z0-9.-]/g,"-");
+                .replace(
+                    /[^a-zA-Z0-9.-]/g,
+                    "-"
+                );
 
 
         /* UPLOAD PHOTO */
 
         const { error: uploadError } =
+
             await supabaseClient
+
             .storage
+
             .from("relief-work")
+
             .upload(
+
                 fileName,
+
                 photo,
+
                 {
-                    contentType: photo.type,
+
+                    contentType:
+                        photo.type,
+
                     upsert:false
+
                 }
+
             );
 
 
@@ -456,31 +540,40 @@ async function(event){
         }
 
 
-        /* PUBLIC PHOTO URL */
+        /* PUBLIC URL */
 
         const { data: publicData } =
+
             supabaseClient
+
             .storage
+
             .from("relief-work")
-            .getPublicUrl(fileName);
+
+            .getPublicUrl(
+                fileName
+            );
 
 
         const photoUrl =
             publicData.publicUrl;
 
 
-        /* SAVE REPORT AS PENDING */
+        /* SAVE REPORT */
 
         const { error: dbError } =
+
             await supabaseClient
+
             .from("relief_work")
+
             .insert({
 
                 name:name,
 
                 location:location,
 
-                activity:activity,
+                activity:description,
 
                 photo_url:photoUrl,
 
@@ -496,9 +589,14 @@ async function(event){
         }
 
 
+        /* SUCCESS */
+
         showMessage(
-            "✅ Your relief work report has been submitted. It will appear after admin approval. ❤️",
+
+            "✅ Your relief work has been submitted for Admin approval. Thank you! ❤️",
+
             "success"
+
         );
 
 
@@ -508,13 +606,23 @@ async function(event){
         loadReliefWork();
 
 
-    }catch(error){
+    }
 
-        console.error(error);
+    catch(error){
+
+        console.error(
+            "Relief submission error:",
+            error
+        );
+
 
         showMessage(
-            "❌ Submission failed. Please try again.",
+
+            "❌ Submission failed: " +
+            error.message,
+
             "error"
+
         );
 
     }
@@ -522,7 +630,9 @@ async function(event){
 });
 
 
-/* LOAD ONLY APPROVED RELIEF WORK */
+/* =========================
+   PUBLIC GALLERY
+========================= */
 
 async function loadReliefWork(){
 
@@ -531,24 +641,42 @@ async function loadReliefWork(){
 
 
     const { data, error } =
+
         await supabaseClient
+
         .from("relief_work")
-        .select("*")
-        .eq("status","approved")
+
+        .select(
+            "name,location,activity,photo_url,created_at"
+        )
+
+        .eq(
+            "status",
+            "approved"
+        )
+
         .order(
+
             "created_at",
+
             {
                 ascending:false
             }
+
         );
 
 
     if(error){
 
-        console.error(error);
+        console.error(
+            "Gallery error:",
+            error
+        );
+
 
         photoGrid.innerHTML =
             "<p>Unable to load relief work.</p>";
+
 
         return;
 
@@ -558,7 +686,8 @@ async function loadReliefWork(){
     if(!data || data.length === 0){
 
         photoGrid.innerHTML =
-            "<p>No approved relief work reports yet.</p>";
+
+            "<p>No approved relief work yet.</p>";
 
         return;
 
@@ -573,6 +702,7 @@ async function loadReliefWork(){
         const card =
             document.createElement("div");
 
+
         card.className =
             "photo-card";
 
@@ -580,7 +710,9 @@ async function loadReliefWork(){
         card.innerHTML = `
 
             <img
-                src="${escapeHtml(item.photo_url)}"
+                src="${escapeHtml(
+                    item.photo_url
+                )}"
                 alt="Relief work"
                 loading="lazy"
             >
@@ -588,15 +720,21 @@ async function loadReliefWork(){
             <div class="photo-info">
 
                 <strong>
-                    ${escapeHtml(item.name)}
+                    ${escapeHtml(
+                        item.name
+                    )}
                 </strong>
 
                 <p>
-                    📍 ${escapeHtml(item.location)}
+                    📍 ${escapeHtml(
+                        item.location
+                    )}
                 </p>
 
                 <p>
-                    ${escapeHtml(item.activity)}
+                    ${escapeHtml(
+                        item.activity
+                    )}
                 </p>
 
             </div>
@@ -611,22 +749,29 @@ async function loadReliefWork(){
 }
 
 
-/* HTML SAFETY */
+/* =========================
+   HTML SAFETY
+========================= */
 
 function escapeHtml(text){
 
     const div =
         document.createElement("div");
 
+
     div.textContent =
-        text == null ? "" : String(text);
+
+        text == null
+        ? ""
+        : String(text);
+
 
     return div.innerHTML;
 
 }
 
 
-/* LOAD ON PAGE OPEN */
+/* LOAD GALLERY */
 
 loadReliefWork();
 
