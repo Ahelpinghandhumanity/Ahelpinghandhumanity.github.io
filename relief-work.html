@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Report / Share Relief Work | Emergency Responders</title>
+<title>Report Relief Work | Emergency Responders</title>
 
 <meta name="description"
-content="Share information about relief activities and community support work with Emergency Responders.">
+content="Report and share humanitarian relief activities with Emergency Responders.">
 
 <meta name="theme-color" content="#b30000">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -28,7 +30,7 @@ body{
 header{
     background:#b30000;
     color:white;
-    padding:18px 6%;
+    padding:20px 6%;
     text-align:center;
     box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
@@ -39,8 +41,8 @@ header h1{
 
 .container{
     width:92%;
-    max-width:700px;
-    margin:45px auto;
+    max-width:750px;
+    margin:40px auto;
 }
 
 .form-box{
@@ -78,11 +80,28 @@ textarea{
     border-radius:7px;
     font-size:16px;
     font-family:inherit;
+    background:white;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#b30000;
 }
 
 textarea{
     min-height:130px;
     resize:vertical;
+}
+
+.help-note{
+    background:#fff5f5;
+    border-left:4px solid #b30000;
+    padding:12px;
+    margin-top:20px;
+    color:#555;
+    font-size:14px;
 }
 
 button{
@@ -152,31 +171,42 @@ footer p{
     header h1{
         font-size:23px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
+
 <header>
-    <h1>📸 Report / Share Relief Work</h1>
+
+    <h1>📸 Report Relief Work</h1>
+
 </header>
+
 
 <div class="container">
 
     <div class="form-box">
 
-        <h2>Share Relief Work</h2>
+        <h2>Relief Work Report</h2>
 
         <p class="intro">
-            Share information about relief activities,
-            emergency support or community work.
+            Share information about humanitarian relief
+            activities and community support work.
         </p>
+
 
         <form id="reliefForm">
 
+
+            <!-- NAME -->
+
             <label for="name">
-                Full Name
+                Your Full Name
             </label>
 
             <input
@@ -185,6 +215,9 @@ footer p{
                 placeholder="Enter your full name"
                 required
             >
+
+
+            <!-- PHONE -->
 
             <label for="phone">
                 Phone / WhatsApp
@@ -197,6 +230,9 @@ footer p{
                 required
             >
 
+
+            <!-- LOCATION -->
+
             <label for="location">
                 Relief Work Location
             </label>
@@ -208,34 +244,72 @@ footer p{
                 required
             >
 
-            <label for="work_type">
-                Type of Relief Work
+
+            <!-- DATE -->
+
+            <label for="date">
+                Relief Work Date
             </label>
 
-            <select id="work_type" required>
+            <input
+                type="date"
+                id="date"
+                required
+            >
+
+
+            <!-- PEOPLE HELPED -->
+
+            <label for="people">
+                Number of People Helped
+            </label>
+
+            <input
+                type="number"
+                id="people"
+                min="1"
+                placeholder="Example: 50"
+                required
+            >
+
+
+            <!-- SUPPORT TYPE -->
+
+            <label for="support">
+                Type of Support Provided
+            </label>
+
+            <select
+                id="support"
+                required
+            >
 
                 <option value="">
-                    Select an option
-                </option>
-
-                <option value="Flood Relief">
-                    Flood Relief
+                    Select support type
                 </option>
 
                 <option value="Food Distribution">
-                    Food Distribution
+                    🍚 Food Distribution
+                </option>
+
+                <option value="Drinking Water">
+                    💧 Drinking Water
+                </option>
+
+                <option value="Clothes">
+                    👕 Clothes
                 </option>
 
                 <option value="Medical Support">
-                    Medical Support
+                    🩹 Medical Support
                 </option>
 
-                <option value="Emergency Assistance">
-                    Emergency Assistance
+                <option value="Emergency Supplies">
+                    📦 Emergency Supplies
                 </option>
 
-                <option value="Community Support">
-                    Community Support
+                <option value="Shelter Support">
+                    🏠 Shelter Support
                 </option>
 
                 <option value="Other">
@@ -244,31 +318,70 @@ footer p{
 
             </select>
 
-            <label for="message">
+
+            <!-- DESCRIPTION -->
+
+            <label for="description">
                 Relief Work Details
             </label>
 
             <textarea
-                id="message"
-                placeholder="Describe the relief work or community support activity"
+                id="description"
+                placeholder="Describe what happened, what support was provided and who was helped..."
                 required
             ></textarea>
 
+
+            <!-- PHOTO -->
+
+            <label for="photo">
+                Photo / Evidence
+            </label>
+
+            <input
+                type="file"
+                id="photo"
+                accept="image/*"
+            >
+
+            <div class="help-note">
+
+                📷 You can upload a photo showing the
+                relief activity. Please avoid sharing
+                sensitive personal information.
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
             <button type="submit">
-                📸 Submit Relief Work
+
+                📸 Submit Relief Work Report
+
             </button>
+
 
         </form>
 
-        <div id="messageBox" class="message"></div>
 
-        <a href="index.html" class="back">
+        <div
+            id="messageBox"
+            class="message"
+        ></div>
+
+
+        <a
+            href="index.html"
+            class="back"
+        >
             ← Back to Home
         </a>
 
     </div>
 
 </div>
+
 
 <footer>
 
@@ -282,32 +395,41 @@ footer p{
 
 </footer>
 
+
 <script>
 
-document.getElementById("reliefForm")
+document
+.getElementById("reliefForm")
 .addEventListener(
     "submit",
     function(event){
 
         event.preventDefault();
 
+
         const messageBox =
-            document.getElementById("messageBox");
+            document.getElementById(
+                "messageBox"
+            );
+
 
         messageBox.className =
             "message success";
 
-        messageBox.textContent =
-            "✅ Thank you for sharing this relief work with Emergency Responders! ❤️";
 
-        document.getElementById(
-            "reliefForm"
-        ).reset();
+        messageBox.textContent =
+            "✅ Thank you! Your relief work report has been submitted successfully. ❤️";
+
+
+        document
+        .getElementById("reliefForm")
+        .reset();
 
     }
 );
 
 </script>
+
 
 </body>
 </html>
