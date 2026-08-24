@@ -103,6 +103,34 @@ button:hover{
     background:#8f0000;
 }
 
+button:disabled{
+    background:#999;
+    cursor:not-allowed;
+}
+
+.message{
+    display:none;
+    margin-top:18px;
+    padding:13px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.success{
+    display:block;
+    background:#e8f7ed;
+    color:#168534;
+    border:1px solid #b7e4c7;
+}
+
+.error{
+    display:block;
+    background:#fff0f0;
+    color:#b30000;
+    border:1px solid #f0b5b5;
+}
+
 .back{
     display:block;
     text-align:center;
@@ -240,9 +268,11 @@ footer{
                 placeholder="Tell us anything else you would like us to know"
             ></textarea>
 
-            <button type="submit">
+            <button id="submitBtn" type="submit">
                 🤝 Submit Volunteer Request
             </button>
+
+            <div id="formMessage" class="message"></div>
 
         </form>
 
@@ -260,6 +290,139 @@ footer{
     <p>A Helping Hand for Humanity ❤️</p>
 
 </footer>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+"https://gjfbqzwcatpvejuofdvc.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
+
+const supabaseClient =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+
+const volunteerForm =
+document.getElementById("volunteerForm");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+const formMessage =
+document.getElementById("formMessage");
+
+
+volunteerForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent =
+            "Submitting...";
+
+
+        formMessage.className =
+            "message";
+
+        formMessage.textContent =
+            "";
+
+
+        const volunteerData = {
+
+            name:
+                document.getElementById("name").value.trim(),
+
+            age:
+                Number(
+                    document.getElementById("age").value
+                ),
+
+            phone:
+                document.getElementById("phone").value.trim(),
+
+            email:
+                document.getElementById("email").value.trim(),
+
+            location:
+                document.getElementById("location").value.trim(),
+
+            help_type:
+                document.getElementById("help_type").value,
+
+            availability:
+                document.getElementById("availability").value,
+
+            message:
+                document.getElementById("message").value.trim(),
+
+            status:
+                "pending"
+        };
+
+
+        const { error } =
+            await supabaseClient
+            .from("volunteers")
+            .insert([volunteerData]);
+
+
+        if(error){
+
+            console.error(
+                "Volunteer submission error:",
+                error
+            );
+
+
+            formMessage.className =
+                "message error";
+
+            formMessage.textContent =
+                "❌ Submission failed. Please try again.";
+
+
+            submitBtn.disabled = false;
+
+            submitBtn.textContent =
+                "🤝 Submit Volunteer Request";
+
+            return;
+        }
+
+
+        formMessage.className =
+            "message success";
+
+        formMessage.textContent =
+            "✅ Your volunteer request has been submitted successfully. Thank you for supporting humanity! ❤️";
+
+
+        volunteerForm.reset();
+
+
+        submitBtn.disabled = false;
+
+        submitBtn.textContent =
+            "🤝 Submit Volunteer Request";
+
+    }
+);
+
+</script>
 
 </body>
 </html>
