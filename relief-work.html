@@ -5,10 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Report Relief Work | Emergency Responders</title>
+<title>Share Relief Work | Emergency Responders</title>
 
 <meta name="description"
-content="Share information about relief activities and community support work with Emergency Responders.">
+content="Share relief work activities with Emergency Responders.">
 
 <meta name="theme-color" content="#b30000">
 
@@ -36,7 +36,7 @@ header{
 }
 
 header h1{
-    font-size:26px;
+    font-size:27px;
 }
 
 .container{
@@ -47,7 +47,7 @@ header h1{
 
 .form-box{
     background:white;
-    padding:35px 30px;
+    padding:30px;
     border-radius:14px;
     box-shadow:0 3px 15px rgba(0,0,0,.12);
 }
@@ -67,12 +67,11 @@ h2{
 label{
     display:block;
     font-weight:bold;
-    margin-top:17px;
+    margin-top:16px;
     margin-bottom:6px;
 }
 
 input,
-select,
 textarea{
     width:100%;
     padding:13px;
@@ -87,24 +86,13 @@ textarea{
     resize:vertical;
 }
 
-input[type="file"]{
-    background:#fafafa;
-    padding:11px;
-}
-
-.photo-note{
-    font-size:13px;
-    color:#777;
-    margin-top:6px;
-}
-
 button{
     width:100%;
-    margin-top:25px;
+    margin-top:24px;
     padding:14px;
     background:#b30000;
     color:white;
-    border:none;
+    border:0;
     border-radius:8px;
     font-size:17px;
     font-weight:bold;
@@ -115,18 +103,12 @@ button:hover{
     background:#8f0000;
 }
 
-button:disabled{
-    background:#888;
-    cursor:not-allowed;
-}
-
 .message{
     display:none;
-    margin-top:20px;
-    padding:14px;
-    border-radius:8px;
+    margin-top:18px;
+    padding:12px;
+    border-radius:7px;
     text-align:center;
-    font-weight:bold;
 }
 
 .success{
@@ -150,6 +132,15 @@ button:disabled{
     font-weight:bold;
 }
 
+.note{
+    margin-top:18px;
+    padding:12px;
+    background:#fff7e6;
+    border-radius:8px;
+    color:#665000;
+    font-size:14px;
+}
+
 footer{
     background:#222;
     color:white;
@@ -170,25 +161,23 @@ footer p{
     }
 
     .form-box{
-        padding:25px 18px;
+        padding:22px 17px;
     }
 
     header h1{
-        font-size:22px;
+        font-size:23px;
     }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-
 <header>
 
-    <h1>📸 Report Relief Work</h1>
+    <h1>📸 Share Relief Work</h1>
 
 </header>
 
@@ -207,33 +196,20 @@ footer p{
 
         <form id="reliefForm">
 
-
             <label for="name">
-                Full Name
+                Your Name
             </label>
 
             <input
                 type="text"
                 id="name"
-                placeholder="Enter your full name"
-                required
-            >
-
-
-            <label for="phone">
-                Phone / WhatsApp
-            </label>
-
-            <input
-                type="tel"
-                id="phone"
-                placeholder="Enter your phone number"
+                placeholder="Enter your name"
                 required
             >
 
 
             <label for="location">
-                Relief Work Location
+                Location
             </label>
 
             <input
@@ -244,70 +220,19 @@ footer p{
             >
 
 
-            <label for="work_date">
-                Relief Work Date
-            </label>
-
-            <input
-                type="date"
-                id="work_date"
-                required
-            >
-
-
-            <label for="work_type">
-                Type of Relief Work
-            </label>
-
-            <select
-                id="work_type"
-                required
-            >
-
-                <option value="">
-                    Select an option
-                </option>
-
-                <option value="Food Distribution">
-                    🍚 Food Distribution
-                </option>
-
-                <option value="Flood Relief">
-                    🌊 Flood Relief
-                </option>
-
-                <option value="Emergency Assistance">
-                    🆘 Emergency Assistance
-                </option>
-
-                <option value="Community Support">
-                    🤝 Community Support
-                </option>
-
-                <option value="Essential Supplies">
-                    📦 Essential Supplies
-                </option>
-
-                <option value="Other">
-                    Other
-                </option>
-
-            </select>
-
-
-            <label for="description">
-                Description
+            <label for="activity">
+                Relief Activity
             </label>
 
             <textarea
-                id="description"
+                id="activity"
                 placeholder="Describe the relief work..."
                 required
             ></textarea>
 
 
             <label for="photo">
-                📷 Upload Relief Work Photo
+                📷 Upload Photo
             </label>
 
             <input
@@ -317,33 +242,24 @@ footer p{
                 required
             >
 
-            <p class="photo-note">
-                Please upload a clear photo of the relief activity.
-                Avoid sharing sensitive personal information.
-            </p>
+
+            <div class="note">
+                Please do not upload sensitive personal information
+                or private documents in the photo.
+            </div>
 
 
-            <button
-                type="submit"
-                id="submitBtn"
-            >
+            <button type="submit">
                 📸 Submit Relief Work Report
             </button>
-
-
-            <div
-                id="message"
-                class="message"
-            ></div>
-
 
         </form>
 
 
-        <a
-            href="index.html"
-            class="back"
-        >
+        <div id="message" class="message"></div>
+
+
+        <a href="index.html" class="back">
             ← Back to Home
         </a>
 
@@ -354,9 +270,7 @@ footer p{
 
 <footer>
 
-    <p>
-        © 2026 Emergency Responders
-    </p>
+    <p>© 2026 Emergency Responders</p>
 
     <p>
         A Helping Hand for Humanity ❤️
@@ -388,9 +302,6 @@ document.getElementById("reliefForm");
 const message =
 document.getElementById("message");
 
-const submitBtn =
-document.getElementById("submitBtn");
-
 
 form.addEventListener(
     "submit",
@@ -398,35 +309,19 @@ form.addEventListener(
 
         event.preventDefault();
 
-        submitBtn.disabled = true;
-
-        submitBtn.textContent =
-            "Uploading...";
-
-        message.className =
-            "message";
-
-        message.style.display =
-            "none";
+        message.className = "message";
+        message.textContent = "Submitting...";
+        message.style.display = "block";
 
 
         const name =
             document.getElementById("name").value.trim();
 
-        const phone =
-            document.getElementById("phone").value.trim();
-
         const location =
             document.getElementById("location").value.trim();
 
-        const workDate =
-            document.getElementById("work_date").value;
-
-        const workType =
-            document.getElementById("work_type").value;
-
-        const description =
-            document.getElementById("description").value.trim();
+        const activity =
+            document.getElementById("activity").value.trim();
 
         const photo =
             document.getElementById("photo").files[0];
@@ -439,34 +334,6 @@ form.addEventListener(
                 true
             );
 
-            submitBtn.disabled = false;
-
-            submitBtn.textContent =
-                "📸 Submit Relief Work Report";
-
-            return;
-        }
-
-
-        const allowedTypes = [
-            "image/jpeg",
-            "image/png",
-            "image/webp"
-        ];
-
-
-        if(!allowedTypes.includes(photo.type)){
-
-            showMessage(
-                "Please upload JPG, PNG or WebP image.",
-                true
-            );
-
-            submitBtn.disabled = false;
-
-            submitBtn.textContent =
-                "📸 Submit Relief Work Report";
-
             return;
         }
 
@@ -478,100 +345,75 @@ form.addEventListener(
                 true
             );
 
-            submitBtn.disabled = false;
-
-            submitBtn.textContent =
-                "📸 Submit Relief Work Report";
-
             return;
         }
 
 
         try{
 
-
-            /* ================= PHOTO UPLOAD ================= */
-
-            submitBtn.textContent =
-                "Uploading photo...";
-
-
-            const extension =
-                photo.name.split(".").pop();
-
+            /* UNIQUE FILE NAME */
 
             const fileName =
                 Date.now() +
-                "-" +
+                "_" +
                 Math.random()
                     .toString(36)
                     .substring(2) +
-                "." +
-                extension;
+                "_" +
+                photo.name.replace(
+                    /[^a-zA-Z0-9._-]/g,
+                    "_"
+                );
 
 
-            const filePath =
-                "relief/" +
-                fileName;
+            /* UPLOAD PHOTO */
 
-
-            const upload =
+            const { error: uploadError } =
                 await supabaseClient
                 .storage
                 .from("relief-work")
                 .upload(
-                    filePath,
+                    fileName,
                     photo,
                     {
-                        cacheControl:"3600",
-                        upsert:false,
-                        contentType:photo.type
+                        contentType:photo.type,
+                        upsert:false
                     }
                 );
 
 
-            if(upload.error){
+            if(uploadError){
 
-                throw upload.error;
+                throw uploadError;
 
             }
 
 
-            /* ================= PHOTO URL ================= */
+            /* GET PUBLIC PHOTO URL */
 
-            const publicUrl =
+            const { data:publicData } =
                 supabaseClient
                 .storage
                 .from("relief-work")
-                .getPublicUrl(filePath);
+                .getPublicUrl(fileName);
 
 
             const photoUrl =
-                publicUrl.data.publicUrl;
+                publicData.publicUrl;
 
 
-            /* ================= SAVE REPORT ================= */
+            /* SAVE REPORT */
 
-            submitBtn.textContent =
-                "Submitting report...";
-
-
-            const { error } =
+            const { error:insertError } =
                 await supabaseClient
-                .from("relief_reports")
+                .from("relief_work")
                 .insert({
 
                     name:name,
 
-                    phone:phone,
-
                     location:location,
 
-                    work_date:workDate,
-
-                    work_type:workType,
-
-                    description:description,
+                    activity:activity,
 
                     photo_url:photoUrl,
 
@@ -580,19 +422,18 @@ form.addEventListener(
                 });
 
 
-            if(error){
+            if(insertError){
 
-                throw error;
+                throw insertError;
 
             }
 
 
-            /* ================= SUCCESS ================= */
-
             form.reset();
 
+
             showMessage(
-                "✅ Thank you! Your relief work report has been submitted successfully. ❤️",
+                "✅ Thank you! Your relief work report has been submitted successfully. It will appear publicly after admin approval. ❤️",
                 false
             );
 
@@ -600,9 +441,10 @@ form.addEventListener(
         }catch(error){
 
             console.error(
-                "Relief report error:",
+                "Relief submission error:",
                 error
             );
+
 
             showMessage(
                 "❌ Submission failed. Please try again.",
@@ -611,32 +453,26 @@ form.addEventListener(
 
         }
 
-
-        submitBtn.disabled = false;
-
-        submitBtn.textContent =
-            "📸 Submit Relief Work Report";
-
     }
 );
 
 
-function showMessage(text,isError){
+function showMessage(
+    text,
+    isError
+){
 
-    message.textContent =
-        text;
+    message.style.display = "block";
 
     message.className =
         "message " +
         (isError ? "error" : "success");
 
-    message.style.display =
-        "block";
+    message.textContent = text;
 
 }
 
 </script>
-
 
 </body>
 </html>
