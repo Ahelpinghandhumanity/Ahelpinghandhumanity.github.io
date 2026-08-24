@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Request Help | Emergency Responders</title>
+
+<meta name="description"
+content="Request emergency support from Emergency Responders.">
+
+<meta name="theme-color" content="#b30000">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fa;
+    color:#222;
+    line-height:1.6;
+}
+
+header{
+    background:#b30000;
+    color:white;
+    padding:18px 6%;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+
+header h1{
+    font-size:27px;
+}
+
+.container{
+    width:92%;
+    max-width:700px;
+    margin:45px auto;
+}
+
+.form-box{
+    background:white;
+    padding:35px 30px;
+    border-radius:14px;
+    box-shadow:0 3px 15px rgba(0,0,0,.12);
+}
+
+h2{
+    text-align:center;
+    color:#b30000;
+    margin-bottom:10px;
+}
+
+.intro{
+    text-align:center;
+    color:#666;
+    margin-bottom:28px;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:17px;
+    margin-bottom:6px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:7px;
+    font-size:16px;
+    font-family:inherit;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:14px;
+    background:#b30000;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#8f0000;
+}
+
+.message{
+    display:none;
+    margin-top:18px;
+    padding:13px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.success{
+    display:block;
+    background:#e7f7e7;
+    color:#176b17;
+}
+
+.error{
+    display:block;
+    background:#ffe8e8;
+    color:#9b0000;
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    color:#b30000;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    margin-top:50px;
+}
+
+footer p{
+    margin:4px 0;
+}
+
+@media(max-width:600px){
+
+    .container{
+        width:94%;
+        margin:25px auto;
+    }
+
+    .form-box{
+        padding:25px 18px;
+    }
+
+    header h1{
+        font-size:23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🆘 Request Help</h1>
+</header>
+
+<div class="container">
+
+    <div class="form-box">
+
+        <h2>Request Help</h2>
+
+        <p class="intro">
+            If you or someone in your community needs assistance,
+            please submit the details below.
+        </p>
+
+        <form id="helpForm">
+
+            <label for="name">Full Name</label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                required
+            >
+
+            <label for="phone">Phone / WhatsApp</label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+            <label for="location">Location</label>
+
+            <input
+                type="text"
+                id="location"
+                placeholder="Village / Town / District"
+                required
+            >
+
+            <label for="help_type">Type of Help Needed</label>
+
+            <select id="help_type" required>
+
+                <option value="">Select an option</option>
+
+                <option value="Food Support">
+                    Food Support
+                </option>
+
+                <option value="Emergency Assistance">
+                    Emergency Assistance
+                </option>
+
+                <option value="Disaster Relief">
+                    Disaster Relief
+                </option>
+
+                <option value="Medical Support">
+                    Medical Support
+                </option>
+
+                <option value="Shelter Support">
+                    Shelter Support
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+            <label for="message">Describe Your Situation</label>
+
+            <textarea
+                id="message"
+                placeholder="Please describe what help is needed"
+                required
+            ></textarea>
+
+            <button type="submit">
+                🆘 Submit Help Request
+            </button>
+
+        </form>
+
+        <div id="messageBox" class="message"></div>
+
+        <a href="index.html" class="back">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <p>© 2026 Emergency Responders</p>
+
+    <p>
+        A Helping Hand for Humanity ❤️
+    </p>
+
+</footer>
+
+<script>
+
+document.getElementById("helpForm").addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+        const messageBox =
+            document.getElementById("messageBox");
+
+        /*
+         * Temporary submission confirmation.
+         * Database connection can be added later.
+         */
+
+        messageBox.className =
+            "message success";
+
+        messageBox.textContent =
+            "✅ Your help request has been submitted successfully. We will review your request. ❤️";
+
+        document.getElementById("helpForm").reset();
+
+    }
+);
+
+</script>
+
+</body>
+</html>
