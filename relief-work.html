@@ -8,7 +8,7 @@
 <title>Report Relief Work | Emergency Responders</title>
 
 <meta name="description"
-content="Report and share humanitarian relief activities with Emergency Responders.">
+content="Share information about relief activities and community support work with Emergency Responders.">
 
 <meta name="theme-color" content="#b30000">
 
@@ -30,18 +30,18 @@ body{
 header{
     background:#b30000;
     color:white;
-    padding:20px 6%;
+    padding:20px 15px;
     text-align:center;
     box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 
 header h1{
-    font-size:27px;
+    font-size:26px;
 }
 
 .container{
     width:92%;
-    max-width:750px;
+    max-width:700px;
     margin:40px auto;
 }
 
@@ -61,7 +61,7 @@ h2{
 .intro{
     text-align:center;
     color:#666;
-    margin-bottom:28px;
+    margin-bottom:25px;
 }
 
 label{
@@ -80,66 +80,22 @@ textarea{
     border-radius:7px;
     font-size:16px;
     font-family:inherit;
-    background:white;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    border-color:#b30000;
 }
 
 textarea{
-    min-height:130px;
+    min-height:120px;
     resize:vertical;
 }
 
-/* PHOTO UPLOAD */
-
-.photo-box{
-    border:2px dashed #ccc;
-    border-radius:10px;
-    padding:20px;
-    margin-top:8px;
-    text-align:center;
+input[type="file"]{
     background:#fafafa;
-}
-
-.photo-box input{
-    border:none;
-    padding:8px;
-    background:transparent;
+    padding:11px;
 }
 
 .photo-note{
-    color:#666;
-    font-size:14px;
-    margin-top:8px;
-}
-
-.preview{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-    margin-top:15px;
-}
-
-.preview img{
-    width:100%;
-    height:120px;
-    object-fit:cover;
-    border-radius:8px;
-    border:1px solid #ddd;
-}
-
-.help-note{
-    background:#fff5f5;
-    border-left:4px solid #b30000;
-    padding:12px;
-    margin-top:20px;
-    color:#555;
-    font-size:14px;
+    font-size:13px;
+    color:#777;
+    margin-top:6px;
 }
 
 button{
@@ -159,10 +115,15 @@ button:hover{
     background:#8f0000;
 }
 
+button:disabled{
+    background:#888;
+    cursor:not-allowed;
+}
+
 .message{
     display:none;
-    margin-top:18px;
-    padding:13px;
+    margin-top:20px;
+    padding:14px;
     border-radius:8px;
     text-align:center;
     font-weight:bold;
@@ -172,6 +133,12 @@ button:hover{
     display:block;
     background:#e7f7e7;
     color:#176b17;
+}
+
+.error{
+    display:block;
+    background:#ffe8e8;
+    color:#9b0000;
 }
 
 .back{
@@ -207,15 +174,7 @@ footer p{
     }
 
     header h1{
-        font-size:23px;
-    }
-
-    .preview{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .preview img{
-        height:110px;
+        font-size:22px;
     }
 
 }
@@ -241,18 +200,16 @@ footer p{
         <h2>Relief Work Report</h2>
 
         <p class="intro">
-            Share information about humanitarian relief
-            activities and community support work.
+            Share information about relief activities
+            and community support work.
         </p>
 
 
         <form id="reliefForm">
 
 
-            <!-- NAME -->
-
             <label for="name">
-                Your Full Name
+                Full Name
             </label>
 
             <input
@@ -262,8 +219,6 @@ footer p{
                 required
             >
 
-
-            <!-- PHONE -->
 
             <label for="phone">
                 Phone / WhatsApp
@@ -277,8 +232,6 @@ footer p{
             >
 
 
-            <!-- LOCATION -->
-
             <label for="location">
                 Relief Work Location
             </label>
@@ -291,71 +244,48 @@ footer p{
             >
 
 
-            <!-- DATE -->
-
-            <label for="date">
+            <label for="work_date">
                 Relief Work Date
             </label>
 
             <input
                 type="date"
-                id="date"
+                id="work_date"
                 required
             >
 
 
-            <!-- PEOPLE -->
-
-            <label for="people">
-                Number of People Helped
-            </label>
-
-            <input
-                type="number"
-                id="people"
-                min="1"
-                placeholder="Example: 50"
-                required
-            >
-
-
-            <!-- SUPPORT -->
-
-            <label for="support">
-                Type of Support Provided
+            <label for="work_type">
+                Type of Relief Work
             </label>
 
             <select
-                id="support"
+                id="work_type"
                 required
             >
 
                 <option value="">
-                    Select support type
+                    Select an option
                 </option>
 
                 <option value="Food Distribution">
                     🍚 Food Distribution
                 </option>
 
-                <option value="Drinking Water">
-                    💧 Drinking Water
+                <option value="Flood Relief">
+                    🌊 Flood Relief
                 </option>
 
-                <option value="Clothes">
-                    👕 Clothes
+                <option value="Emergency Assistance">
+                    🆘 Emergency Assistance
                 </option>
 
-                <option value="Medical Support">
-                    🩹 Medical Support
+                <option value="Community Support">
+                    🤝 Community Support
                 </option>
 
-                <option value="Emergency Supplies">
-                    📦 Emergency Supplies
-                </option>
-
-                <option value="Shelter Support">
-                    🏠 Shelter Support
+                <option value="Essential Supplies">
+                    📦 Essential Supplies
                 </option>
 
                 <option value="Other">
@@ -365,71 +295,49 @@ footer p{
             </select>
 
 
-            <!-- DETAILS -->
-
             <label for="description">
-                Relief Work Details
+                Description
             </label>
 
             <textarea
                 id="description"
-                placeholder="Describe what happened, what support was provided and who was helped..."
+                placeholder="Describe the relief work..."
                 required
             ></textarea>
 
 
-            <!-- PHOTO -->
-
             <label for="photo">
-                📷 Photo / Evidence
+                📷 Upload Relief Work Photo
             </label>
 
-            <div class="photo-box">
+            <input
+                type="file"
+                id="photo"
+                accept="image/jpeg,image/png,image/webp"
+                required
+            >
 
-                <input
-                    type="file"
-                    id="photo"
-                    accept="image/*"
-                    multiple
-                >
-
-                <div class="photo-note">
-                    Select up to 5 photos
-                </div>
-
-                <div
-                    id="preview"
-                    class="preview"
-                ></div>
-
-            </div>
+            <p class="photo-note">
+                Please upload a clear photo of the relief activity.
+                Avoid sharing sensitive personal information.
+            </p>
 
 
-            <div class="help-note">
-
-                📷 Please upload photos related to the
-                relief activity. Avoid uploading sensitive
-                personal information.
-
-            </div>
-
-
-            <!-- SUBMIT -->
-
-            <button type="submit">
-
+            <button
+                type="submit"
+                id="submitBtn"
+            >
                 📸 Submit Relief Work Report
-
             </button>
 
 
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
         </form>
-
-
-        <div
-            id="messageBox"
-            class="message"
-        ></div>
 
 
         <a
@@ -457,110 +365,275 @@ footer p{
 </footer>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 
-/* ================= PHOTO PREVIEW ================= */
+const SUPABASE_URL =
+"https://gjfbqzwcatpvejuofdvc.supabase.co";
 
-const photoInput =
-    document.getElementById("photo");
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
 
-const preview =
-    document.getElementById("preview");
-
-
-photoInput.addEventListener(
-    "change",
-    function(){
-
-        preview.innerHTML = "";
-
-        const files =
-            Array.from(this.files);
+const supabaseClient =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
 
 
-        if(files.length > 5){
+const form =
+document.getElementById("reliefForm");
 
-            alert(
-                "You can select a maximum of 5 photos."
+const message =
+document.getElementById("message");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+
+form.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent =
+            "Uploading...";
+
+        message.className =
+            "message";
+
+        message.style.display =
+            "none";
+
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const location =
+            document.getElementById("location").value.trim();
+
+        const workDate =
+            document.getElementById("work_date").value;
+
+        const workType =
+            document.getElementById("work_type").value;
+
+        const description =
+            document.getElementById("description").value.trim();
+
+        const photo =
+            document.getElementById("photo").files[0];
+
+
+        if(!photo){
+
+            showMessage(
+                "Please select a photo.",
+                true
             );
 
-            this.value = "";
+            submitBtn.disabled = false;
+
+            submitBtn.textContent =
+                "📸 Submit Relief Work Report";
 
             return;
         }
 
 
-        files.forEach(
-            function(file){
-
-                if(!file.type.startsWith("image/")){
-                    return;
-                }
-
-                const reader =
-                    new FileReader();
+        const allowedTypes = [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+        ];
 
 
-                reader.onload =
-                    function(event){
+        if(!allowedTypes.includes(photo.type)){
 
-                        const img =
-                            document.createElement("img");
+            showMessage(
+                "Please upload JPG, PNG or WebP image.",
+                true
+            );
 
-                        img.src =
-                            event.target.result;
+            submitBtn.disabled = false;
 
-                        img.alt =
-                            "Relief work photo";
+            submitBtn.textContent =
+                "📸 Submit Relief Work Report";
 
-                        preview.appendChild(img);
-
-                    };
+            return;
+        }
 
 
-                reader.readAsDataURL(file);
+        if(photo.size > 5 * 1024 * 1024){
+
+            showMessage(
+                "Photo must be smaller than 5 MB.",
+                true
+            );
+
+            submitBtn.disabled = false;
+
+            submitBtn.textContent =
+                "📸 Submit Relief Work Report";
+
+            return;
+        }
+
+
+        try{
+
+
+            /* ================= PHOTO UPLOAD ================= */
+
+            submitBtn.textContent =
+                "Uploading photo...";
+
+
+            const extension =
+                photo.name.split(".").pop();
+
+
+            const fileName =
+                Date.now() +
+                "-" +
+                Math.random()
+                    .toString(36)
+                    .substring(2) +
+                "." +
+                extension;
+
+
+            const filePath =
+                "relief/" +
+                fileName;
+
+
+            const upload =
+                await supabaseClient
+                .storage
+                .from("relief-work")
+                .upload(
+                    filePath,
+                    photo,
+                    {
+                        cacheControl:"3600",
+                        upsert:false,
+                        contentType:photo.type
+                    }
+                );
+
+
+            if(upload.error){
+
+                throw upload.error;
 
             }
-        );
-
-    }
-);
 
 
-/* ================= FORM SUBMISSION ================= */
+            /* ================= PHOTO URL ================= */
 
-document
-.getElementById("reliefForm")
-.addEventListener(
-    "submit",
-    function(event){
-
-        event.preventDefault();
+            const publicUrl =
+                supabaseClient
+                .storage
+                .from("relief-work")
+                .getPublicUrl(filePath);
 
 
-        const messageBox =
-            document.getElementById(
-                "messageBox"
+            const photoUrl =
+                publicUrl.data.publicUrl;
+
+
+            /* ================= SAVE REPORT ================= */
+
+            submitBtn.textContent =
+                "Submitting report...";
+
+
+            const { error } =
+                await supabaseClient
+                .from("relief_reports")
+                .insert({
+
+                    name:name,
+
+                    phone:phone,
+
+                    location:location,
+
+                    work_date:workDate,
+
+                    work_type:workType,
+
+                    description:description,
+
+                    photo_url:photoUrl,
+
+                    status:"pending"
+
+                });
+
+
+            if(error){
+
+                throw error;
+
+            }
+
+
+            /* ================= SUCCESS ================= */
+
+            form.reset();
+
+            showMessage(
+                "✅ Thank you! Your relief work report has been submitted successfully. ❤️",
+                false
             );
 
 
-        messageBox.className =
-            "message success";
+        }catch(error){
+
+            console.error(
+                "Relief report error:",
+                error
+            );
+
+            showMessage(
+                "❌ Submission failed. Please try again.",
+                true
+            );
+
+        }
 
 
-        messageBox.textContent =
-            "✅ Thank you! Your relief work report has been submitted successfully. ❤️";
+        submitBtn.disabled = false;
 
-
-        document
-        .getElementById("reliefForm")
-        .reset();
-
-
-        preview.innerHTML = "";
+        submitBtn.textContent =
+            "📸 Submit Relief Work Report";
 
     }
 );
+
+
+function showMessage(text,isError){
+
+    message.textContent =
+        text;
+
+    message.className =
+        "message " +
+        (isError ? "error" : "success");
+
+    message.style.display =
+        "block";
+
+}
 
 </script>
 
