@@ -6,11 +6,7 @@
 
 <title>Share Relief Work | Emergency Responders</title>
 
-<meta name="description"
-content="Share relief activities and humanitarian work with Emergency Responders.">
-
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -29,7 +25,6 @@ header{
     color:white;
     padding:18px 6%;
     text-align:center;
-    box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 
 header h1{
@@ -39,7 +34,7 @@ header h1{
 .container{
     width:92%;
     max-width:750px;
-    margin:40px auto;
+    margin:35px auto;
 }
 
 .form-box{
@@ -111,6 +106,7 @@ button:hover{
     border-radius:7px;
     display:none;
     text-align:center;
+    word-break:break-word;
 }
 
 .success{
@@ -204,21 +200,16 @@ footer{
         height:240px;
     }
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
     <h1>📷 Share Relief Work</h1>
-
 </header>
 
-
 <div class="container">
-
 
 <div class="form-box">
 
@@ -228,9 +219,7 @@ footer{
 Share information about relief activities and community support work.
 </p>
 
-
 <form id="reliefForm">
-
 
 <label for="name">
 Name / Organization
@@ -243,7 +232,6 @@ Name / Organization
     required
 >
 
-
 <label for="location">
 Location
 </label>
@@ -255,7 +243,6 @@ Location
     required
 >
 
-
 <label for="description">
 Relief Work Description
 </label>
@@ -265,7 +252,6 @@ Relief Work Description
     placeholder="Describe the relief activity"
     required
 ></textarea>
-
 
 <label for="photo">
 📷 Upload Photo
@@ -278,16 +264,13 @@ Relief Work Description
     required
 >
 
-
 <p style="font-size:13px;color:#777;margin-top:6px;">
 Maximum photo size: 300 KB. JPG, PNG or WebP only.
 </p>
 
-
 <p style="font-size:13px;color:#777;margin-top:5px;">
 Please avoid sharing sensitive personal information.
 </p>
-
 
 <button type="submit">
 📸 Submit Relief Work Report
@@ -295,9 +278,7 @@ Please avoid sharing sensitive personal information.
 
 </form>
 
-
 <div id="message" class="message"></div>
-
 
 <a href="index.html" class="back">
 ← Back to Home
@@ -306,54 +287,37 @@ Please avoid sharing sensitive personal information.
 </div>
 
 
-<!-- PUBLIC RELIEF GALLERY -->
-
 <div class="gallery">
 
-<h2>
-📸 Relief Work Gallery
-</h2>
-
+<h2>📸 Relief Work Gallery</h2>
 
 <div id="photoGrid" class="photo-grid">
-
-<p>
-Loading relief work...
-</p>
-
+<p>Loading relief work...</p>
 </div>
 
 </div>
-
 
 </div>
 
 
 <footer>
 
-<p>
-© 2026 Emergency Responders
-</p>
+<p>© 2026 Emergency Responders</p>
 
-<p>
-A Helping Hand for Humanity ❤️
-</p>
+<p>A Helping Hand for Humanity ❤️</p>
 
 </footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script>
 
 const SUPABASE_URL =
 "https://gjfbqzwcatpvejuofdvc.supabase.co";
 
-
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
-
 
 const supabaseClient =
 window.supabase.createClient(
@@ -378,8 +342,7 @@ document.getElementById("photoGrid");
 
 function showMessage(text,type){
 
-    message.style.display =
-        "block";
+    message.style.display = "block";
 
     message.className =
         "message " + type;
@@ -391,7 +354,7 @@ function showMessage(text,type){
 
 
 /* =========================
-   SUBMIT
+   SUBMIT RELIEF WORK
 ========================= */
 
 form.addEventListener(
@@ -406,18 +369,15 @@ async function(event){
         .value
         .trim();
 
-
     const location =
         document.getElementById("location")
         .value
         .trim();
 
-
     const description =
         document.getElementById("description")
         .value
         .trim();
-
 
     const photo =
         document.getElementById("photo")
@@ -432,7 +392,6 @@ async function(event){
         );
 
         return;
-
     }
 
 
@@ -446,20 +405,15 @@ async function(event){
         );
 
         return;
-
     }
 
 
     /* FILE TYPE */
 
     const allowedTypes = [
-
         "image/jpeg",
-
         "image/png",
-
         "image/webp"
-
     ];
 
 
@@ -471,12 +425,11 @@ async function(event){
         );
 
         return;
-
     }
 
 
     showMessage(
-        "Uploading relief work...",
+        "1/2 Uploading photo...",
         "success"
     );
 
@@ -484,89 +437,89 @@ async function(event){
     try{
 
 
-        /* UNIQUE FILE NAME */
+        /* =========================
+           CREATE FILE NAME
+        ========================= */
 
-        const fileName =
-
-            Date.now() +
-
-            "-" +
-
-            Math.random()
-                .toString(36)
-                .substring(2) +
-
-            "-" +
-
-            photo.name
-                .replace(
-                    /[^a-zA-Z0-9.-]/g,
-                    "-"
-                );
-
-
-        /* UPLOAD PHOTO */
-
-        const { error: uploadError } =
-
-            await supabaseClient
-
-            .storage
-
-            .from("relief-work")
-
-            .upload(
-
-                fileName,
-
-                photo,
-
-                {
-
-                    contentType:
-                        photo.type,
-
-                    upsert:false
-
-                }
-
+        const safeName =
+            photo.name.replace(
+                /[^a-zA-Z0-9.-]/g,
+                "-"
             );
 
 
-        if(uploadError){
+        const fileName =
+            Date.now() +
+            "-" +
+            Math.random()
+                .toString(36)
+                .substring(2) +
+            "-" +
+            safeName;
 
-            throw uploadError;
 
+        /* =========================
+           STORAGE UPLOAD
+        ========================= */
+
+        const uploadResult =
+            await supabaseClient
+            .storage
+            .from("relief-work")
+            .upload(
+                fileName,
+                photo,
+                {
+                    contentType:photo.type,
+                    upsert:false
+                }
+            );
+
+
+        if(uploadResult.error){
+
+            console.error(
+                "STORAGE ERROR:",
+                uploadResult.error
+            );
+
+            throw new Error(
+                "Photo upload failed: " +
+                uploadResult.error.message
+            );
         }
 
 
-        /* PUBLIC URL */
+        /* =========================
+           PUBLIC URL
+        ========================= */
 
-        const { data: publicData } =
-
+        const publicResult =
             supabaseClient
-
             .storage
-
             .from("relief-work")
-
             .getPublicUrl(
                 fileName
             );
 
 
         const photoUrl =
-            publicData.publicUrl;
+            publicResult.data.publicUrl;
 
 
-        /* SAVE REPORT */
+        /* =========================
+           DATABASE
+        ========================= */
 
-        const { error: dbError } =
+        showMessage(
+            "2/2 Saving relief work...",
+            "success"
+        );
 
+
+        const dbResult =
             await supabaseClient
-
             .from("relief_work")
-
             .insert({
 
                 name:name,
@@ -582,21 +535,39 @@ async function(event){
             });
 
 
-        if(dbError){
+        if(dbResult.error){
 
-            throw dbError;
+            console.error(
+                "DATABASE ERROR:",
+                dbResult.error
+            );
 
+
+            /* DELETE UPLOADED PHOTO
+               IF DATABASE INSERT FAILS */
+
+            await supabaseClient
+            .storage
+            .from("relief-work")
+            .remove([
+                fileName
+            ]);
+
+
+            throw new Error(
+                "Database error: " +
+                dbResult.error.message
+            );
         }
 
 
-        /* SUCCESS */
+        /* =========================
+           SUCCESS
+        ========================= */
 
         showMessage(
-
-            "✅ Your relief work has been submitted for Admin approval. Thank you! ❤️",
-
+            "✅ Submitted successfully! Your relief work is waiting for Admin approval. ❤️",
             "success"
-
         );
 
 
@@ -607,22 +578,17 @@ async function(event){
 
 
     }
-
     catch(error){
 
         console.error(
-            "Relief submission error:",
+            "FINAL ERROR:",
             error
         );
 
 
         showMessage(
-
-            "❌ Submission failed: " +
-            error.message,
-
+            "❌ " + error.message,
             "error"
-
         );
 
     }
@@ -640,57 +606,49 @@ async function loadReliefWork(){
         "<p>Loading relief work...</p>";
 
 
-    const { data, error } =
-
+    const result =
         await supabaseClient
-
         .from("relief_work")
-
         .select(
             "name,location,activity,photo_url,created_at"
         )
-
         .eq(
             "status",
             "approved"
         )
-
         .order(
-
             "created_at",
-
             {
                 ascending:false
             }
-
         );
 
 
-    if(error){
+    if(result.error){
 
         console.error(
-            "Gallery error:",
-            error
+            "GALLERY ERROR:",
+            result.error
         );
 
 
         photoGrid.innerHTML =
-            "<p>Unable to load relief work.</p>";
-
+            "<p>Unable to load approved relief work.</p>";
 
         return;
-
     }
+
+
+    const data =
+        result.data;
 
 
     if(!data || data.length === 0){
 
         photoGrid.innerHTML =
-
             "<p>No approved relief work yet.</p>";
 
         return;
-
     }
 
 
@@ -702,7 +660,6 @@ async function loadReliefWork(){
         const card =
             document.createElement("div");
 
-
         card.className =
             "photo-card";
 
@@ -710,9 +667,7 @@ async function loadReliefWork(){
         card.innerHTML = `
 
             <img
-                src="${escapeHtml(
-                    item.photo_url
-                )}"
+                src="${escapeHtml(item.photo_url)}"
                 alt="Relief work"
                 loading="lazy"
             >
@@ -720,21 +675,15 @@ async function loadReliefWork(){
             <div class="photo-info">
 
                 <strong>
-                    ${escapeHtml(
-                        item.name
-                    )}
+                    ${escapeHtml(item.name)}
                 </strong>
 
                 <p>
-                    📍 ${escapeHtml(
-                        item.location
-                    )}
+                    📍 ${escapeHtml(item.location)}
                 </p>
 
                 <p>
-                    ${escapeHtml(
-                        item.activity
-                    )}
+                    ${escapeHtml(item.activity)}
                 </p>
 
             </div>
@@ -758,20 +707,18 @@ function escapeHtml(text){
     const div =
         document.createElement("div");
 
-
     div.textContent =
-
         text == null
         ? ""
         : String(text);
 
-
     return div.innerHTML;
-
 }
 
 
-/* LOAD GALLERY */
+/* =========================
+   LOAD GALLERY
+========================= */
 
 loadReliefWork();
 
