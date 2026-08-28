@@ -9,10 +9,15 @@
 
 <title>Nepal Flood Relief Campaign | Emergency Responders</title>
 
-<meta name="description"
-content="Nepal Flood Relief Campaign by Emergency Responders. Supporting people affected by flooding and emergencies.">
+<meta
+name="description"
+content="Nepal Flood Relief Campaign by Emergency Responders."
+>
 
-<meta name="theme-color" content="#b30000">
+<meta
+name="theme-color"
+content="#b30000"
+>
 
 <style>
 
@@ -38,7 +43,7 @@ header{
 
 header h1{
     font-size:30px;
-    margin-bottom:8px;
+    margin-bottom:6px;
 }
 
 .container{
@@ -50,14 +55,9 @@ header h1{
 .card{
     background:white;
     padding:25px;
-    margin-bottom:20px;
     border-radius:14px;
     box-shadow:0 3px 15px rgba(0,0,0,.10);
-}
-
-h2{
-    color:#b30000;
-    margin-bottom:15px;
+    margin-bottom:20px;
 }
 
 .hero{
@@ -65,44 +65,46 @@ h2{
 }
 
 .hero h2{
-    font-size:28px;
+    color:#b30000;
+    font-size:27px;
+    margin-bottom:12px;
 }
 
-.hero p{
-    color:#555;
+h2{
+    color:#b30000;
+    margin-bottom:15px;
 }
 
 .info{
     background:#fff7e6;
     padding:15px;
     border-radius:9px;
-    margin-top:15px;
+    margin-top:18px;
 }
 
 .upi{
-    text-align:center;
     background:#f8f8f8;
+    border:1px solid #ddd;
     padding:20px;
     border-radius:10px;
-    border:1px solid #ddd;
+    text-align:center;
 }
 
 .upi-id{
+    color:#b30000;
     font-size:20px;
     font-weight:bold;
-    color:#b30000;
     margin:10px 0 15px;
     word-break:break-word;
 }
 
 .qr{
     width:220px;
-    max-width:80%;
-    height:auto;
+    max-width:85%;
+    display:block;
+    margin:10px auto 18px;
     border:1px solid #ddd;
     border-radius:10px;
-    margin:10px auto 15px;
-    display:block;
 }
 
 .pay-btn{
@@ -110,17 +112,139 @@ h2{
     background:#168534;
     color:white;
     text-decoration:none;
-    padding:13px 25px;
+    padding:13px 23px;
     border-radius:8px;
     font-weight:bold;
 }
 
+label{
+    display:block;
+    font-weight:bold;
+    margin:15px 0 7px;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:7px;
+    font-size:16px;
+    font-family:inherit;
+}
+
+textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.upload-box{
+    border:2px dashed #bbb;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    background:#fafafa;
+    margin-top:8px;
+}
+
+input[type="file"]{
+    border:0;
+    padding:5px;
+}
+
+.preview{
+    display:none;
+    width:100%;
+    max-height:350px;
+    object-fit:contain;
+    margin-top:15px;
+    border-radius:10px;
+    border:1px solid #ddd;
+}
+
+.submit-btn{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    background:#b30000;
+    color:white;
+    border:0;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.submit-btn:disabled{
+    background:#888;
+    cursor:not-allowed;
+}
+
+.message{
+    display:none;
+    padding:14px;
+    margin-top:15px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.success{
+    display:block;
+    background:#e7f7e7;
+    color:#176b17;
+}
+
+.error{
+    display:block;
+    background:#ffe8e8;
+    color:#9b0000;
+}
+
+.post{
+    background:#f8f8f8;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.post img{
+    width:100%;
+    max-height:400px;
+    object-fit:contain;
+    border-radius:8px;
+    margin-top:12px;
+    background:white;
+}
+
+.post-name{
+    font-weight:bold;
+    color:#b30000;
+}
+
+.post-location{
+    color:#666;
+    font-size:14px;
+}
+
+.post-description{
+    margin-top:8px;
+}
+
 .back{
-    display:inline-block;
-    margin-top:10px;
     color:#b30000;
     text-decoration:none;
     font-weight:bold;
+}
+
+.loading{
+    text-align:center;
+    color:#777;
+}
+
+.empty{
+    text-align:center;
+    color:#777;
+    padding:15px;
 }
 
 footer{
@@ -128,6 +252,10 @@ footer{
     color:white;
     text-align:center;
     padding:25px 15px;
+}
+
+footer p{
+    margin:4px 0;
 }
 
 @media(max-width:600px){
@@ -146,7 +274,7 @@ footer{
     }
 
     .hero h2{
-        font-size:24px;
+        font-size:23px;
     }
 
     .upi-id{
@@ -163,13 +291,9 @@ footer{
 
 <header>
 
-<h1>
-🆘 Emergency Responders
-</h1>
+<h1>🆘 Emergency Responders</h1>
 
-<p>
-A Helping Hand for Humanity
-</p>
+<p>A Helping Hand for Humanity</p>
 
 </header>
 
@@ -177,7 +301,7 @@ A Helping Hand for Humanity
 <div class="container">
 
 
-<!-- CAMPAIGN INTRO -->
+<!-- CAMPAIGN -->
 
 <div class="card hero">
 
@@ -209,34 +333,28 @@ Emergency humanitarian support
 
 <div class="card">
 
-<h2>
-❤️ Support This Campaign
-</h2>
+<h2>❤️ Support This Campaign</h2>
 
 <p>
-Your contribution can help provide essential support
-to people affected by emergencies.
+Your contribution can help support humanitarian
+relief activities for people affected by emergencies.
 </p>
 
 <br>
 
 <div class="upi">
 
-<p>
-<strong>Donate via UPI</strong>
-</p>
+<p><strong>Donate via UPI</strong></p>
 
 <div class="upi-id">
 emergencyresponders@ptyes
 </div>
-
 
 <img
 src="emergencyresponders-upi-qr.png"
 class="qr"
 alt="Emergency Responders UPI QR Code"
 >
-
 
 <a
 class="pay-btn"
@@ -247,43 +365,127 @@ href="upi://pay?pa=emergencyresponders@ptyes&pn=Emergency%20Responders&cu=INR"
 
 </div>
 
-<br>
-
-<p>
-If the payment button does not open your UPI app,
-you can scan the QR code or copy the UPI ID.
-</p>
-
 </div>
 
 
-<!-- IMPORTANT NOTICE -->
+<!-- PHOTO UPLOAD -->
 
 <div class="card">
 
-<h2>
-📢 Important Information
-</h2>
+<h2>📸 Share Relief Work</h2>
 
 <p>
-Please donate only according to your ability.
-All donations should be submitted through the
-official donation page for verification.
+Share a photo and information about relief activities
+connected with this campaign.
 </p>
 
-<div class="info">
+<form id="postForm">
 
-<strong>
-After making a donation:
-</strong>
+<label for="name">
+Your Name
+</label>
 
-<br><br>
+<input
+type="text"
+id="name"
+placeholder="Enter your name"
+required
+>
 
-Please submit your payment details on the
-official donation page so the donation can be
-verified.
+<label for="location">
+Location
+</label>
+
+<input
+type="text"
+id="location"
+placeholder="Village / Town / District"
+required
+>
+
+<label for="description">
+Describe the Relief Work
+</label>
+
+<textarea
+id="description"
+placeholder="Describe what is happening or what support is being provided"
+required
+></textarea>
+
+
+<label>
+📷 Upload Photo
+</label>
+
+<div class="upload-box">
+
+<input
+type="file"
+id="photo"
+accept="image/jpeg,image/png,image/webp"
+required
+>
+
+<p style="font-size:13px;color:#777;margin-top:8px;">
+JPG, PNG or WebP • Maximum 5 MB
+</p>
+
+<img
+id="preview"
+class="preview"
+alt="Photo preview"
+>
 
 </div>
+
+
+<button
+type="submit"
+class="submit-btn"
+id="submitBtn"
+>
+📤 Submit Relief Work
+</button>
+
+</form>
+
+
+<div
+id="message"
+class="message"
+></div>
+
+</div>
+
+
+<!-- RELIEF POSTS -->
+
+<div class="card">
+
+<h2>📸 Relief Work Updates</h2>
+
+<div
+id="posts"
+>
+<div class="loading">
+Loading relief updates...
+</div>
+</div>
+
+</div>
+
+
+<!-- DONATION DETAILS -->
+
+<div class="card">
+
+<h2>📢 Important Information</h2>
+
+<p>
+After making a donation, please submit your payment
+details through the official donation page for verification.
+</p>
 
 <br>
 
@@ -326,6 +528,419 @@ A Helping Hand for Humanity ❤️
 
 </footer>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+<script>
+
+const SUPABASE_URL =
+"https://gjfbqzwcatpvejuofdvc.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
+
+const supabaseClient =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+
+const form =
+document.getElementById("postForm");
+
+const message =
+document.getElementById("message");
+
+const submitBtn =
+document.getElementById("submitBtn");
+
+const photoInput =
+document.getElementById("photo");
+
+const preview =
+document.getElementById("preview");
+
+
+/* PHOTO PREVIEW */
+
+photoInput.addEventListener(
+    "change",
+    function(){
+
+        const file =
+            photoInput.files[0];
+
+        if(!file){
+            preview.style.display = "none";
+            return;
+        }
+
+        if(file.size > 5 * 1024 * 1024){
+
+            showMessage(
+                "Photo size must be 5 MB or less.",
+                true
+            );
+
+            photoInput.value = "";
+            preview.style.display = "none";
+
+            return;
+        }
+
+        const reader =
+            new FileReader();
+
+        reader.onload =
+            function(event){
+
+                preview.src =
+                    event.target.result;
+
+                preview.style.display =
+                    "block";
+
+            };
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+/* SUBMIT */
+
+form.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("name")
+            .value.trim();
+
+        const location =
+            document.getElementById("location")
+            .value.trim();
+
+        const description =
+            document.getElementById("description")
+            .value.trim();
+
+        const file =
+            photoInput.files[0];
+
+
+        if(!name || !location || !description || !file){
+
+            showMessage(
+                "Please fill in all required fields.",
+                true
+            );
+
+            return;
+        }
+
+
+        if(file.size > 5 * 1024 * 1024){
+
+            showMessage(
+                "Photo size must be 5 MB or less.",
+                true
+            );
+
+            return;
+        }
+
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent =
+            "Uploading...";
+
+
+        try{
+
+            const extension =
+                file.name
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+            const fileName =
+                Date.now() +
+                "-" +
+                Math.random()
+                .toString(36)
+                .substring(2) +
+                "." +
+                extension;
+
+
+            const filePath =
+                "nepal-flood/" +
+                fileName;
+
+
+            /* UPLOAD PHOTO */
+
+            const upload =
+                await supabaseClient
+                .storage
+                .from("campaign-photos")
+                .upload(
+                    filePath,
+                    file,
+                    {
+                        contentType:file.type,
+                        upsert:false
+                    }
+                );
+
+
+            if(upload.error){
+
+                throw upload.error;
+
+            }
+
+
+            /* GET PUBLIC URL */
+
+            const publicUrl =
+                supabaseClient
+                .storage
+                .from("campaign-photos")
+                .getPublicUrl(filePath)
+                .data
+                .publicUrl;
+
+
+            /* SAVE INFORMATION */
+
+            const insert =
+                await supabaseClient
+                .from("campaign_posts")
+                .insert({
+
+                    campaign:
+                        "Nepal Flood Relief",
+
+                    name:
+                        name,
+
+                    location:
+                        location,
+
+                    description:
+                        description,
+
+                    photo_url:
+                        publicUrl
+
+                });
+
+
+            if(insert.error){
+
+                throw insert.error;
+
+            }
+
+
+            form.reset();
+
+            preview.src = "";
+
+            preview.style.display =
+                "none";
+
+
+            showMessage(
+                "✅ Your relief work update has been submitted successfully.",
+                false
+            );
+
+
+            loadPosts();
+
+        }
+        catch(error){
+
+            console.error(error);
+
+            showMessage(
+                "Unable to submit your update. Please try again.",
+                true
+            );
+
+        }
+
+
+        submitBtn.disabled = false;
+
+        submitBtn.textContent =
+            "📤 Submit Relief Work";
+
+    }
+);
+
+
+/* LOAD POSTS */
+
+async function loadPosts(){
+
+    const posts =
+        document.getElementById("posts");
+
+
+    const result =
+        await supabaseClient
+        .from("campaign_posts")
+        .select(
+            "name,location,description,photo_url,created_at"
+        )
+        .eq(
+            "campaign",
+            "Nepal Flood Relief"
+        )
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
+
+    if(result.error){
+
+        console.error(result.error);
+
+        posts.innerHTML =
+            '<div class="empty">Unable to load updates.</div>';
+
+        return;
+    }
+
+
+    const data =
+        result.data || [];
+
+
+    if(data.length === 0){
+
+        posts.innerHTML =
+            '<div class="empty">No relief updates have been shared yet.</div>';
+
+        return;
+
+    }
+
+
+    posts.innerHTML = "";
+
+
+    data.forEach(
+        function(post){
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "post";
+
+
+            const name =
+                document.createElement("div");
+
+            name.className =
+                "post-name";
+
+            name.textContent =
+                post.name;
+
+
+            const location =
+                document.createElement("div");
+
+            location.className =
+                "post-location";
+
+            location.textContent =
+                "📍 " +
+                post.location;
+
+
+            const description =
+                document.createElement("div");
+
+            description.className =
+                "post-description";
+
+            description.textContent =
+                post.description;
+
+
+            const image =
+                document.createElement("img");
+
+            image.src =
+                post.photo_url;
+
+            image.alt =
+                "Relief work photo";
+
+
+            item.appendChild(name);
+
+            item.appendChild(location);
+
+            item.appendChild(description);
+
+            item.appendChild(image);
+
+            posts.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* MESSAGE */
+
+function showMessage(
+    text,
+    isError
+){
+
+    message.style.display =
+        "block";
+
+    message.className =
+        "message " +
+        (
+            isError
+            ? "error"
+            : "success"
+        );
+
+    message.textContent =
+        text;
+
+}
+
+
+/* FIRST LOAD */
+
+loadPosts();
+
+</script>
 
 </body>
 
