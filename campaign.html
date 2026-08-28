@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -12,11 +13,13 @@
 <meta
 name="description"
 content="Nepal Flood Relief Campaign by Emergency Responders."
+
 >
 
 <meta
 name="theme-color"
 content="#b30000"
+
 >
 
 <style>
@@ -236,11 +239,7 @@ input[type="file"]{
     font-weight:bold;
 }
 
-.loading{
-    text-align:center;
-    color:#777;
-}
-
+.loading,
 .empty{
     text-align:center;
     color:#777;
@@ -297,11 +296,9 @@ footer p{
 
 </header>
 
-
 <div class="container">
 
-
-<!-- CAMPAIGN -->
+<!-- ================= CAMPAIGN ================= -->
 
 <div class="card hero">
 
@@ -328,8 +325,7 @@ Emergency humanitarian support
 
 </div>
 
-
-<!-- DONATION -->
+<!-- ================= DONATION ================= -->
 
 <div class="card">
 
@@ -344,7 +340,9 @@ relief activities for people affected by emergencies.
 
 <div class="upi">
 
-<p><strong>Donate via UPI</strong></p>
+<p>
+<strong>Donate via UPI</strong>
+</p>
 
 <div class="upi-id">
 emergencyresponders@ptyes
@@ -354,21 +352,22 @@ emergencyresponders@ptyes
 src="emergencyresponders-upi-qr.png"
 class="qr"
 alt="Emergency Responders UPI QR Code"
+
 >
 
 <a
 class="pay-btn"
 href="upi://pay?pa=emergencyresponders@ptyes&pn=Emergency%20Responders&cu=INR"
+
 >
-💳 Pay with UPI
-</a>
+
+💳 Pay with UPI </a>
 
 </div>
 
 </div>
 
-
-<!-- PHOTO UPLOAD -->
+<!-- ================= SHARE RELIEF WORK ================= -->
 
 <div class="card">
 
@@ -389,7 +388,9 @@ Your Name
 type="text"
 id="name"
 placeholder="Enter your name"
+maxlength="100"
 required
+
 >
 
 <label for="location">
@@ -400,7 +401,9 @@ Location
 type="text"
 id="location"
 placeholder="Village / Town / District"
+maxlength="150"
 required
+
 >
 
 <label for="description">
@@ -410,9 +413,9 @@ Describe the Relief Work
 <textarea
 id="description"
 placeholder="Describe what is happening or what support is being provided"
+maxlength="1000"
 required
 ></textarea>
-
 
 <label>
 📷 Upload Photo
@@ -425,9 +428,12 @@ type="file"
 id="photo"
 accept="image/jpeg,image/png,image/webp"
 required
+
 >
 
-<p style="font-size:13px;color:#777;margin-top:8px;">
+<p
+style="font-size:13px;color:#777;margin-top:8px;"
+>
 JPG, PNG or WebP • Maximum 5 MB
 </p>
 
@@ -435,21 +441,21 @@ JPG, PNG or WebP • Maximum 5 MB
 id="preview"
 class="preview"
 alt="Photo preview"
+
 >
 
 </div>
-
 
 <button
 type="submit"
 class="submit-btn"
 id="submitBtn"
+
 >
-📤 Submit Relief Work
-</button>
+
+📤 Submit Relief Work </button>
 
 </form>
-
 
 <div
 id="message"
@@ -458,29 +464,31 @@ class="message"
 
 </div>
 
-
-<!-- RELIEF POSTS -->
+<!-- ================= UPDATES ================= -->
 
 <div class="card">
 
-<h2>📸 Relief Work Updates</h2>
+<h2>
+📸 Relief Work Updates
+</h2>
 
-<div
-id="posts"
->
+<div id="posts">
+
 <div class="loading">
 Loading relief updates...
 </div>
-</div>
 
 </div>
 
+</div>
 
-<!-- DONATION DETAILS -->
+<!-- ================= DONATION DETAILS ================= -->
 
 <div class="card">
 
-<h2>📢 Important Information</h2>
+<h2>
+📢 Important Information
+</h2>
 
 <p>
 After making a donation, please submit your payment
@@ -492,29 +500,28 @@ details through the official donation page for verification.
 <a
 href="donation.html"
 class="pay-btn"
+
 >
-❤️ Submit Donation Details
-</a>
+
+❤️ Submit Donation Details </a>
 
 </div>
 
-
-<!-- BACK -->
+<!-- ================= BACK ================= -->
 
 <div class="card">
 
 <a
 href="index.html"
 class="back"
+
 >
-← Back to Emergency Responders
-</a>
+
+← Back to Emergency Responders </a>
 
 </div>
 
-
 </div>
-
 
 <footer>
 
@@ -528,18 +535,17 @@ A Helping Hand for Humanity ❤️
 
 </footer>
 
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-</script>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 const SUPABASE_URL =
 "https://gjfbqzwcatpvejuofdvc.supabase.co";
 
+
 const SUPABASE_PUBLISHABLE_KEY =
 "sb_publishable_IqsUiT2ta9ZuQh9Y3V-eGg_fUy1IIRm";
+
 
 const supabaseClient =
 window.supabase.createClient(
@@ -564,7 +570,31 @@ const preview =
 document.getElementById("preview");
 
 
-/* PHOTO PREVIEW */
+/* ================= MESSAGE ================= */
+
+function showMessage(
+    text,
+    isError
+){
+
+    message.style.display =
+        "block";
+
+    message.className =
+        "message " +
+        (
+            isError
+            ? "error"
+            : "success"
+        );
+
+    message.textContent =
+        text;
+
+}
+
+
+/* ================= PHOTO PREVIEW ================= */
 
 photoInput.addEventListener(
     "change",
@@ -573,10 +603,16 @@ photoInput.addEventListener(
         const file =
             photoInput.files[0];
 
+
         if(!file){
-            preview.style.display = "none";
+
+            preview.style.display =
+                "none";
+
             return;
+
         }
+
 
         if(file.size > 5 * 1024 * 1024){
 
@@ -585,14 +621,44 @@ photoInput.addEventListener(
                 true
             );
 
-            photoInput.value = "";
-            preview.style.display = "none";
+            photoInput.value =
+                "";
+
+            preview.style.display =
+                "none";
 
             return;
+
         }
+
+
+        if(
+            ![
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+            ].includes(file.type)
+        ){
+
+            showMessage(
+                "Please select a JPG, PNG or WebP image.",
+                true
+            );
+
+            photoInput.value =
+                "";
+
+            preview.style.display =
+                "none";
+
+            return;
+
+        }
+
 
         const reader =
             new FileReader();
+
 
         reader.onload =
             function(event){
@@ -605,13 +671,14 @@ photoInput.addEventListener(
 
             };
 
+
         reader.readAsDataURL(file);
 
     }
 );
 
 
-/* SUBMIT */
+/* ================= SUBMIT ================= */
 
 form.addEventListener(
     "submit",
@@ -619,23 +686,38 @@ form.addEventListener(
 
         event.preventDefault();
 
+
         const name =
-            document.getElementById("name")
-            .value.trim();
+            document
+            .getElementById("name")
+            .value
+            .trim();
+
 
         const location =
-            document.getElementById("location")
-            .value.trim();
+            document
+            .getElementById("location")
+            .value
+            .trim();
+
 
         const description =
-            document.getElementById("description")
-            .value.trim();
+            document
+            .getElementById("description")
+            .value
+            .trim();
+
 
         const file =
             photoInput.files[0];
 
 
-        if(!name || !location || !description || !file){
+        if(
+            !name ||
+            !location ||
+            !description ||
+            !file
+        ){
 
             showMessage(
                 "Please fill in all required fields.",
@@ -643,10 +725,30 @@ form.addEventListener(
             );
 
             return;
+
         }
 
 
-        if(file.size > 5 * 1024 * 1024){
+        if(
+            name.length > 100 ||
+            location.length > 150 ||
+            description.length > 1000
+        ){
+
+            showMessage(
+                "Please keep the information within the allowed length.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        if(
+            file.size >
+            5 * 1024 * 1024
+        ){
 
             showMessage(
                 "Photo size must be 5 MB or less.",
@@ -654,16 +756,22 @@ form.addEventListener(
             );
 
             return;
+
         }
 
 
-        submitBtn.disabled = true;
+        submitBtn.disabled =
+            true;
+
 
         submitBtn.textContent =
             "Uploading...";
 
 
         try{
+
+
+            /* ================= FILE NAME ================= */
 
             const extension =
                 file.name
@@ -687,7 +795,7 @@ form.addEventListener(
                 fileName;
 
 
-            /* UPLOAD PHOTO */
+            /* ================= UPLOAD ================= */
 
             const upload =
                 await supabaseClient
@@ -697,31 +805,52 @@ form.addEventListener(
                     filePath,
                     file,
                     {
-                        contentType:file.type,
-                        upsert:false
+                        contentType:
+                            file.type,
+
+                        upsert:
+                            false
                     }
                 );
 
 
             if(upload.error){
 
-                throw upload.error;
+                console.error(
+                    "Upload error:",
+                    upload.error
+                );
+
+                throw new Error(
+                    "Photo upload failed."
+                );
 
             }
 
 
-            /* GET PUBLIC URL */
+            /* ================= PUBLIC URL ================= */
 
             const publicUrl =
                 supabaseClient
                 .storage
                 .from("campaign-photos")
-                .getPublicUrl(filePath)
+                .getPublicUrl(
+                    filePath
+                )
                 .data
                 .publicUrl;
 
 
-            /* SAVE INFORMATION */
+            if(!publicUrl){
+
+                throw new Error(
+                    "Could not create photo URL."
+                );
+
+            }
+
+
+            /* ================= DATABASE ================= */
 
             const insert =
                 await supabaseClient
@@ -748,31 +877,45 @@ form.addEventListener(
 
             if(insert.error){
 
-                throw insert.error;
+                console.error(
+                    "Database error:",
+                    insert.error
+                );
+
+                throw new Error(
+                    "Could not save relief update."
+                );
 
             }
 
 
+            /* ================= SUCCESS ================= */
+
             form.reset();
 
-            preview.src = "";
+            preview.src =
+                "";
 
             preview.style.display =
                 "none";
 
 
             showMessage(
-                "✅ Your relief work update has been submitted successfully.",
+                "✅ Relief work update submitted successfully!",
                 false
             );
 
 
-            loadPosts();
+            await loadPosts();
+
 
         }
         catch(error){
 
-            console.error(error);
+            console.error(
+                error
+            );
+
 
             showMessage(
                 "Unable to submit your update. Please try again.",
@@ -782,7 +925,9 @@ form.addEventListener(
         }
 
 
-        submitBtn.disabled = false;
+        submitBtn.disabled =
+            false;
+
 
         submitBtn.textContent =
             "📤 Submit Relief Work";
@@ -791,12 +936,18 @@ form.addEventListener(
 );
 
 
-/* LOAD POSTS */
+/* ================= LOAD POSTS ================= */
 
 async function loadPosts(){
 
     const posts =
-        document.getElementById("posts");
+        document.getElementById(
+            "posts"
+        );
+
+
+    posts.innerHTML =
+        '<div class="loading">Loading relief updates...</div>';
 
 
     const result =
@@ -819,12 +970,18 @@ async function loadPosts(){
 
     if(result.error){
 
-        console.error(result.error);
+        console.error(
+            "Load posts error:",
+            result.error
+        );
+
 
         posts.innerHTML =
             '<div class="empty">Unable to load updates.</div>';
 
+
         return;
+
     }
 
 
@@ -842,34 +999,46 @@ async function loadPosts(){
     }
 
 
-    posts.innerHTML = "";
+    posts.innerHTML =
+        "";
 
 
     data.forEach(
         function(post){
 
             const item =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             item.className =
                 "post";
 
 
             const name =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             name.className =
                 "post-name";
+
 
             name.textContent =
                 post.name;
 
 
             const location =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             location.className =
                 "post-location";
+
 
             location.textContent =
                 "📍 " +
@@ -877,34 +1046,60 @@ async function loadPosts(){
 
 
             const description =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             description.className =
                 "post-description";
+
 
             description.textContent =
                 post.description;
 
 
             const image =
-                document.createElement("img");
+                document.createElement(
+                    "img"
+                );
+
 
             image.src =
                 post.photo_url;
+
 
             image.alt =
                 "Relief work photo";
 
 
-            item.appendChild(name);
+            image.loading =
+                "lazy";
 
-            item.appendChild(location);
 
-            item.appendChild(description);
+            item.appendChild(
+                name
+            );
 
-            item.appendChild(image);
 
-            posts.appendChild(item);
+            item.appendChild(
+                location
+            );
+
+
+            item.appendChild(
+                description
+            );
+
+
+            item.appendChild(
+                image
+            );
+
+
+            posts.appendChild(
+                item
+            );
 
         }
     );
@@ -912,31 +1107,7 @@ async function loadPosts(){
 }
 
 
-/* MESSAGE */
-
-function showMessage(
-    text,
-    isError
-){
-
-    message.style.display =
-        "block";
-
-    message.className =
-        "message " +
-        (
-            isError
-            ? "error"
-            : "success"
-        );
-
-    message.textContent =
-        text;
-
-}
-
-
-/* FIRST LOAD */
+/* ================= FIRST LOAD ================= */
 
 loadPosts();
 
